@@ -18,6 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import { Signup1Component } from './signup1/signup1.component';
 
 
 
@@ -33,6 +34,7 @@ import {MatSelectModule} from '@angular/material/select';
     MainNavComponent,
     SignInComponent,
     SignUpComponent,
+    Signup1Component,
     
   ],
   imports: [
