@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class Signup1Component {
 
+  cause: string[] = ['Diabetes', 'Diabetic', 'Hypertensive', 'hypertension', 'High Blood Pressure'];
+
 }

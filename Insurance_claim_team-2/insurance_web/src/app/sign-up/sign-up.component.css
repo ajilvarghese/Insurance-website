@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    top: 5rem;
+    top: 3rem;
 }
 .divcard{
    border: 1px solid silver;
@@ -20,6 +20,14 @@
   .example-full-width {
     width: 100%;
   }
+  .mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  
   
 
 
