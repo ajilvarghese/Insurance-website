@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -45,6 +45,17 @@ export class SignUpComponent {
 
   matcher = new MyErrorStateMatcher();
   hide = true;
+
+  firstFormGroup = this.formbulder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this.formbulder.group({
+    secondCtrl: ['', Validators.required],
+  });
+  isEditable = false;
+  cause: string[] = ['Diabetes', 'Diabetic', 'Hypertensive', 'hypertension', 'High Blood Pressure'];
+
+  constructor(private formbulder:FormBuilder) {}
 
 }
 

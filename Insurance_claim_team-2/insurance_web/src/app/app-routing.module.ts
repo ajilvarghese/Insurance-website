@@ -11,7 +11,7 @@ const routes: Routes = [
     {path:'signup1',component:Signup1Component},
     {path:'mainnav',component:MainNavComponent},
     {path:'signin',component:SignInComponent},
-    {path:'Sign up',component:SignUpComponent},
+    
 
 ];
 

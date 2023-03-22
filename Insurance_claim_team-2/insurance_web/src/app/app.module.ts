@@ -20,10 +20,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { Signup1Component } from './signup1/signup1.component';
-
-
-
-
+import {MatListModule} from '@angular/material/list';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
@@ -53,6 +51,8 @@ import { Signup1Component } from './signup1/signup1.component';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    MatListModule,
+    MatStepperModule,
     MatToolbarModule
     
     
