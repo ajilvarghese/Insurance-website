@@ -23,6 +23,7 @@ import { Signup1Component } from './signup1/signup1.component';
 import {MatListModule} from '@angular/material/list';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatChipsModule} from '@angular/material/chips';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -56,7 +57,11 @@ import {MatChipsModule} from '@angular/material/chips';
     MatListModule,
     MatStepperModule,
     MatToolbarModule,
-    MatChipsModule
+    MatChipsModule,
+    FlexLayoutModule,
+    
+    
+    
     
     
   ],

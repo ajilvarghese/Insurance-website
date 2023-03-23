@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="tabClass">
 <mat-tab-group mat-align-tabs="start">
   <mat-tab label="Sign in">
@@ -26,32 +26,73 @@
           
 <mat-form-field class="example-full-width" >
           <mat-label>Password</mat-label>
-          <input matInput placeholder="Placeholder" [type]="hide?'password':'text'" formControlName='password'>
+          <input matInput placeholder="Placeholder" [type]="hide?'password':'text'" formControlName='password'> -->
           <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button> -->
          
-          <mat-error *ngIf= "AllControls?.password?.errors?.['required']&&submit">Password is required</mat-error>
+          <!-- <mat-error *ngIf= "AllControls?.password?.errors?.['required']&&submit">Password is required</mat-error> -->
          
-        </mat-form-field>  
+        <!-- </mat-form-field>  
       </td>  
       </tr>
-    </table>    
+    </table>     -->
             
-        <div style="text-align:center">
+        <!-- <div style="text-align:center">
           <button mat-raised-button color="primary">Login</button>
-        </div> 
+        </div>  -->
      
-       
+<!--        
     </form>
 
-  </mat-card>
+  </mat-card> -->
 
-
-</mat-tab>
+<!-- 
+</mat-tab> -->
   <!-- <mat-tab label="Sign up"></mat-tab> -->
   
-</mat-tab-group>
+<!-- </mat-tab-group>
 
+</div> -->
+<div fxLayoutAlign="center center" fxFlexFill >
+  
+  <mat-card fxFlex="25">
+    <form [formGroup]='loginForm' class="main-class" (ngSubmit)=onSubmit(loginForm)>
+      <div class="div-style">
+
+      <h1 style="text-align:center">Sign in</h1>
+      <hr color="black">
+      <div>
+      <mat-form-field class="mat-form">
+        <input matInput type="email" placeholder="email" formControlName="email">
+        <mat-error *ngIf= "AllControls?.email?.errors?.['email']&&submit">Invalid email</mat-error>
+        <mat-error *ngIf= "AllControls?.email?.errors?.['required']&&submit">Email id is required</mat-error>
+
+      </mat-form-field>
+      <br>
+      <br>
+    </div>
+
+      <mat-form-field  class="mat-form">
+        <input matInput placeholder="password" [type]="hide?'password':'text'" formControlName='password'> 
+        <mat-error *ngIf= "AllControls?.password?.errors?.['required']&&submit">Password is required</mat-error>
+      </mat-form-field>
+<br>
+<br>
+<br>
+      <div style="text-align:center">
+      <button mat-raised-button color="primary" type="submit">Login</button>
+    </div>
+    <br>
+    &nbsp;
+    &nbsp;
+    
+    &nbsp;
+    &nbsp; &nbsp; &nbsp;  &nbsp;
+    <div style="text-align:center">
+    <a  routerLink="signup"><b>  Don't have an account?</b></a>
+  </div>
+    </div>
+    </form>
+  </mat-card>
 </div>
-

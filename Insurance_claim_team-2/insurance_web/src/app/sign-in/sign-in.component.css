@@ -1,4 +1,4 @@
-.tabClass{
+/* .tabClass{
     position: relative;
     display: flex;
     flex-direction: column;
@@ -7,20 +7,72 @@
     top: 3rem;
    
     
-}
-.loginCard{
+} */
+/* .loginCard{
     /* background-color: lavender; */
     /* padding-top: 10px; */
     /* border: 1px solid black; */
     /* text-align: center; */
     /* width: 100; */
-     overflow: hidden;
+     /* overflow: hidden; */
     /* max-width: 800px;
     border: 100px solid blueviolet;
      */ 
     
-}
+
 /* .example-full-width {
     width: 80%;
     
 } */
+/* 
+.full-width{
+    width:100%;
+    
+
+}
+.container-center{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 3rem;
+}
+.background1{
+    height: 145%;
+    width: 100%;
+    background: url('src\assets\images\background.jpg') no-repeat;
+    background-size: cover;
+} */
+
+.mat-form{
+    align-items: center;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 3rem;
+   
+    
+    
+    
+}
+
+.main-class{
+    border: 3px solid black;
+}
+
+     */
+     .div-style{
+       
+        border-radius: 5em;
+        display: inline;
+        border: 5px solid black;
+        padding: auto;
+       
+        margin-right: 10px;
+      
+     }
