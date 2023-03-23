@@ -44,7 +44,10 @@
     background: url('src\assets\images\background.jpg') no-repeat;
     background-size: cover;
 } */
-
+/* mat-card{
+    width: 1000px;
+    height: 500px;
+} */
 .mat-form{
     align-items: center;
     text-align: center;
