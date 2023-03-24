@@ -23,7 +23,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatChipsModule} from '@angular/material/chips';
-import { FlexLayoutModule } from '@angular/flex-layout';
+
 import {MatGridListModule} from '@angular/material/grid-list';
 import { RatingComponent } from './rating/rating.component';
 
@@ -61,11 +61,7 @@ import { RatingComponent } from './rating/rating.component';
     MatStepperModule,
     MatToolbarModule,
     MatChipsModule,
-    FlexLayoutModule,
-    MatGridListModule
-    
-    
-    
+    MatGridListModule,
     
   ],
   providers: [],

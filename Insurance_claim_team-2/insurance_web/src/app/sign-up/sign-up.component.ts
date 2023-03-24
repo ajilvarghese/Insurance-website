@@ -90,7 +90,7 @@ passwordMatchValidator(form: FormGroup) {
   });
   
   isEditable = false;
-  cause: string[] = ['Diabetes', 'Diabetic', 'Hypertensive', 'hypertension', 'High Blood Pressure'];
+  cause: string[] = ['Diabetic', 'Hypertensive'];
 
   
 
