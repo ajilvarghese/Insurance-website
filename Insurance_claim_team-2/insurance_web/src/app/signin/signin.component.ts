@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-signup1',
-  templateUrl: './signup1.component.html',
-  styleUrls: ['./signup1.component.css']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.css']
 })
-export class Signup1Component {
-
+export class SignInComponent {
+  myRating: number = 3;
   
   submit=false;
   hide=true;
@@ -25,5 +25,6 @@ export class Signup1Component {
     {
       this.submit=true
     }
+  
 
 }

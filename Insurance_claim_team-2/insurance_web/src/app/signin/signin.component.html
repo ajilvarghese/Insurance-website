@@ -2,20 +2,21 @@
   <mat-card class="card-left">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      <mat-card-title>Advalent health insurance</mat-card-title>
+      <mat-card-subtitle>Policy</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <img mat-card-image src="https://static.pbcdn.in/health-cdn/images/prelead/images/familyTrust.webp" alt="Health insurance">
     <mat-card-content>
       <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
+        We are India's largest digital insurance market place
       </p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+      <!-- <p>My Rating is {{ myRating }}</p> -->
+      <app-rating [(rating)]="myRating"></app-rating>
+      <button mat-button>
+        SHARE</button>
     </mat-card-actions>
   </mat-card>
   
