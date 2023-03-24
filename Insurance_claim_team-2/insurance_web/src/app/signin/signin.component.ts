@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.css']
 })
 export class SignInComponent {
+  myRating: number = 3;
+  
   submit=false;
   hide=true;
   constructor(private fb: FormBuilder){ }
@@ -23,7 +25,6 @@ export class SignInComponent {
     {
       this.submit=true
     }
-
   
 
 }
