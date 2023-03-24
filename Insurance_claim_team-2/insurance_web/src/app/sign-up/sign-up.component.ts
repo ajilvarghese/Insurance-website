@@ -72,7 +72,13 @@ passwordMatchValidator(form: FormGroup) {
 
   firstFormGroup = this.formbulder.group({
     firstCtrl: ['', Validators.required],
+    firstCtrl3: ['', Validators.required],
+    firstCtrl4: ['', Validators.required],
+    firstCtrl5: ['', Validators.required],
+    firstCtrl6: ['', Validators.required],
+    firstCtrl7: ['', Validators.required],
     firstCtrl2: ['', [Validators.required,Validators.pattern('[0-9]{10}')]],
+   
   });
   secondFormGroup = this.formbulder.group({
     secondCtrl: ['', Validators.required],
