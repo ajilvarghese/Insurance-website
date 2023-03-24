@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup1',
@@ -7,6 +8,22 @@ import { Component } from '@angular/core';
 })
 export class Signup1Component {
 
-  cause: string[] = ['Diabetes', 'Diabetic', 'Hypertensive', 'hypertension', 'High Blood Pressure'];
+  
+  submit=false;
+  hide=true;
+  constructor(private fb: FormBuilder){ }
+    loginForm = this.fb.group({
+      email:['',[Validators.required,Validators.email]],
+      password:['',[Validators.required]],
+    })
+
+    get AllControls()
+    {
+      return this.loginForm.controls
+    }
+    onSubmit(values:any)
+    {
+      this.submit=true
+    }
 
 }

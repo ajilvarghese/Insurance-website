@@ -54,14 +54,38 @@
 <!-- </mat-tab-group>
 
 </div> -->
-<div fxLayoutAlign="center center" fxFlexFill >
+
+<div class="card-div">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+  
+</div>
+
+<div class="div-main">
   
   <mat-card fxFlex="25">
-    <form [formGroup]='loginForm' class="main-class" (ngSubmit)=onSubmit(loginForm)>
+    <form [formGroup]='loginForm'  (ngSubmit)=onSubmit(loginForm)>
       <div class="div-style">
 
       <h1 style="text-align:center">Sign in</h1>
-      <hr color="black">
+      <hr color="grey">
       <div>
       <mat-form-field class="mat-form">
         <input matInput type="email" placeholder="email" formControlName="email">
@@ -84,19 +108,28 @@
       <button mat-raised-button color="primary" type="submit">Login</button>
     </div>
     
-    &nbsp;
     
     
     
-    <h3 style="text-align:center">Don't have an account yet</h3>
+    
+    <h3 style="text-align:center">Don't have an account yet ?</h3>
     &nbsp;
     <div style="text-align:right;  padding: 10px;">
     <a  routerLink="signup"><i><h4>Create account</h4></i> </a>
     
   </div>
-  <br>
-  &nbsp;
+  
+  
     </div>
     </form>
   </mat-card>
 </div>
+
+
+
+
+
+
+
+
+<!--  -->

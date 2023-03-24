@@ -49,14 +49,14 @@
     height: 500px;
 } */
 .mat-form{
-    align-items: center;
-    text-align: center;
+    align-items: flex-end;
+    text-align: end;
     position: relative;
     display: inline-block;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-end;
     top: 3rem;
    
     
@@ -65,17 +65,142 @@
 }
 
 .main-class{
-    border: 3px solid black;
+    border: 2px solid gray;
 }
 
-     */
+     
      .div-style{
        
         border-radius: 5em;
         display: inline;
-        border: 5px solid black;
+        /* border: 3px solid black; */
         padding: auto;
        
-        margin-right: 10px;
+        
       
      }
+     /* .div-main{ */
+        /* display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-end;
+        position: relative; 
+        top:1rem;
+        
+         */
+         /* position: relative;
+         width: 80%; */
+         /* float: right; */
+        /* left: 10rem;
+         justify-content:last baseline; */
+         /* right:10rem; */
+         /* top:8rem;
+         left: 10em; */
+
+     
+     /*  */
+     .example-card {
+        max-width: 400px;
+      }
+      
+      .example-header-image {
+        background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+        background-size: cover;
+      }
+      /* .card-div{
+        position: relative; 
+        top:7rem;
+        /* left: 3rem;  */
+        /* float: left;
+        display: flex; */
+        /* flex-direction: row;
+        width: 20%;
+        left: 10rem;
+        align-items:left; */
+        /* min-height: 800px; */
+
+
+ 
+ 
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+ 
+
+.form-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+
+
+
+
+/* Card container styles */
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ 
+
+/* Card styles */
+.mat-card {
+  width: calc(50% - 10px);
+  margin: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+ 
+
+.mat-card-header {
+  background-color: #333;
+  color: #fff;
+}
+
+ 
+
+.mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+ 
+
+.mat-card-content {
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+ 
+
+@media screen and (max-width: 767px) {
+  /* Card styles for mobile devices */
+  .card-container {
+    flex-direction: column;
+  }
+
+  .mat-card {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+
+
+
+
+      
+      
+
+     
+      
