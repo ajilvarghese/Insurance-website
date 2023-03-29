@@ -1,3 +1,5 @@
+
+
 <div class="background1">
 <div class="tabclass">
 <mat-card>
@@ -31,6 +33,7 @@
                 Please enter a valid email address
               </mat-error>
               <mat-error *ngIf="emailFormControl.hasError('required')">
+                <!-- Email is <strong>required</strong> -->
                 
               </mat-error>
             </mat-form-field></td>
@@ -73,14 +76,35 @@
         <table class="example-full-width" cellspacing="0"><tr>
           <td>
             
-            <mat-form-field appearance="fill">
+<mat-form-field class = "together"appearance="fill" >
+  <mat-label>State</mat-label>
+  <mat-select formControlName="state" [(ngModel)]="selectedState" (ngModelChange)="onStateChange()" >
+    <mat-option *ngFor="let item of state" value={{item.state_id}} >{{ item.state_name }}</mat-option>
+
+  </mat-select>
+  <mat-error *ngIf="firstFormGroup.get('state')?.hasError('required')">
+    
+  </mat-error>
+</mat-form-field>
+          </td><td>
+<mat-form-field class = "together"appearance="fill" >
+  <mat-label>City</mat-label>
+  <mat-select formControlName="city" >
+    <mat-option *ngFor="let item of cities" value={{item.city_id}}>{{item.city_name}}</mat-option>
+  </mat-select>
+  <mat-error *ngIf="firstFormGroup.get('city')?.hasError('required')">
+       
+  </mat-error>
+</mat-form-field>
+            
+            <!-- <mat-form-field appearance="fill">
             <mat-label>CITY</mat-label>
             <mat-select formControlName="firstCtrl7">
             <mat-option *ngFor="let cit of city" [value]="cit.value">
                 {{cit.viewValue}}
            </mat-option>
             </mat-select>
-            </mat-form-field>
+            </mat-form-field> -->
     
             </td>
     
