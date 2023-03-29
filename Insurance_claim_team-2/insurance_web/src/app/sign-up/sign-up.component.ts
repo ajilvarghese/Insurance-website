@@ -39,6 +39,8 @@ export class SignUpComponent{
   selectedState!: number;
   cities!: City[];
   
+  maxDate: Date;
+  minDate: Date;
 
 constructor(private fb: FormBuilder,private formbulder:FormBuilder,private http:HttpClient,private stateCityService:StateCityServiceService) {
   this.form = this.fb.group({
@@ -47,6 +49,9 @@ constructor(private fb: FormBuilder,private formbulder:FormBuilder,private http:
   }, {
     validator: this.passwordMatchValidator
   });
+  this.maxDate=new Date();
+  const currentDate = new Date();
+  this.minDate = new Date(currentDate.getFullYear() - 100, currentDate.getMonth(), currentDate.getDate());
 }
 
 ngOnInit(): void {
