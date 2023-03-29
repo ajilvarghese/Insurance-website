@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { StateCityServiceService } from '../state-city-service.service';
+
+
 
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -14,10 +18,13 @@ interface gender1 {
   value: string;
   viewValue: string;
 }
-interface city1 {
-  value: string;
-  viewValue: string;
+
+interface City {
+  state_id:number;
+  city_id: number;
+  city_name: string;
 }
+
 
 
 @Component({
@@ -28,13 +35,32 @@ interface city1 {
 
 export class SignUpComponent{
   form!: FormGroup;
+  state!: any[];
+  selectedState!: number;
+  cities!: City[];
+  
 
-constructor(private fb: FormBuilder,private formbulder:FormBuilder) {
+constructor(private fb: FormBuilder,private formbulder:FormBuilder,private http:HttpClient,private stateCityService:StateCityServiceService) {
   this.form = this.fb.group({
     password: ['', [Validators.required, Validators.minLength(8)]],
     confirmPassword: ['', Validators.required]
   }, {
     validator: this.passwordMatchValidator
+  });
+}
+
+ngOnInit(): void {
+  this.stateCityService.getStates().subscribe((data: any[]) => {
+    this.state = data;
+  });
+  
+
+}
+
+onStateChange() {
+  
+  this.stateCityService.getCities(this.selectedState).subscribe((data) => {
+    this.cities = data;
   });
 }
 
@@ -56,15 +82,6 @@ passwordMatchValidator(form: FormGroup) {
     {value: 'other', viewValue: 'Other'},
   ];
   
-  city: city1[] = [
-    {value: 'Kochi', viewValue: 'Kochi'},
-    {value: 'Kozhikode', viewValue: 'Kozhikode'},
-    {value: 'Kollam', viewValue: 'Kollam'},
-    {value: 'Thrissur', viewValue: 'Thrissur'},
-    {value: 'Kannur', viewValue: 'Kannur'},
-    {value: 'Alappuzha', viewValue: 'Alappuzha'},
-    {value: 'Kottayam', viewValue: 'Kottayam'},
-  ];
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   matcher = new MyErrorStateMatcher();
   
@@ -76,7 +93,8 @@ passwordMatchValidator(form: FormGroup) {
     firstCtrl4: ['', Validators.required],
     firstCtrl5: ['', Validators.required],
     firstCtrl6: ['', Validators.required],
-    firstCtrl7: ['', Validators.required],
+    city : ['', Validators.required],
+    state :['', Validators.required],
     firstCtrl2: ['', [Validators.required,Validators.pattern('[0-9]{10}')]],
    
   });

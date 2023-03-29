@@ -26,6 +26,8 @@ import {MatChipsModule} from '@angular/material/chips';
 
 import {MatGridListModule} from '@angular/material/grid-list';
 import { RatingComponent } from './rating/rating.component';
+import { HttpClientModule } from '@angular/common/http';
+import { StateCityServiceService } from './state-city-service.service';
 
 
 
@@ -62,9 +64,10 @@ import { RatingComponent } from './rating/rating.component';
     MatToolbarModule,
     MatChipsModule,
     MatGridListModule,
+    HttpClientModule
     
   ],
-  providers: [],
+  providers: [StateCityServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
