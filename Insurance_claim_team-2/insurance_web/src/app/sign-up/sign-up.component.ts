@@ -28,6 +28,8 @@ interface city1 {
 
 export class SignUpComponent{
   form!: FormGroup;
+  maxDate: Date;
+  minDate: Date;
 
 constructor(private fb: FormBuilder,private formbulder:FormBuilder) {
   this.form = this.fb.group({
@@ -36,6 +38,9 @@ constructor(private fb: FormBuilder,private formbulder:FormBuilder) {
   }, {
     validator: this.passwordMatchValidator
   });
+  this.maxDate=new Date();
+  const currentDate = new Date();
+  this.minDate = new Date(currentDate.getFullYear() - 100, currentDate.getMonth(), currentDate.getDate());
 }
 
 passwordMatchValidator(form: FormGroup) {
