@@ -30,9 +30,9 @@
     <hr color="grey">
     <div>
     <mat-form-field class="mat-form">
-      <input matInput type="email" placeholder="email" formControlName="email">
+      <input matInput type="email" placeholder="Email" formControlName="email">
       <mat-error *ngIf= "AllControls?.email?.errors?.['email']&&submit">Invalid email</mat-error>
-      <mat-error *ngIf= "AllControls?.email?.errors?.['required']&&submit">Email id is required</mat-error>
+      <mat-error *ngIf= "AllControls?.email?.errors?.['required']&&submit">Email is required</mat-error>
 
     </mat-form-field>
     <br>
@@ -40,7 +40,7 @@
     </div>
 
     <mat-form-field  class="mat-form">
-      <input matInput placeholder="password" [type]="hide?'password':'text'" formControlName='password'> 
+      <input matInput placeholder="Password" [type]="hide?'password':'text'" formControlName='password'> 
       <mat-error *ngIf= "AllControls?.password?.errors?.['required']&&submit">Password is required</mat-error>
     </mat-form-field>
 <br>
