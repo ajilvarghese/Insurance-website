@@ -1,12 +1,11 @@
 package com.example.signup_backend.signup_model;
 
-//public class city {
-//}
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "city")
-public class city {
+public class City {
 
 
     @Id
@@ -14,7 +13,7 @@ public class city {
     private String name;
     @ManyToOne
     @JoinColumn(name = "state_id")
-    private state state;
+    private State state;
 
     public Long getId() {
         return id;
@@ -32,11 +31,11 @@ public class city {
         this.name = name;
     }
 
-    public state getState() {
+    public State getState() {
         return state;
     }
 
-    public void setState(state state) {
+    public void setState(State state) {
         this.state = state;
     }
 }
