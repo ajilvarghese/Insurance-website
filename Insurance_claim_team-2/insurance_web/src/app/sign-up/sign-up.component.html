@@ -1,182 +1,225 @@
+
+<!-- <mat-selection-list #shoes >
+  <div *ngFor="let illness of illnesses">
+    <label>
+      <input type="checkbox" [(ngModel)]="illness.selected">
+      {{ illness.illness_name }}
+    </label>
+  </div>
+</mat-selection-list> -->
+
+
+
+
 <div class="background1">
-<div class="tabclass">
-<mat-card>
-  <mat-card-content>
-    <button mat-raised-button (click)="isEditable = !isEditable">
-      {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
-    </button>
-    
-    <mat-stepper linear #stepper>
-      <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-        <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel>Fill out your name</ng-template>
-          <table class="example-full-width" cellspacing="0"><tr>
-            <td><mat-form-field class="example-full-width">
-              <mat-label>First name</mat-label>
-              <input matInput formControlName="firstCtrl" placeholder="First name" required>
-            </mat-form-field></td>
-            <td><mat-form-field class="example-full-width">
-              <mat-label>Last Name</mat-label>
-              <input matInput formControlName="firstCtrl3" placeholder="Last name" required>
+  <div class="tabclass">
+  <mat-card>
+    <mat-card-content>
+     
+      
+      <mat-stepper linear #stepper>
+        <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out your name</ng-template>
+            
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td><mat-form-field class="example-full-width">
+                <mat-label>First name</mat-label>
+                <input matInput formControlName="firstCtrl" placeholder="First name" required>
+              </mat-form-field></td>
+              <td><mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="firstCtrl3" placeholder="Last name" required>
+              </mat-form-field></td>
+            </tr></table>
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                       placeholder="Ex. pat@example.com" required>
+      
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  <!-- Email is <strong>required</strong> -->
+                  
+                </mat-error>
+              </mat-form-field></td>
+            </tr></table>
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td><mat-form-field class="example-full-width">
+              <mat-label>Telephone</mat-label>
+              <span matPrefix>+91 &nbsp;</span>
+              <input type="tel" formControlName="firstCtrl2"  matInput placeholder="555-555-1234" required>
+              <mat-icon matSuffix>phone</mat-icon>
             </mat-form-field></td>
           </tr></table>
+  
           <table class="example-full-width" cellspacing="0"><tr>
             <td>
-            <mat-form-field class="example-full-width">
-              <mat-label>Email</mat-label>
-              <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-                     placeholder="Ex. pat@example.com" required>
-    
-              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                Please enter a valid email address
-              </mat-error>
-              <mat-error *ngIf="emailFormControl.hasError('required')">
-                Email is <strong>required</strong>
-              </mat-error>
-            </mat-form-field></td>
-          </tr></table>
-          <table class="example-full-width" cellspacing="0"><tr>
-            <td><mat-form-field class="example-full-width">
-            <mat-label>Telephone</mat-label>
-            <span matPrefix>+91 &nbsp;</span>
-            <input type="tel" formControlName="firstCtrl2"  matInput placeholder="555-555-1234" required>
-            <mat-icon matSuffix>phone</mat-icon>
-          </mat-form-field></td>
-        </tr></table>
-
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td>
-            
-            <mat-form-field appearance="fill">
-            <mat-label>Gender</mat-label>
-            <mat-select formControlName="firstCtrl5">
-            <mat-option *ngFor="let gen of gender" [value]="gen.value">
-                {{gen.viewValue}}
-           </mat-option>
-            </mat-select>
-            </mat-form-field>
-    
-            </td>
-          <td>
-            <mat-form-field class="example-full-width">
-            <mat-form-field appearance="fill">
-              <mat-label>Date Of Birth</mat-label>
-              <input matInput [matDatepicker]="picker" formControlName="firstCtrl6" required></mat-form-field>
               
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </td>
-         
-        </tr></table>
-
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td>
-            
-            <mat-form-field appearance="fill">
-            <mat-label>CITY</mat-label>
-            <mat-select formControlName="firstCtrl7">
-            <mat-option *ngFor="let cit of city" [value]="cit.value">
-                {{cit.viewValue}}
-           </mat-option>
-            </mat-select>
-            </mat-form-field>
-    
+              <mat-form-field appearance="fill">
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="firstCtrl5">
+              <mat-option *ngFor="let gen of gender" [value]="gen.value">
+                  {{gen.viewValue}}
+             </mat-option>
+              </mat-select>
+              </mat-form-field>
+      
+              </td>
+            <td>
+              <mat-form-field class="example-full-width">
+              <mat-form-field appearance="fill">
+                <mat-label>Date Of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" [max]="maxDate" [min]="minDate"formControlName="firstCtrl6" required></mat-form-field>
+                
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
             </td>
-    
-          <td><mat-form-field class="example-full-width">
-            <mat-label>Postal Code</mat-label>
-            <input matInput #postalCode maxlength="6" formControlName="firstCtrl4" placeholder="Ex. 683571" value="683571" required>
-            <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
-          </mat-form-field></td>
-          
-        </tr></table>
-          
-          <div>
-            <button mat-button matStepperNext mat-raised-button color="accent">Next</button>
-          </div>
-        </form>
-      </mat-step>
-
-
-      <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-        <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>Fill out your address and deatils</ng-template>
-          <table class="example-full-width" cellspacing="0"><tr>
-            <td><mat-form-field>
-              <mat-label>Address</mat-label>
-              <textarea matInput formControlName="secondCtrl" placeholder="Address" required></textarea>
-            </mat-form-field></td>
+           
           </tr></table>
-
+  
           <table class="example-full-width" cellspacing="0"><tr>
+            <td>
+              
+              
+  <mat-form-field class = "together"appearance="fill" >
+    <mat-label>State</mat-label>
+    <mat-select formControlName="state" [(ngModel)]="selectedState" (ngModelChange)="onStateChange()" >
+      <mat-option *ngFor="let item of state" value={{item.state_id}} >{{ item.state_name }}</mat-option>
+  
+    </mat-select>
+    <mat-error *ngIf="firstFormGroup.get('state')?.hasError('required')">
+      
+    </mat-error>
+  </mat-form-field>
+            </td><td>
+  <mat-form-field class = "together"appearance="fill" >
+    <mat-label>City</mat-label>
+    <mat-select formControlName="city" >
+      <mat-option *ngFor="let item of cities" value={{item.city_id}}>{{item.city_name}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="firstFormGroup.get('city')?.hasError('required')">
+         
+    </mat-error>
+  </mat-form-field>
+              
+              <!-- <mat-form-field appearance="fill">
+              <mat-label>CITY</mat-label>
+              <mat-select formControlName="firstCtrl7">
+              <mat-option *ngFor="let cit of city" [value]="cit.value">
+                  {{cit.viewValue}}
+             </mat-option>
+              </mat-select>
+              </mat-form-field> -->
+      
+              </td>
+      
             <td><mat-form-field class="example-full-width">
-              <mat-label>Aadhaar number</mat-label>
-              <input type="tel" formControlName="secondCtrl2"  matInput placeholder="xxxx-xxxx-xxxx" required>
+              <mat-label>Postal Code</mat-label>
+              <input matInput #postalCode maxlength="6" formControlName="firstCtrl4" placeholder="Ex. 683571" value="683571" required>
+              <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
             </mat-form-field></td>
+            
           </tr></table>
-          <table class="example-full-width" cellspacing="0"><tr>
-            <td>
-              <h3>Do you have any existing illness or medical record ?</h3>
-          <mat-selection-list #shoes >
-            <mat-list-option *ngFor="let illness of cause">
-              {{illness}}
-            </mat-list-option>
-          </mat-selection-list></td>
-
-        </tr></table>
-        
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td>
-            <h3>Tobacco usage ?</h3>
-            <mat-chip-listbox aria-label="Tobacco usage">
-              <mat-chip-option selected>No Smoking</mat-chip-option>
-              <mat-chip-option>1-5 Cigarette</mat-chip-option>
-              <mat-chip-option color="accent" >1pkt cigarette</mat-chip-option>
-              <mat-chip-option color="warn">More no of packets</mat-chip-option>
-            </mat-chip-listbox>
-          </td>
-        </tr></table>
-
+            
+            <div>
+              <button mat-button matStepperNext mat-raised-button color="accent">Next</button>
+            </div>
+          </form>
+        </mat-step>
+  
+  
+        <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill out your address and details</ng-template>
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td><mat-form-field>
+                <mat-label>Address</mat-label>
+                <textarea matInput formControlName="secondCtrl" placeholder="Address" required></textarea>
+              </mat-form-field></td>
+            </tr></table>
+  
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td><mat-form-field class="example-full-width">
+                <mat-label>Aadhaar number</mat-label>
+                <input type="tel" formControlName="secondCtrl2"  matInput placeholder="xxxx-xxxx-xxxx" required>
+              </mat-form-field></td>
+            </tr></table>
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td>
+                
+                
+                  <mat-label>Do you have any existing illness or medical record ?</mat-label>
+                  
+                    <div *ngFor="let illness of illnesses">
+                      <mat-checkbox formControlName="selected">{{  illness.illness_name }}</mat-checkbox>
+                    </div>
+                    <!-- <div *ngFor="let illness of illnesses">
+                      <mat-checkbox [(ngModel)]="illness.selected">{{ illness.illness_name }}</mat-checkbox>
+                    </div> -->
+                 
+                    
+            
+  
+          </tr></table>
           
-          <h3></h3>
           <table class="example-full-width" cellspacing="0"><tr>
             <td>
+              <h3>Tobacco usage ?</h3>
+              <mat-chip-listbox aria-label="Tobacco usage">
+                <mat-chip-option selected>No Smoking</mat-chip-option>
+                <mat-chip-option>1-5 Cigarette</mat-chip-option>
+                <mat-chip-option color="accent" >1pkt cigarette</mat-chip-option>
+                <mat-chip-option color="warn">More no of packets</mat-chip-option>
+              </mat-chip-listbox>
+            </td>
+          </tr></table>
+  
+            
+            <h3></h3>
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td>
+            <div>
+              <!-- <button mat-button matStepperPrevious mat-raised-button color="primary">Back</button>&nbsp; -->
+              <button mat-button matStepperNext mat-raised-button color="accent">Next</button>
+            </div>
+            </td>
+          </tr></table>
+          </form>
+        </mat-step>
+        
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>Create Password</p>
+          <form [formGroup]="form">
+            <mat-form-field>
+              <input matInput type="password" placeholder="Password" formControlName="password">
+              <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required</mat-error>
+              <mat-error *ngIf="form.get('password')?.hasError('minlength')">Password must be at least 8 characters long</mat-error>
+            </mat-form-field>&nbsp;
+            &nbsp;
+            <mat-form-field>
+              <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+              <mat-error *ngIf="form.get('confirmPassword')?.hasError('required')">Confirm Password is required</mat-error>
+              <mat-error *ngIf="form.get('confirmPassword')?.hasError('mismatch')">Passwords do not match</mat-error>
+            </mat-form-field>
+          </form>
+          <h3></h3>
           <div>
             <button mat-button matStepperPrevious mat-raised-button color="primary">Back</button>&nbsp;
-            <button mat-button matStepperNext mat-raised-button color="accent">Next</button>
+            <button mat-button mat-raised-button color="accent"(click)="stepper.reset()">Reset</button>&nbsp;
+            <button mat-raised-button color="warn">Submit</button>
           </div>
-          </td>
-        </tr></table>
-        </form>
-      </mat-step>
+        </mat-step>
+      </mat-stepper>
       
-      <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>Create Password</p>
-        <form [formGroup]="form">
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password" formControlName="password">
-            <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required</mat-error>
-            <mat-error *ngIf="form.get('password')?.hasError('minlength')">Password must be at least 8 characters long</mat-error>
-          </mat-form-field>&nbsp;
-          &nbsp;
-          <mat-form-field>
-            <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
-            <mat-error *ngIf="form.get('confirmPassword')?.hasError('required')">Confirm Password is required</mat-error>
-            <mat-error *ngIf="form.get('confirmPassword')?.hasError('mismatch')">Passwords do not match</mat-error>
-          </mat-form-field>
-        </form>
-        <h3></h3>
-        <div>
-          <button mat-button matStepperPrevious mat-raised-button color="primary">Back</button>&nbsp;
-          <button mat-button mat-raised-button color="accent"(click)="stepper.reset()">Reset</button>&nbsp;
-          <button mat-raised-button color="warn">Submit</button>
-        </div>
-      </mat-step>
-    </mat-stepper>
-    
-  </mat-card-content>
-</mat-card>
-</div>
-</div>
+    </mat-card-content>
+  </mat-card>
+  </div>
+  </div>
+  

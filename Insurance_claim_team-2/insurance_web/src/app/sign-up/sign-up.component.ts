@@ -1,6 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { StateCityServiceService } from '../state-city-service.service';
+// import { StateCityServiceService } from './state-city-service.service';
+
+
 
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -14,10 +19,13 @@ interface gender1 {
   value: string;
   viewValue: string;
 }
-interface city1 {
-  value: string;
-  viewValue: string;
+
+interface City {
+  state_id:number;
+  city_id: number;
+  city_name: string;
 }
+
 
 
 @Component({
@@ -27,14 +35,46 @@ interface city1 {
 })
 
 export class SignUpComponent{
+  illnesses!: any[];
+  isChecked=false;
   form!: FormGroup;
+  state!: any[];
+  selectedState!: number;
+  cities!: City[];
+  readonly phoneNumberPattern = /^(?!.*(\d)\1{2,})(?:\+\d{1,3})?(?:\s*\d{1,4}){1,5}$/;
+  
+  maxDate: Date;
+  minDate: Date;
 
-constructor(private fb: FormBuilder,private formbulder:FormBuilder) {
+constructor(private fb: FormBuilder,private formbulder:FormBuilder,private http:HttpClient,private stateCityService:StateCityServiceService) {
   this.form = this.fb.group({
     password: ['', [Validators.required, Validators.minLength(8)]],
     confirmPassword: ['', Validators.required]
   }, {
     validator: this.passwordMatchValidator
+  });
+  this.stateCityService.getilllness().subscribe((data:any[]) =>{
+    this.illnesses=data;
+    });
+  this.maxDate=new Date();
+  const currentDate = new Date();
+  this.minDate = new Date(currentDate.getFullYear() - 100, currentDate.getMonth(), currentDate.getDate());
+  
+ 
+  
+}
+
+ngOnInit(): void {
+  this.stateCityService.getStates().subscribe((data: any[]) => {
+    this.state = data;
+  
+  });
+}
+
+onStateChange() {
+  
+  this.stateCityService.getCities(this.selectedState).subscribe((data) => {
+    this.cities = data;
   });
 }
 
@@ -56,15 +96,6 @@ passwordMatchValidator(form: FormGroup) {
     {value: 'other', viewValue: 'Other'},
   ];
   
-  city: city1[] = [
-    {value: 'Kochi', viewValue: 'Kochi'},
-    {value: 'Kozhikode', viewValue: 'Kozhikode'},
-    {value: 'Kollam', viewValue: 'Kollam'},
-    {value: 'Thrissur', viewValue: 'Thrissur'},
-    {value: 'Kannur', viewValue: 'Kannur'},
-    {value: 'Alappuzha', viewValue: 'Alappuzha'},
-    {value: 'Kottayam', viewValue: 'Kottayam'},
-  ];
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   matcher = new MyErrorStateMatcher();
   
@@ -73,16 +104,20 @@ passwordMatchValidator(form: FormGroup) {
   firstFormGroup = this.formbulder.group({
     firstCtrl: ['', Validators.required],
     firstCtrl3: ['', Validators.required],
-    firstCtrl4: ['', Validators.required],
+    firstCtrl4: ['', [Validators.required,postalCodeValidator()]],
     firstCtrl5: ['', Validators.required],
     firstCtrl6: ['', Validators.required],
-    firstCtrl7: ['', Validators.required],
-    firstCtrl2: ['', [Validators.required,Validators.pattern('[0-9]{10}')]],
+    city : ['', Validators.required],
+    state :['', Validators.required],
+    
+    firstCtrl2: ['', [Validators.required,Validators.pattern('[0-9]{10}'),noRepeatedDigitsValidator()]],
    
   });
   secondFormGroup = this.formbulder.group({
     secondCtrl: ['', Validators.required],
     secondCtrl2: ['', [Validators.required,Validators.pattern('[0-9]{12}')]],
+    selected: new FormControl(false)
+
   });
   thirdFormGroup = this.formbulder.group({
     thirdCtrl: ['', Validators.required],
@@ -90,9 +125,38 @@ passwordMatchValidator(form: FormGroup) {
   });
   
   isEditable = false;
-  cause: string[] = ['Diabetes', 'Diabetic', 'Hypertensive', 'hypertension', 'High Blood Pressure'];
+  cause: string[] = ['Diabetic', 'Hypertensive'];
 
   
 
+}
+export function noRepeatedDigitsValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const phoneNumber = control.value;
+    if (phoneNumber) {
+      const repeatedDigitsRegex = /(.)\1+/g;
+      if (repeatedDigitsRegex.test(phoneNumber)) {
+        return { noRepeatedDigits: true };
+      }
+    }
+    return null;
+  };
+  
+}
+export function postalCodeValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const postalCode = control.value;
+    if (!postalCode) {
+      return null;
+    }
+
+    // Check for repeated digits
+    const regex = /(\d)\1+/;
+    if (regex.test(postalCode)) {
+      return { 'repeatedDigits': true };
+    }
+
+    return null;
+  };
 }
 
