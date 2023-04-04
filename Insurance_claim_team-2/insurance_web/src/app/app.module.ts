@@ -24,10 +24,14 @@ import {MatListModule} from '@angular/material/list';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatChipsModule} from '@angular/material/chips';
 
+
+
 import {MatGridListModule} from '@angular/material/grid-list';
 import { RatingComponent } from './rating/rating.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StateCityServiceService } from './state-city-service.service';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -41,6 +45,7 @@ import { StateCityServiceService } from './state-city-service.service';
     SignInComponent,
     SignUpComponent,
     RatingComponent,
+    AboutusComponent,
     
     
   ],
@@ -64,10 +69,12 @@ import { StateCityServiceService } from './state-city-service.service';
     MatToolbarModule,
     MatChipsModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    
+    
     
   ],
-  providers: [StateCityServiceService],
+  providers: [StateCityServiceService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
