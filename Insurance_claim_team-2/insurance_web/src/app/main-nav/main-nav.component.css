@@ -1,0 +1,7 @@
+.spacer{
+    flex: 1 1 auto;
+}
+.mat{
+    background: url('src\assets\images\back1.webp') no-repeat;
+    background-size: cover;
+}

@@ -1,0 +1,70 @@
+.tabclass{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 3rem;
+   
+    border-radius: 0.5rem;
+    width: 100;
+}
+/* .divcard{
+   border: 1px solid silver;
+   border-radius: 0.5rem; 
+   width: 100;
+} */
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  
+  
+
+
+  
+  td {
+    padding-right: 8px;
+  }
+  .example-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  .background1{
+    height: 145%;
+    width: 100%;
+    background: url('src\assets\images\background.jpg') no-repeat;
+    background-size: cover;
+    /* color: white; */
+}
+.ajil{
+  background-image: url('src\assets\images\card image.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+
+  
+  
+  
