@@ -1,19 +1,25 @@
 .tabclass{
-    position: relative;
+    /* position: relative; */
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
+    padding: 16px;
     align-items: center;
     top: 3rem;
+    
    
-    border-radius: 0.5rem;
-    width: 100;
+    
 }
-/* .divcard{
-   border: 1px solid silver;
-   border-radius: 0.5rem; 
-   width: 100;
-} */
+button {
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+mat-stepper {
+  max-width: 100%;
+  width: 100%;
+}
+
 .example-form {
     min-width: 150px;
     max-width: 500px;
@@ -51,19 +57,14 @@
     display: none;
   }
 
-  .background1{
-    height: 145%;
-    width: 100%;
-    background: url('src\assets\images\background.jpg') no-repeat;
-    background-size: cover;
-    /* color: white; */
-}
+  
 .ajil{
   background-image: url('src\assets\images\card image.webp');
   background-size: cover;
   background-position: center;
+  max-width: 100%;
+  
 }
-
 
   
   

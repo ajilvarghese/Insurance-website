@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { MatSelectionListChange } from '@angular/material/list';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -40,8 +40,7 @@ interface City {
 })
 
 export class SignUpComponent{
-  
-  
+  illnesses!: any[];
   showAlert!: boolean;
   form!: FormGroup;
   state!: any[];
@@ -79,12 +78,20 @@ ngOnInit(): void {
   this.stateCityService.getStates().subscribe((data: any[]) => {
     this.state = data;
   });
+  this.stateCityService.getilllness().subscribe((data:any[]) =>{
+    this.illnesses=data;
+  });
+  
   
 
 }
 
 
 submitForm() {
+  this.secondFormGroup.get('selected')?.valueChanges.subscribe((selected: any) => {
+    console.log('Selected illnesses:', selected);
+    // Call your service method here to save the selected illnesses to the database
+  });
   
   const data = {
     first_name:this.first_name,
@@ -112,10 +119,20 @@ submitForm() {
     city_id :this.firstFormGroup.get('city_id')?.value,
     state_id :this.firstFormGroup.get('state_id')?.value,
     postal_code :this.firstFormGroup.get('postal_code')?.value,
+    
+ } 
+ const valueform2={
+    address:this.secondFormGroup.get('address')?.value,
+    gov_id: this.secondFormGroup.get('gov_id')?.value,
+    is_tobacco_user: this.secondFormGroup.get('is_tobacco_user')?.value
+    
  }
+ const medical_history =  this.secondFormGroup.get('selected')?.value.join(',');
+ 
   const formValues ={
     ...valueform1,
-    ...this.secondFormGroup.value,
+    medical_history,...valueform2,
+    // ...this.secondFormGroup.value,
     ...form1Data
   }
   const output = JSON.stringify(formValues);
@@ -123,11 +140,6 @@ submitForm() {
   
   this.userService.signup(output)
   .subscribe(
-    error => {
-      console.error('Registration failed', error);
-      alert('Signup failed');
-        
-    },
     response => {
       console.log('Registration successful', response);
       alert("Signup successful");
@@ -135,7 +147,11 @@ submitForm() {
         this.router.navigate(['/signin']);
       }, 2000);
     },
-    
+    error => {
+      console.error('Registration failed', error);
+      alert('Signup failed');
+        
+    },   
     
   );
 }
@@ -171,6 +187,17 @@ passwordMatchValidator(form1: FormGroup) {
   
   hide = true;
 
+  onChange(email: string, isChecked: boolean) {
+    const emailFormArray = <FormArray>this.secondFormGroup.controls.selected;
+
+    if (isChecked) {
+      emailFormArray.push(new FormControl(email));
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == email)
+      emailFormArray.removeAt(index);
+    }
+  }
+
   firstFormGroup = this.formbulder.group({
     first_name: ['', Validators.required],
     last_name: ['', Validators.required],
@@ -188,6 +215,7 @@ passwordMatchValidator(form1: FormGroup) {
   secondFormGroup = this.formbulder.group({
     address: ['', Validators.required],
     gov_id: ['', [Validators.required,Validators.pattern('[0-9]{12}')]],
+    selected:this.fb.array([]),
     is_tobacco_user:['', Validators.required],
     
   });
@@ -197,11 +225,12 @@ passwordMatchValidator(form1: FormGroup) {
     
 
   });
+ 
   
 
   
   isEditable = false;
-  cause: string[] = ['Diabetic', 'Hypertensive'];
+  // cause: string[] = ['Diabetic', 'Hypertensive'];
 
   
 

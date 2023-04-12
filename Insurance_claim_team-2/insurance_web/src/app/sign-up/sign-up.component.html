@@ -1,5 +1,5 @@
-
-<div class="background1">
+<app-main-nav> </app-main-nav>
+<div >
 <div class="tabclass">
 <mat-card >
   <mat-card-content class="ajil">
@@ -62,13 +62,6 @@
             </td>
           <td>
             
-            
-            <!-- <mat-form-field>
-              <mat-label>Date Of Birth</mat-label>
-              <input matInput [matDatepicker]="picker" [max]="maxDate" [min]="minDate"  formControlName="dob" required>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field> -->
             
             
             <mat-form-field >
@@ -146,12 +139,17 @@
           </tr></table>
           <table class="example-full-width" cellspacing="0"><tr>
             <td>
-              <h3>Do you have any existing illness or medical record ?</h3>
+              <!-- <h3>Do you have any existing illness or medical record ?</h3>
           <mat-selection-list #shoes >
             <mat-list-option *ngFor="let illness of cause">
               {{illness}}
             </mat-list-option>
-          </mat-selection-list></td>
+          </mat-selection-list> -->
+          <mat-label>Do you have any existing illness or medical record ?</mat-label>
+          <div *ngFor="let illness of illnesses">
+            <mat-checkbox  (change)="onChange(illness.illness_name, $event.checked)">{{illness.illness_name }}</mat-checkbox>
+          </div>
+            </td>
 
         </tr></table>
         

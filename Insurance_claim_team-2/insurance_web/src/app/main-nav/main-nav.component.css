@@ -1,7 +1,15 @@
 .spacer{
-    flex: 1 1 auto;
+    flex: 1;
 }
 .mat{
-    background: url('src\assets\images\back1.webp') no-repeat;
-    background-size: cover;
+    /* background: url('src\assets\images\back1.webp') no-repeat;
+    background-size: cover; */
+    background-color: #FFFFFF;
+    width: 100%;
 }
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }

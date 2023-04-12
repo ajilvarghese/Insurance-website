@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
@@ -31,8 +31,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { RatingComponent } from './rating/rating.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StateCityServiceService } from './state-city-service.service';
-import { AboutusComponent } from './aboutus/aboutus.component';
 import { DatePipe } from '@angular/common';
+import { HomeComponent } from './home/home.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { MainComponent } from './main/main.component';
 
 
 
@@ -46,7 +48,9 @@ import { DatePipe } from '@angular/common';
     SignInComponent,
     SignUpComponent,
     RatingComponent,
-    AboutusComponent,
+    HomeComponent,
+    MainPageComponent,
+    MainComponent,
     
     
   ],
@@ -71,6 +75,7 @@ import { DatePipe } from '@angular/common';
     MatChipsModule,
     MatGridListModule,
     HttpClientModule,
+    MatCheckboxModule
     
     
     

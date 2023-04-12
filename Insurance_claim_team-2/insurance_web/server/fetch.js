@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'state_city'
+  database: 'advalent_insurance_page'
 });
 
 connection.connect();

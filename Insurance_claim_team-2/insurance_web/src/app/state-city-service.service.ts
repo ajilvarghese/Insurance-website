@@ -13,16 +13,24 @@ interface City {
   city_name: string;
   state_id:number;
 }
+interface Illness{
+  illness_id: number;
+  illness_name: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class StateCityServiceService {
   private baseUrl = 'http://localhost:3000';
+  private baseUr2 = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
   ngOnInit(): void {
     
+  }
+  getilllness():Observable<Illness[]>{
+    return this.http.get<Illness[]>(`${this.baseUr2}/signup/illnesses`);
   }
 
   getStates(): Observable<State[]> {

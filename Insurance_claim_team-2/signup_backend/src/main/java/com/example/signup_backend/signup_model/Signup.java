@@ -4,11 +4,12 @@ import jakarta.persistence.*;
 
 
 import java.sql.Date;
-import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table(name="signup")
 public class Signup {
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private long member_id;
@@ -32,8 +33,12 @@ public class Signup {
     private int postal_code;
     @Column(name = "address")
     private  String address;
+    @Id
     @Column(name = "gov_id")
     private Long gov_id;
+
+    @Column(name = "medical_history")
+    private String medical_history;
     @Column(name = "is_tobacco_user")
     private String is_tobacco_user;
 
@@ -126,6 +131,14 @@ public class Signup {
         this.gov_id = gov_id;
     }
 
+    public String getMedical_history() {
+        return medical_history;
+    }
+
+    public void setMedical_history(String medical_history) {
+        this.medical_history = medical_history;
+    }
+
     public String getIs_tobacco_user() {
         return is_tobacco_user;
     }
@@ -157,4 +170,6 @@ public class Signup {
     public void setState_id(String state_id) {
         this.state_id = state_id;
     }
+
+
 }

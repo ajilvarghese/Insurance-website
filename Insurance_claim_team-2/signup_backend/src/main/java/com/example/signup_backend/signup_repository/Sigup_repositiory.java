@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface Sigup_repositiory extends JpaRepository<Signup,Long>{
-    Signup save(Signup signup);
-
-    List<Signup> findAll();
+//    Signup save(Signup signup);
+//
+//    List<Signup> findAll();
 }
