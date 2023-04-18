@@ -1,0 +1,21 @@
+<!-- <ol> -->
+    <!-- <li>
+      <mat-form-field>
+        <input matInput [(ngModel)]="name" placeholder="What's your name?">
+      </mat-form-field>
+    </li> -->
+    <!-- <li>
+        <button mat-raised-button (click)="close()">close</button>
+    </li>
+    <li>
+      <i>{{message}}</i>
+    </li>
+  </ol> -->
+ 
+<div mat-dialog-content>
+  {{data.message}}
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()" >Ok</button>
+</div>

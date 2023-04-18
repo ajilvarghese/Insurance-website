@@ -1,6 +1,6 @@
 .background{
   
-  background: url('src\assets\images\back1.webp');
+  background: url('src\assets\images\back1.png');
   background-size: cover;
   background-attachment: fixed;
   filter: grayscale(10%);

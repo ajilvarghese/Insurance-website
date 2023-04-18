@@ -6,6 +6,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MainComponent } from './main/main.component';
+import { AlertBoxComponent } from './alert-box/alert-box.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
     {path:'signin',component:SignInComponent},
     {path:'mainnav',component:MainNavComponent},
     {path:'mainpage',component:MainPageComponent},
-    {path:'main',component:MainComponent}
+    {path:'main',component:MainComponent},
+    {path:'alert',component:AlertBoxComponent}
     
     
 

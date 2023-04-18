@@ -13,3 +13,12 @@
     align-items: center;
     padding: 0 16px;
   }
+  .background{
+  
+    background: url('src\assets\images\back1.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    filter: grayscale(10%);
+    
+    }
+    

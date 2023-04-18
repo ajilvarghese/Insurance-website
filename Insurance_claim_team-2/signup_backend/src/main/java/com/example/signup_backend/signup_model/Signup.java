@@ -19,6 +19,7 @@ public class Signup {
     private String last_name;
     @Column(name = "email_id")
     private String email_id;
+    @Id
     @Column(name = "phone_no")
     private Long phone_no;
 
@@ -33,7 +34,7 @@ public class Signup {
     private int postal_code;
     @Column(name = "address")
     private  String address;
-    @Id
+
     @Column(name = "gov_id")
     private Long gov_id;
 

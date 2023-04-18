@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AlertBoxComponent } from '../alert-box/alert-box.component';
 import { UserServiceService } from '../user-service.service';
 
 @Component({
@@ -10,12 +12,12 @@ import { UserServiceService } from '../user-service.service';
 })
 export class SignInComponent {
   myRating: number = 3;
-  errorMessage: any;
+  message:any
   submit=false;
   hide=true;
-  constructor(private fb: FormBuilder,private userService:UserServiceService,private router: Router){ }
+  constructor(private fb: FormBuilder,private userService:UserServiceService,private router: Router,public dialog: MatDialog){ }
     loginForm = this.fb.group({
-      gov_id: ['', [Validators.required,Validators.pattern('[0-9]{12}')]],
+      phone_no: ['', [Validators.required,Validators.pattern('[0-9]{10}')]],
       password:['',[Validators.required]],
     })
 
@@ -23,10 +25,18 @@ export class SignInComponent {
     {
       return this.loginForm.controls
     }
+    
+
+ 
+
+  openDialog():void {
+    
+   
+  }
     onSubmit(values:any)
     {
       const formValues={
-        gov_id:this.loginForm.get('gov_id')?.value,
+        phone_no:this.loginForm.get('phone_no')?.value,
         password: this.loginForm.get('password')?.value,
         
      }
@@ -37,20 +47,69 @@ export class SignInComponent {
       .subscribe(
        response => {
         console.log('Registration successful', response);
-        alert("Signed In Successfully");
+        this.message = "Signed In Successfully";
+        // alert(this.message)
+        const dialogRef = this.dialog.open(AlertBoxComponent, {
+          width: '250px',
+          data:{
+            message:this.message
+          }
+         
+        });
+      
+        dialogRef.afterClosed().subscribe(() => {
+         
+          
+        });
         setTimeout(() => {
           this.router.navigate(['/mainpage']);
-        }, 500);
+        }, 2500);
     },
     (error) => {
       // console.error('Registration failed', error);
       // this.errorMessage = error;
-      this.errorMessage= error
-      alert("Check the Aadhaar Number and password !!");
+      // this.errorMessage= error
+      // alert("Check the phone_number and password !!");
+      
+      if (error.status === 400) {
+        this.message = 'Invalid phone_number or password.';
+      } else if (error.status === 500) {
+        this.message = 'Internal Server Error! Try again';
+      } if (error.status === 401) {
+        this.message = 'Incorrect  Password!';
+      }
+      else {
+        this.message = 'Login Failed!! Invalid phone_number and password';
+      }
+      // alert(this.message);
+      const dialogRef = this.dialog.open(AlertBoxComponent, {
+        width: '350px',
+        data:{
+          message:this.message
+        }
+       
+      });
+    
+      dialogRef.afterClosed().subscribe(() => {
+       
         
+      });
     },   
     
   );
+   
+  // const dialogRef = this.dialog.open(AlertBoxComponent, {
+  //   width: '250px',
+  //   data:{
+  //     message:this.message
+  //   }
+   
+  // });
+
+  // dialogRef.afterClosed().subscribe(() => {
+   
+    
+  // });
      
     }
   

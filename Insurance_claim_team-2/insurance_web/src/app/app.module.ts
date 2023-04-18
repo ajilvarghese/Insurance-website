@@ -35,6 +35,9 @@ import { DatePipe } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MainComponent } from './main/main.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AlertBoxComponent } from './alert-box/alert-box.component';
+
 
 
 
@@ -51,6 +54,7 @@ import { MainComponent } from './main/main.component';
     HomeComponent,
     MainPageComponent,
     MainComponent,
+    AlertBoxComponent,
     
     
   ],
@@ -75,7 +79,8 @@ import { MainComponent } from './main/main.component';
     MatChipsModule,
     MatGridListModule,
     HttpClientModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
     
     
     
