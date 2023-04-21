@@ -19,8 +19,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
-
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatListModule} from '@angular/material/list';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatChipsModule} from '@angular/material/chips';
@@ -37,6 +36,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { MainComponent } from './main/main.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AlertBoxComponent } from './alert-box/alert-box.component';
+import { MainformComponent } from './mainform/mainform.component';
 
 
 
@@ -55,6 +55,7 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
     MainPageComponent,
     MainComponent,
     AlertBoxComponent,
+    MainformComponent,
     
     
   ],
@@ -80,7 +81,8 @@ import { AlertBoxComponent } from './alert-box/alert-box.component';
     MatGridListModule,
     HttpClientModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatAutocompleteModule
     
     
     

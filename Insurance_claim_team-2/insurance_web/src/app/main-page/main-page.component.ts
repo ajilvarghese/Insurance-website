@@ -10,7 +10,13 @@ import { Router } from '@angular/router';
 export class MainPageComponent {
   constructor( private router: Router) { }
 
-  
+  searchQuery!: string;
+  cities: string[] = ['New York', 'Los Angeles', 'Chicago', 'San Francisco', 'London', 'Paris', 'Tokyo'];
+  filteredCities!: string[];
+
+  onSearchInputChange() {
+    this.filteredCities = this.cities.filter(city => city.toLowerCase().includes(this.searchQuery.toLowerCase()));
+  }
   
 
 }

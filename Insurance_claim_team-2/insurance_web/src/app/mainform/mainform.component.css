@@ -1,0 +1,24 @@
+.tabclass{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+    
+   
+    
+}
+/* centered-card.component.css */
+.centered-card-container {
+  background-color: #c77777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh; /* Adjust height as needed */
+}
+
+.mat-card {
+  
+  max-width: 400px; /* Set max-width to control card width */
+  width: 100%; /* Set width to 100% for responsiveness */
+}
+

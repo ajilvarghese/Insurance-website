@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MainComponent } from './main/main.component';
 import { AlertBoxComponent } from './alert-box/alert-box.component';
+import { MainformComponent } from './mainform/mainform.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
     {path:'mainnav',component:MainNavComponent},
     {path:'mainpage',component:MainPageComponent},
     {path:'main',component:MainComponent},
-    {path:'alert',component:AlertBoxComponent}
+    {path:'alert',component:AlertBoxComponent},
+    {path:'mainform',component:MainformComponent}
     
     
 

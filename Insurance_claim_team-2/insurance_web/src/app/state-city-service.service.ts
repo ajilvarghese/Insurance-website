@@ -13,6 +13,12 @@ interface City {
   city_name: string;
   state_id:number;
 }
+interface City1 {
+  city_id: number;
+  city_name: string;
+  state_id:number;
+}
+
 interface Illness{
   illness_id: number;
   illness_name: string;
@@ -35,6 +41,9 @@ export class StateCityServiceService {
 
   getStates(): Observable<State[]> {
     return this.http.get<State[]>(`${this.baseUrl}/states`);
+  }
+  getcity(): Observable<City1[]> {
+    return this.http.get<City1[]>(`${this.baseUrl}/city`);
   }
 
  

@@ -31,6 +31,17 @@ app.get('/states', (req, res) => {
   });
 });
 
+app.get('/city', (req, res) => {
+  connection.query('SELECT * FROM cities', (error, results, fields) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send('Error retrieving cities');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 
 app.get('/cities/:stateId', (req, res) => {
   const stateId = req.params.stateId;
