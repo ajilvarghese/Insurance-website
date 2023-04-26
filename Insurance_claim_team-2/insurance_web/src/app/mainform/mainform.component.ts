@@ -92,10 +92,11 @@ this.filterSearch=this.search
   
     const city = this.selectedcity.value?.toLowerCase() || '';
     const specialty = this.selectedSpeciality.value?.toLowerCase() || '';
-  
+    if((city && city.split('').length >=3) || (specialty && specialty.split('').length >=2) ){
      this.filterSearch = this.search.filter(doctor =>(doctor.state.toLowerCase().includes(city) || doctor.city.toLowerCase().includes(city)) &&
      doctor.doctor_speciality.toLowerCase().includes(specialty)
    );
+    }
   }
   onStateChange1() {
     this.filterSearch = this.search.filter(doctor =>doctor.doctor_name.toLowerCase().includes(this.selectedDoctor.value?.toLowerCase() || '') 
