@@ -1,15 +1,30 @@
+<div class="container">
+  <mat-toolbar  class="mat">
+     <span><mat-icon color="accent">favorite</mat-icon>
+     <a mat-button color="accent" routerLink="/">MY HEALTH INSURANCE</a> </span>
+  
+  <div class="spacer">
+     
+  </div>
+  
+     <!-- <a mat-button color="accent">About us</a> -->
+     <a mat-raised-button color="accent" >SIGN-OUT</a> &nbsp;
+     <!-- <a mat-raised-button color="accent" routerLink="signup">Sign up</a> -->
+  </mat-toolbar>
+  
+  </div>
 <!-- card.component.html -->
-<app-main-nav ></app-main-nav>
+<!-- <app-main-nav ></app-main-nav> -->
 
 <mat-card>
   
-  <mat-card-content>
+  <mat-card-content >
 
     <!-- Search input -->
     <div class="centered-card-container">
-      <mat-card>
+      <mat-card >
         <mat-card-header>
-          <mat-card-title>Search for Doctors in India</mat-card-title>
+          <mat-card-title class="text-center" >Search for Doctors in India</mat-card-title>
         </mat-card-header>
         <!-- <div class="location-container">
           <button mat-raised-button color="primary" (click)="getCurrentLocation()">Use My Location</button>
@@ -61,12 +76,21 @@
     <mat-card-subtitle>{{ doctor.doctor_speciality }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>{{ doctor.doctor_description }}</p>
-    <!-- <p>{{doctor.doctor_id}}</p> -->
-    <p>{{doctor.hospital_clinic}}</p>
-    <p>{{doctor.city}} {{doctor.state}}</p>
-    <p>{{doctor.contact_number}}</p>
-
+    <div class="content-container">
+      <p>{{ doctor.doctor_description }}</p>
+      <p>
+        <mat-icon class="my-icon">local_hospital</mat-icon>
+        {{ doctor.hospital_clinic }}
+      </p>
+      <p>
+        <mat-icon class="my-icon">location_on</mat-icon>
+        {{ doctor.city }} {{ doctor.state }}
+      </p>
+      <p>
+        <mat-icon class="my-icon">phone</mat-icon>
+        {{ doctor.contact_number }}
+      </p>
+    </div>
     <form class="form-container">
       <!-- Form content here -->
     
@@ -79,3 +103,19 @@
 
 </div>
 
+<!-- <div class="my-element">
+  
+  <mat-card class="mat-card-hover">
+    <mat-card-header>
+      <mat-card-title>
+        My Card Title
+      </mat-card-title>
+      <mat-card-subtitle>
+        My Card Subtitle
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      This is my card content.
+    </mat-card-content>
+  </mat-card>
+</div> -->
