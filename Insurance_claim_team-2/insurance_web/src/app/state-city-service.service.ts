@@ -7,6 +7,24 @@ interface State{
   state_id : number;
   state_name: String;
 }
+interface Search{
+  search_id :number;
+  provider_id : number;
+  hospital_clinic : String;
+  city :String;
+  state:String;
+  contact_number:number;
+  doctor_id :number;
+  doctor_name : String;
+  doctor_speciality: String;
+  doctor_description: String;  
+}
+// interface Doctor{
+//   doctor_id : number;
+//   doctor_name : String;
+//   doctor_speciality: String;
+//   doctor_description: String;
+// }
 
 interface City {
   city_id: number;
@@ -17,6 +35,11 @@ interface City1 {
   city_id: number;
   city_name: string;
   state_id:number;
+}
+interface Department {
+  department_id: number;
+  department_name: string;
+  city_id:number;
 }
 
 interface Illness{
@@ -42,6 +65,9 @@ export class StateCityServiceService {
   getStates(): Observable<State[]> {
     return this.http.get<State[]>(`${this.baseUrl}/states`);
   }
+  // getDoctor(): Observable<Doctor[]> {
+  //   return this.http.get<Doctor[]>(`${this.baseUrl}/doctor`);
+  // }
   getcity(): Observable<City1[]> {
     return this.http.get<City1[]>(`${this.baseUrl}/city`);
   }
@@ -50,6 +76,11 @@ export class StateCityServiceService {
   getCities(stateId: number): Observable<City[]> {
     const url = `${this.baseUrl}/cities/${stateId}`;
     return this.http.get<City[]>(url);
+  }
+
+  getSearch(): Observable<Search[]>{
+    const url = `${this.baseUrl}/search`;
+    return this.http.get<Search[]>(url);
   }
  
   

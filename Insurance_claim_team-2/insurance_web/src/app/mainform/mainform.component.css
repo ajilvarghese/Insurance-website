@@ -1,11 +1,19 @@
-.tabclass{
-    display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-    
-   
-    
+.doctor-card {
+  margin-bottom: 20px; /* Adjust the value as needed to control the spacing between doctors */
+}
+
+.tabclass1{
+ padding-left: 5%;
+  width: 50%;
+
+  margin-bottom: 30px;
+  
+  }
+  
+  
+
+@media (min-width: 768px) and (max-width: 1024px) {
+ 
 }
 /* centered-card.component.css */
 .centered-card-container {

@@ -1,5 +1,5 @@
 <!-- card.component.html -->
-<app-main-nav></app-main-nav>
+<app-main-nav ></app-main-nav>
 
 <mat-card>
   
@@ -11,27 +11,33 @@
         <mat-card-header>
           <mat-card-title>Search for Doctors in India</mat-card-title>
         </mat-card-header>
+        <!-- <div class="location-container">
+          <button mat-raised-button color="primary" (click)="getCurrentLocation()">Use My Location</button>
+          <div *ngIf="latitude && longitude" class="location-info">Latitude: {{ latitude }}, Longitude: {{ longitude }}</div>
+        </div> -->
         <mat-card-content>
+          <!-- <mat-form-field>
+            <mat-label>Search city</mat-label>
+            <input matInput [formControl]="selectedcity" (ngModelChange)="onStateChange()">
+            <mat-icon matSuffix (click)="getCurrentLocation()">location_on</mat-icon>
+          </mat-form-field> -->
     <mat-form-field>
-      <mat-label>Search city</mat-label>
-      <input matInput  [(ngModel)]="selectedState" (ngModelChange)="onStateChange()" (input)="onSearchInputChange()" [matAutocomplete]="auto">
+      <mat-label>Search state/city</mat-label>
+      <input matInput  [formControl]="selectedcity" (ngModelChange)="onStateChange()"  >
       <mat-icon matSuffix>location_on</mat-icon>
     </mat-form-field>
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let item of filteredCity " [value]="item.city_name">{{ item.city_name }}</mat-option>
-    </mat-autocomplete>
+    <!-- <mat-option *ngFor="let item of filteredHospitals" value={{item.state}} >{{ item.state }}</mat-option> -->
+   
     &nbsp;
   <mat-form-field>
     <mat-label>Search Speciality</mat-label>
-    <input matInput  [(ngModel)]="selectedState" (ngModelChange)="onStateChange()"  [matAutocomplete]="auto">
+    <input matInput [formControl]="selectedSpeciality" (ngModelChange)="onStateChange()" >
     <mat-icon matSuffix>medical_services</mat-icon>
   </mat-form-field>
-  <mat-autocomplete #auto="matAutocomplete">
-    <!-- <mat-option *ngFor="let item of filteredStates" value={{item.state_id}} >{{ item.state_name }}</mat-option> -->
-  </mat-autocomplete>&nbsp;
+  &nbsp;
   <mat-form-field>
     <mat-label>Search Doctors</mat-label>
-    <input matInput  [(ngModel)]="selectedState" (ngModelChange)="onStateChange()"  [matAutocomplete]="auto">
+    <input matInput [formControl]="selectedDoctor" (ngModelChange)="onStateChange1()" [matAutocomplete]="auto">
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
   <mat-autocomplete #auto="matAutocomplete">
@@ -48,137 +54,28 @@
 </mat-card>
 
 &nbsp;
-  <!-- <mat-form-field>
-    <mat-label>Search state</mat-label>
-    <input matInput  [(ngModel)]="selectedState" (ngModelChange)="onStateChange()" (input)="onSearchInputChange()" [matAutocomplete]="auto">
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let item of filteredStates" value={{item.state_id}} >{{ item.state_name }}</mat-option>
-  </mat-autocomplete>
-  &nbsp;
-  <mat-form-field>
-    <mat-label>Search city</mat-label>
-    <input matInput [matAutocomplete]="auto">
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let item of cities" value={{item.city_id}}>{{item.city_name}}</mat-option>
-  </mat-autocomplete> -->
+<div class="tabclass1">
+<mat-card *ngFor="let doctor of filterSearch | slice:0:5" class="doctor-card">
+  <mat-card-header>
+    <mat-card-title>Dr.{{ doctor.doctor_name }}</mat-card-title>
+    <mat-card-subtitle>{{ doctor.doctor_speciality }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ doctor.doctor_description }}</p>
+    <!-- <p>{{doctor.doctor_id}}</p> -->
+    <p>{{doctor.hospital_clinic}}</p>
+    <p>{{doctor.city}} {{doctor.state}}</p>
+    <p>{{doctor.contact_number}}</p>
 
-
-
-<div class="tabclass">
-    <!-- <div>
-        <button mat-raised-button (click)="isEditable = !isEditable">
-            {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
-            </button>
-    </div> -->
-
+    <form class="form-container">
+      <!-- Form content here -->
     
+      <!-- Add a button aligned to the left side -->
+      <button mat-raised-button color="accent" >ADD<mat-icon>favorite</mat-icon></button>
+    </form>
+  </mat-card-content>
   
-  <mat-horizontal-stepper linear #stepper>
-    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-      <form [formGroup]="firstFormGroup">
+</mat-card>
 
-        <ng-template matStepLabel>Fill out state and city</ng-template>&nbsp;
-        
-        <!-- <mat-form-field>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field> -->
-        <table class="example-full-width" cellspacing="0"><tr>
-            <td>
-              
-        <mat-form-field class = "together"appearance="fill" >
-        <mat-label>State</mat-label>
-        
-        <mat-select formControlName="state_id" [(ngModel)]="selectedState" (ngModelChange)="onStateChange()" >
-          
-        <mat-option *ngFor="let item of state" value={{item.state_id}} >{{ item.state_name }}</mat-option>
-  
-        </mat-select>
-        <mat-error *ngIf="firstFormGroup.get('state')?.hasError('required')">
-      
-        </mat-error>
-        </mat-form-field>
-            </td>&nbsp;&nbsp;<td>
-        <mat-form-field class = "together"appearance="fill" >
-        <mat-label>City</mat-label>
-        <mat-select formControlName="city_id" >
-        <mat-option *ngFor="let item of cities" value={{item.city_id}}>{{item.city_name}}</mat-option>
-        </mat-select>
-        <mat-error *ngIf="firstFormGroup.get('city')?.hasError('required')">
-         
-        </mat-error>
-        </mat-form-field>
-        </td>
-        </tr></table>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-          
-        </div>
-      </form>
-    </mat-step>&nbsp;
-    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out Hospital details</ng-template>&nbsp;
-        <!-- <mat-form-field>
-          <input matInput placeholder="Address" formControlName="secondCtrl" required>
-        </mat-form-field> -->
-        <table class="example-full-width" cellspacing="0"><tr>
-            <td>
-              
-              <mat-form-field appearance="fill">
-              <mat-label>Hospital</mat-label>
-              <mat-select formControlName="gender">
-              <mat-option >
-                  <!-- {{gen.viewValue}} -->
-             </mat-option>
-              </mat-select>
-              </mat-form-field>
-      
-              </td>&nbsp;
-              &nbsp;
-              <td>
-                <mat-form-field appearance="fill">
-                    <mat-label>Speciality</mat-label>
-                    <mat-select formControlName="gender">
-                    <mat-option >
-                        <!-- {{gen.viewValue}} -->
-                   </mat-option>
-                    </mat-select>
-                    </mat-form-field>
-              </td>
-            </tr>
-            &nbsp;&nbsp;
-              <tr>
-                <td>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Doctor </mat-label>
-                        <mat-select formControlName="gender">
-                        <mat-option >
-                            <!-- {{gen.viewValue}} -->
-                       </mat-option>
-                        </mat-select>
-                        </mat-form-field>
-                </td>
-
-              </tr>
-              </table>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Doctor Description </ng-template>
-      You are now done.
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
-  
 </div>
+
