@@ -1,0 +1,117 @@
+<div class="container">
+    <mat-toolbar  class="mat">
+       <span><mat-icon color="accent">favorite</mat-icon>
+       <a mat-button color="accent" routerLink="/">MY HEALTH INSURANCE</a> </span>
+    
+    <div class="spacer">
+       
+    </div>
+    
+       <!-- <a mat-button color="accent">About us</a> -->
+       <a mat-raised-button color="accent" routerLink="/adminpage"><mat-icon>home</mat-icon></a> &nbsp;
+       <a mat-raised-button color="accent" routerLink="/" ><mat-icon>logout</mat-icon>SIGN-OUT</a> &nbsp;
+       <!-- <a mat-raised-button color="accent" routerLink="signup">Sign up</a> -->
+    </mat-toolbar>
+    
+    </div>
+
+    <!-- subnav -->
+    <div class="container">
+        <mat-toolbar  class="mat">
+           <!-- <span><mat-icon color="accent">favorite</mat-icon>
+           <a mat-button color="accent" routerLink="/">MY HEALTH INSURANCE</a> </span> -->
+        
+        <!-- <div class="spacer">
+           
+        </div> -->
+        
+           <!-- <a mat-button color="accent">About us</a> -->
+           <a mat-raised-button color="accent" routerLink="admindoctor">Doctor</a> &nbsp;
+           <a mat-raised-button color="accent" routerLink="adminprovider" >Provider</a> &nbsp;
+           <a mat-raised-button color="accent" routerLink="adminsearch" ><mat-icon>link</mat-icon><mat-icon>person</mat-icon><mat-icon>medical_services</mat-icon></a> &nbsp;
+           <!-- <a mat-raised-button color="accent" routerLink="signup">Sign up</a> -->
+        </mat-toolbar>
+        
+        </div>
+<router-outlet></router-outlet>
+  <!-- card.component.html -->
+  <!-- <app-main-nav ></app-main-nav> -->
+  
+  <!-- <mat-card>
+    
+    <mat-card-content >
+  
+      <!-- Search input -->
+      <!-- <div class="centered-card-container">
+        <mat-card >
+          <mat-card-header>
+            <mat-card-title class="text-center" >Search for Doctors in India</mat-card-title>
+          </mat-card-header>
+          
+          <mat-card-content>
+            
+      <mat-form-field>
+        <mat-label>Search state/city</mat-label>
+        <input matInput  [formControl]="selectedcity" (ngModelChange)="onStateChange()"  >
+        <mat-icon matSuffix>location_on</mat-icon>
+      </mat-form-field> -->
+      <!-- <mat-option *ngFor="let item of filteredHospitals" value={{item.state}} >{{ item.state }}</mat-option> -->
+     
+      <!-- &nbsp;
+    <mat-form-field>
+      <mat-label>Search Speciality</mat-label>
+      <input matInput [formControl]="selectedSpeciality" (ngModelChange)="onStateChange()" >
+      <mat-icon matSuffix>medical_services</mat-icon>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <mat-label>Search Doctors</mat-label>
+      <input matInput [formControl]="selectedDoctor" (ngModelChange)="onStateChange1()" [matAutocomplete]="auto">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete"> -->
+      <!-- <mat-option *ngFor="let item of filteredStates" value={{item.state_id}} >{{ item.state_name }}</mat-option> -->
+    <!-- </mat-autocomplete> -->
+    <!-- centered-card.component.html -->
+  
+        
+      <!-- </mat-card-content>
+    </mat-card>
+  </div>
+  
+  </mat-card-content>
+  </mat-card> -->
+  
+  <!-- &nbsp;
+  <div class="tabclass1">
+  <mat-card *ngFor="let doctor of filterSearch | slice:0:5" class="doctor-card">
+    <mat-card-header>
+      <mat-card-title>Dr.{{ doctor.doctor_name }}</mat-card-title>
+      <mat-card-subtitle>{{ doctor.doctor_speciality }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="content-container">
+        <p>{{ doctor.doctor_description }}</p>
+        <p>
+          <mat-icon class="my-icon">local_hospital</mat-icon>
+          {{ doctor.hospital_clinic }}
+        </p>
+        <p>
+          <mat-icon class="my-icon">location_on</mat-icon>
+          {{ doctor.city }} {{ doctor.state }}
+        </p>
+        <p>
+          <mat-icon class="my-icon">phone</mat-icon>
+          {{ doctor.contact_number }}
+        </p>
+      </div>
+      <form class="form-container">
+        <button mat-raised-button color="accent" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
+        <button mat-raised-button color="accent" >DELETE<mat-icon>delete</mat-icon>
+        </button>
+      </form>
+    </mat-card-content>
+    
+  </mat-card>
+  
+  </div> -->

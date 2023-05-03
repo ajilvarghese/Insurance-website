@@ -37,6 +37,16 @@ import { MainComponent } from './main/main.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AlertBoxComponent } from './alert-box/alert-box.component';
 import { MainformComponent } from './mainform/mainform.component';
+import { AdminpageComponent } from './adminpage/adminpage.component';
+import { AdmindoctorComponent } from './admindoctor/admindoctor.component';
+import { AdminproviderComponent } from './adminprovider/adminprovider.component';
+import { CreatedoctorComponent } from './createdoctor/createdoctor.component';
+import { UpdatedoctorComponent } from './updatedoctor/updatedoctor.component';
+import { CreateproviderComponent } from './createprovider/createprovider.component';
+import { UpdateproviderComponent } from './updateprovider/updateprovider.component';
+import { AdminsearchComponent } from './adminsearch/adminsearch.component';
+import { CreatesearchComponent } from './createsearch/createsearch.component';
+import { UpdatesearchComponent } from './updatesearch/updatesearch.component';
 
 
 
@@ -56,6 +66,16 @@ import { MainformComponent } from './mainform/mainform.component';
     MainComponent,
     AlertBoxComponent,
     MainformComponent,
+    AdminpageComponent,
+    AdmindoctorComponent,
+    AdminproviderComponent,
+    CreatedoctorComponent,
+    UpdatedoctorComponent,
+    CreateproviderComponent,
+    UpdateproviderComponent,
+    AdminsearchComponent,
+    CreatesearchComponent,
+    UpdatesearchComponent,
     
     
   ],

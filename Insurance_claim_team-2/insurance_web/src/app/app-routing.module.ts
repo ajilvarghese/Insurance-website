@@ -8,6 +8,16 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { MainComponent } from './main/main.component';
 import { AlertBoxComponent } from './alert-box/alert-box.component';
 import { MainformComponent } from './mainform/mainform.component';
+import { AdminpageComponent } from './adminpage/adminpage.component';
+import { AdmindoctorComponent } from './admindoctor/admindoctor.component';
+import { AdminproviderComponent } from './adminprovider/adminprovider.component';
+import { CreatedoctorComponent } from './createdoctor/createdoctor.component';
+import { UpdatedoctorComponent } from './updatedoctor/updatedoctor.component';
+import { CreateproviderComponent } from './createprovider/createprovider.component';
+import { UpdateproviderComponent } from './updateprovider/updateprovider.component';
+import { AdminsearchComponent } from './adminsearch/adminsearch.component';
+import { CreatesearchComponent } from './createsearch/createsearch.component';
+import { UpdatesearchComponent } from './updatesearch/updatesearch.component';
 
 
 const routes: Routes = [
@@ -19,7 +29,21 @@ const routes: Routes = [
     {path:'mainpage',component:MainPageComponent},
     {path:'main',component:MainComponent},
     {path:'alert',component:AlertBoxComponent},
-    {path:'mainform',component:MainformComponent}
+    {path:'mainform',component:MainformComponent},
+    {path:'adminpage',
+    component:AdminpageComponent,
+    children:[
+      {path:'adminsearch',component:AdminsearchComponent},
+      {path:'admindoctor',component:AdmindoctorComponent},
+      {path:'createdoctor',component:CreatedoctorComponent},
+      {path:'createprovider',component:CreateproviderComponent},
+      {path:'createsearch',component:CreatesearchComponent},
+      {path:'updatesearch/:search_id',component:UpdatesearchComponent},
+      {path:'updatedoctor/:doctor_id',component:UpdatedoctorComponent},
+      {path:'updateprovider/:provider_id',component:UpdateproviderComponent},
+      {path:'adminprovider',component:AdminproviderComponent}
+    ]
+  }
     
     
 

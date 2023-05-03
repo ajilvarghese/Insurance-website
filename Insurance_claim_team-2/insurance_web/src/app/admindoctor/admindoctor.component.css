@@ -1,0 +1,72 @@
+.doctor-card {
+    margin-bottom: 20px; /* Adjust the value as needed to control the spacing between doctors */
+  }
+  
+  .tabclass1{
+   padding-left: 5%;
+    width: 50%;
+  
+    margin-bottom: 30px;
+    
+    }
+    
+    
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+   
+  }
+  /* centered-card.component.css */
+  .centered-card-container {
+    background-color: #777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh; /* Adjust height as needed */
+  }
+  
+  .mat-card {
+    
+    max-width: 400px; /* Set max-width to control card width */
+    width: 100%; /* Set width to 100% for responsiveness */
+  }
+  /* .my-icon {
+    font-size: 20px;
+   
+  } */
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .my-icon {
+    margin-right: 8px; /* adjust the margin as needed */
+  }
+  
+  
+  
+  
+  /* NAV */
+  .spacer{
+    flex: 1;
+  }
+  .mat{
+    /* background: url('src\assets\images\back1.webp') no-repeat;
+    background-size: cover; */
+    background-color: #f4e4e4;
+    width: 100%;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
+  
+  /* ....card speclity.. */
+  
+  
+  /* .mat-card-hover:hover {
+    background-color: #e6b2b1; 
+  } */
+  

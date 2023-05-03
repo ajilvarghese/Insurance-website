@@ -1,6 +1,8 @@
 package com.example.signup_backend.signup_model;
 
 import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 
 import java.sql.Date;
@@ -48,6 +50,8 @@ public class Signup {
     private String city_id;
     @Column(name = "state_id")
     private String state_id;
+    @Column(name="role")
+    private String role;
 
     public Long getPhone_no() {
         return phone_no;
@@ -172,5 +176,11 @@ public class Signup {
         this.state_id = state_id;
     }
 
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
