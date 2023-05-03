@@ -59,9 +59,7 @@ export class StateCityServiceService {
   private baseUr2 = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
-  ngOnInit(): void {
-    
-  }
+  
   getilllness():Observable<Illness[]>{
     return this.http.get<Illness[]>(`${this.baseUr2}/signup/illnesses`);
   }
