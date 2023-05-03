@@ -17,7 +17,7 @@
 }
 /* centered-card.component.css */
 .centered-card-container {
-  background-color: #cfaaaa;
+  background-color: #777;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +53,7 @@
 .mat{
   /* background: url('src\assets\images\back1.webp') no-repeat;
   background-size: cover; */
-  background-color: #f4e4e4;
+  background-color: #333;
   width: 100%;
 }
 .container {

@@ -47,6 +47,8 @@ import { UpdateproviderComponent } from './updateprovider/updateprovider.compone
 import { AdminsearchComponent } from './adminsearch/adminsearch.component';
 import { CreatesearchComponent } from './createsearch/createsearch.component';
 import { UpdatesearchComponent } from './updatesearch/updatesearch.component';
+import { FooterComponent } from './footer/footer.component';
+import { Footer1Component } from './footer1/footer1.component';
 
 
 
@@ -76,6 +78,8 @@ import { UpdatesearchComponent } from './updatesearch/updatesearch.component';
     AdminsearchComponent,
     CreatesearchComponent,
     UpdatesearchComponent,
+    FooterComponent,
+    Footer1Component,
     
     
   ],
