@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
 import { Search } from '../search';
+import { SearchserviceService } from '../searchservice.service';
 import { StateCityServiceService } from '../state-city-service.service';
 interface Search1{
   search_id :number;
@@ -28,7 +29,7 @@ export class AdminsearchComponent {
   selectedProvider= new FormControl('');
   selectedState= new FormControl('');
   message!: string;
-  constructor(private statecity:StateCityServiceService,private router :Router,public dialog: MatDialog){}
+  constructor(private statecity:SearchserviceService,private router :Router,public dialog: MatDialog){}
 
   ngOnInit(): void {
     this.statecity.getsearch().subscribe((data: any[]) => {

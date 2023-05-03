@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
 import { Doctor } from '../doctor';
+import { DoctorserviceService } from '../doctorservice.service';
 import { StateCityServiceService } from '../state-city-service.service';
 
 @Component({
@@ -52,7 +53,7 @@ export class UpdatedoctorComponent implements OnInit {
     this.router.navigate(['/adminpage']);
   }
   
-  constructor(private statecityservice:StateCityServiceService,private route:ActivatedRoute,private router:Router,public dialog: MatDialog){
+  constructor(private statecityservice:DoctorserviceService,private route:ActivatedRoute,private router:Router,public dialog: MatDialog){
   }
   ngOnInit(): void {
     this.doctor_id=this.route.snapshot.params['doctor_id'];

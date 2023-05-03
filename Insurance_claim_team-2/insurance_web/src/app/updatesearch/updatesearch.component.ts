@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
 import { Search } from '../search';
-import { StateCityServiceService } from '../state-city-service.service';
+import { SearchserviceService } from '../searchservice.service';
+
 
 @Component({
   selector: 'app-updatesearch',
@@ -14,7 +15,8 @@ export class UpdatesearchComponent {
   search_id!:number;
   search :Search = new Search();
   message!: string;
-  constructor(private statecityservice:StateCityServiceService,private route:ActivatedRoute,private router:Router,public dialog: MatDialog){}
+
+  constructor(private statecityservice:SearchserviceService,private route:ActivatedRoute,private router:Router,public dialog: MatDialog){}
   
   onSubmit(){
     this.statecityservice.updatesearch(this.search_id,this.search).subscribe(data=>{

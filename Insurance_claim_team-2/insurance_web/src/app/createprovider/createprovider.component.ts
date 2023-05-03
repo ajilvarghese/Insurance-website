@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
 import { Provider } from '../provider';
+import { ProviderserviceService } from '../providerservice.service';
 import { StateCityServiceService } from '../state-city-service.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { StateCityServiceService } from '../state-city-service.service';
 export class CreateproviderComponent {
   provider :Provider = new Provider();
   message!: string;
-  constructor(private statecityservice:StateCityServiceService,private router:Router,public dialog: MatDialog){}
+  constructor(private statecityservice:ProviderserviceService,private router:Router,public dialog: MatDialog){}
   ngOnInit():void{
 
   }

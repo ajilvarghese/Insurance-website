@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { StateCityServiceService } from '../state-city-service.service';
 import { Provider } from '../provider';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
+import { ProviderserviceService } from '../providerservice.service';
 
 @Component({
   selector: 'app-adminprovider',
@@ -17,7 +18,7 @@ export class AdminproviderComponent {
   selectedProvider= new FormControl('');
   selectedState= new FormControl('');
   message!: string;
-  constructor(private statecity:StateCityServiceService,private router :Router,public dialog: MatDialog){}
+  constructor(private statecity:ProviderserviceService,private router :Router,public dialog: MatDialog){}
 
   ngOnInit(): void {
     this.statecity.getprovider().subscribe((data: any[]) => {
