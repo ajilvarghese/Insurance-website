@@ -17,6 +17,7 @@ export class UserServiceService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
+      
     };
 
     return this.http.post<any>(`${this.baseUrl}signup/create`, data, httpOptions).pipe(
@@ -31,24 +32,23 @@ export class UserServiceService {
     );
 }
 signin(data: any): Observable<any> {
-  const httpOptions = {
+  return this.http.post<any>(`${this.baseUrl}signup/authenticateUser`, data, {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
-    })
-  };
-
-  return this.http.post<any>(`${this.baseUrl}signup/authenticateUser`, data, httpOptions).pipe(
+    }),
+    responseType: 'json'
+  }).pipe(
     map((response: any) => {
-      // Process the response data if needed
+      
       return response;
     }),
+    
     catchError((error: any) => {
-
-        return this.errorMessage = error.error;
-     
-
+      return this.errorMessage = error.error;
     })
   );
 }
+
+
 
 }

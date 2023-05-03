@@ -10,7 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -21,6 +23,7 @@ public class Signup_service {
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
         String encryptedPwd=bcrypt.encode(signup.getPassword());
         signup.setPassword(encryptedPwd);
+        signup.setRole("user");
         return sigupRepositiory.save(signup);
     }
     public ResponseEntity<?> authenticateUser(@RequestBody Signup signup) throws UserNotFoundException {
@@ -30,10 +33,13 @@ public class Signup_service {
         if(opUser.isPresent())
         {
             Signup dbUser = opUser.get();
-            if(bcrypt.matches(signup.getPassword(),dbUser.getPassword()))
-
-                return ResponseEntity.ok("Signed In Successfully");
-
+            if(bcrypt.matches(signup.getPassword(),dbUser.getPassword())) {
+                Map<String, String> response = new HashMap<>();
+                response.put("first_name", dbUser.getFirst_name());
+                response.put("role", dbUser.getRole());
+//                return ResponseEntity.ok("Signed In Successfully");
+                return ResponseEntity.ok(response);
+            }
             else
                 throw new UserNotFoundException("Incorrect Password");
 

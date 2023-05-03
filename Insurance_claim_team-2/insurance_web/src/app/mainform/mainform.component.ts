@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { StateCityServiceService } from '../state-city-service.service';
 import { FormControl } from '@angular/forms';
+import { UserServiceService } from '../user-service.service';
 interface City {
   state_id:number;
   city_id: number;
@@ -59,32 +60,16 @@ export class MainformComponent implements OnInit {
   longitude!: number;
   search: Search[]=[];
   filterSearch:Search[]=[];
-  constructor(private formBuilder: FormBuilder,private stateCityService:StateCityServiceService) {}
+  firstName!:String;
+  constructor(private formBuilder: FormBuilder,private stateCityService:StateCityServiceService,private userService:UserServiceService) {}
  
   
    
   
   ngOnInit(): void {
-    this.stateCityService.getStates().subscribe((data: any[]) => {
-      this.state = data;
-    });
-    this.stateCityService.getcity().subscribe((data: any[]) => {
-      this.city1 = data;
-    });
-    // this.stateCityService.getDoctor().subscribe((data: any[]) => {
-    //   this.doctors = data;
-    // });
     this.stateCityService.getSearch().subscribe((data: any[]) => {
       this.search = data;
     });
-    this.firstFormGroup = this.formBuilder.group({
-       city_id : ['',],
-        state_id :[''],
-  });
-  this.secondFormGroup = this.formBuilder.group({
-     gender : [''],
-    // state_id :['', Validators.required],
-});
 this.filterSearch=this.search
    }
    onStateChange() {

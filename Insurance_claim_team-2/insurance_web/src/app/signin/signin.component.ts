@@ -47,7 +47,9 @@ export class SignInComponent {
       .subscribe(
        response => {
         console.log('Registration successful', response);
-        this.message = "Signed In Successfully";
+        console.log(response.body.first_name);
+        if (response && response.body.role === 'admin') {
+          this.message = "Hello admin !! Signed In Successfully";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
           width: '250px',
@@ -61,9 +63,32 @@ export class SignInComponent {
          
           
         });
-        setTimeout(() => {
-          this.router.navigate(['/mainpage']);
-        }, 2500);
+          // alert("Hello admin");
+          setTimeout(() => {
+            this.router.navigate(['/adminpage']);
+          }, 2500);
+        } else {
+          // alert('Hello '+ response.body.first_name);
+          this.message = 'Hello '+ response.body.first_name+ "!!"+" "+ "Signed In Successfully";
+        // alert(this.message)
+        const dialogRef = this.dialog.open(AlertBoxComponent, {
+          width: '250px',
+          data:{
+            message:this.message
+          }
+         
+        });
+      
+        dialogRef.afterClosed().subscribe(() => {
+         
+          
+        });
+          setTimeout(() => {
+            this.router.navigate(['/mainform']);
+          }, 2500);
+        }
+        
+        
     },
     (error) => {
       // console.error('Registration failed', error);
@@ -98,18 +123,7 @@ export class SignInComponent {
     
   );
    
-  // const dialogRef = this.dialog.open(AlertBoxComponent, {
-  //   width: '250px',
-  //   data:{
-  //     message:this.message
-  //   }
-   
-  // });
-
-  // dialogRef.afterClosed().subscribe(() => {
-   
-    
-  // });
+  
      
     }
   
