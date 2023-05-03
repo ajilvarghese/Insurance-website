@@ -4,6 +4,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { StateCityServiceService } from '../state-city-service.service';
 import { FormControl } from '@angular/forms';
 import { UserServiceService } from '../user-service.service';
+import { Search1 } from '../search1';
+import { SearchserviceService } from '../searchservice.service';
 interface City {
   state_id:number;
   city_id: number;
@@ -15,25 +17,8 @@ interface City {
   department_name: string;
 
  }
-//  interface Doctor {
-//   doctor_name: string;
-//   doctor_speciality: string;
-//   doctor_description: string;
 
-  
-// }
-interface Search{
-  search_id :number;
-  provider_id : number;
-  hospital_clinic : String;
-  city :String;
-  state:String;
-  contact_number:number;
-  doctor_id :number;
-  doctor_name : String;
-  doctor_speciality: String;
-  doctor_description: String;  
-}
+
 
 @Component({
   selector: 'app-mainform',
@@ -58,16 +43,16 @@ export class MainformComponent implements OnInit {
   department!: Department[];
   latitude!: number;
   longitude!: number;
-  search: Search[]=[];
-  filterSearch:Search[]=[];
+  search: Search1[]=[];
+  filterSearch:Search1[]=[];
   firstName!:String;
-  constructor(private formBuilder: FormBuilder,private stateCityService:StateCityServiceService,private userService:UserServiceService) {}
+  constructor(private formBuilder: FormBuilder,private stateCityService:SearchserviceService,private userService:UserServiceService) {}
  
   
    
   
   ngOnInit(): void {
-    this.stateCityService.getSearch().subscribe((data: any[]) => {
+    this.stateCityService.getSearchboth().subscribe((data: any[]) => {
       this.search = data;
     });
 this.filterSearch=this.search

@@ -39,7 +39,9 @@
   <br>
 
   <router-outlet></router-outlet>
-
+  <br>
+  
+ <!-- //........display search ........ -->
   <div class="tabclass1">
     <mat-card *ngFor="let provider of filterProvider | slice:0:5" class="doctor-card">
       <mat-card-header>
@@ -53,18 +55,6 @@
           <p>{{ provider.contact_number }}</p>
           <p> <mat-icon>badge</mat-icon> 
             {{provider.provider_id}}</p>
-          <!-- <p>
-            <mat-icon class="my-icon">local_hospital</mat-icon>
-            {{ doctor.hospital_clinic }}
-          </p>
-          <p>
-            <mat-icon class="my-icon">location_on</mat-icon>
-            {{ doctor.city }} {{ doctor.state }}
-          </p>
-          <p>
-            <mat-icon class="my-icon">phone</mat-icon>
-            {{ doctor.contact_number }}
-          </p> -->
         </div>
         <form class="form-container">
           <button mat-raised-button color="accent" (click) = "updateprovider(provider.provider_id)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;

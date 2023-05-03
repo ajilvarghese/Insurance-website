@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
 import { Doctor } from '../doctor';
+import { DoctorserviceService } from '../doctorservice.service';
 import { StateCityServiceService } from '../state-city-service.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class AdmindoctorComponent {
   selectedSpeciality= new FormControl('');
   message!: string;
 
-  constructor(private statecity:StateCityServiceService,private router :Router,public dialog: MatDialog){}
+  constructor(private statecity:DoctorserviceService,private router :Router,public dialog: MatDialog){}
   ngOnInit(): void {
     this.statecity.getdoctor().subscribe((data: any[]) => {
       this.doctors = data;

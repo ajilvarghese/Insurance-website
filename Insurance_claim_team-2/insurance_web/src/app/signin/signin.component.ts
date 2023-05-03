@@ -91,10 +91,6 @@ export class SignInComponent {
         
     },
     (error) => {
-      // console.error('Registration failed', error);
-      // this.errorMessage = error;
-      // this.errorMessage= error
-      // alert("Check the phone_number and password !!");
       
       if (error.status === 400) {
         this.message = 'Invalid phone_number or password.';

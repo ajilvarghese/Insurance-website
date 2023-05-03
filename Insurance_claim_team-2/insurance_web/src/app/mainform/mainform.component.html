@@ -7,14 +7,14 @@
      
   </div>
     
-     <!-- <a mat-button color="accent">About us</a> -->
+     
      <a mat-raised-button color="accent" routerLink="/" >SIGN-OUT</a> &nbsp;
      <!-- <a mat-raised-button color="accent" routerLink="signup">Sign up</a> -->
   </mat-toolbar>
   
   </div>
 <!-- card.component.html -->
-<!-- <app-main-nav ></app-main-nav> -->
+
 
 <mat-card>
   
@@ -26,16 +26,8 @@
         <mat-card-header>
           <mat-card-title class="text-center" >Search for Doctors in India</mat-card-title>
         </mat-card-header>
-        <!-- <div class="location-container">
-          <button mat-raised-button color="primary" (click)="getCurrentLocation()">Use My Location</button>
-          <div *ngIf="latitude && longitude" class="location-info">Latitude: {{ latitude }}, Longitude: {{ longitude }}</div>
-        </div> -->
         <mat-card-content>
-          <!-- <mat-form-field>
-            <mat-label>Search city</mat-label>
-            <input matInput [formControl]="selectedcity" (ngModelChange)="onStateChange()">
-            <mat-icon matSuffix (click)="getCurrentLocation()">location_on</mat-icon>
-          </mat-form-field> -->
+          
     <mat-form-field>
       <mat-label>Search state/city</mat-label>
       <input matInput  [formControl]="selectedcity" (ngModelChange)="onStateChange()"  >
@@ -67,7 +59,7 @@
 
 </mat-card-content>
 </mat-card>
-
+<!-- //.......display of search............. -->
 &nbsp;
 <div class="tabclass1">
 <mat-card *ngFor="let doctor of filterSearch | slice:0:5" class="doctor-card">
@@ -94,8 +86,7 @@
     <form class="form-container">
       <!-- Form content here -->
     
-      <!-- Add a button aligned to the left side -->
-      <!-- <button mat-raised-button color="accent" >ADD<mat-icon>favorite</mat-icon></button> -->
+      
     </form>
   </mat-card-content>
   

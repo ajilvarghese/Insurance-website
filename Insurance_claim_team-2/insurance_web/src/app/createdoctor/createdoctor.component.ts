@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {  Router } from '@angular/router';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
 import { Doctor } from '../doctor';
+import { DoctorserviceService } from '../doctorservice.service';
 import { StateCityServiceService } from '../state-city-service.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class CreatedoctorComponent implements OnInit {
   doctor: Doctor = new Doctor();
   specialties = ['ENT','Orthopedics','Neurology','Cardiology','Dermatology','Pediatrics','Psychaitry','Urology'];
   message!: string;
-  constructor(private statecityservice:StateCityServiceService,private router:Router,public dialog: MatDialog){}
+  constructor(private statecityservice:DoctorserviceService,private router:Router,public dialog: MatDialog){}
   ngOnInit():void{
 
   }

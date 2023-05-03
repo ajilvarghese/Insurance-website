@@ -40,6 +40,7 @@ interface City {
 })
 
 export class SignUpComponent{
+  isEditable = true;
   illnesses!: any[];
   showAlert!: boolean;
   form!: FormGroup;
@@ -59,7 +60,6 @@ export class SignUpComponent{
   gov_id!:string;
   is_tobacco_user!:string;
   password!:string;
-  
   errorAlert!:boolean;
 
 constructor(private fb: FormBuilder,private formbulder:FormBuilder,private http:HttpClient,private stateCityService:StateCityServiceService,private userService:UserServiceService,private datePipe: DatePipe,private router: Router) {
@@ -93,20 +93,6 @@ submitForm() {
     // Call your service method here to save the selected illnesses to the database
   });
   
-  const data = {
-    first_name:this.first_name,
-    last_name:this.last_name,
-    email_id:this.email_id,
-    phone_no:this.phone_no,
-    gender:this.gender,
-    dob:this.dob,
-    postal_code:this.postal_code,
-    address:this.address,
-    gov_id:this.gov_id,
-    is_tobacco_user:this.is_tobacco_user,
-    password:this.password
-    
-  };
   const {confirmPassword, ...FormData}= this.form1.value;
   const form1Data = FormData;
   const valueform1={
@@ -225,14 +211,6 @@ passwordMatchValidator(form1: FormGroup) {
     
 
   });
- 
   
-
-  
-  isEditable = false;
-  // cause: string[] = ['Diabetic', 'Hypertensive'];
-
-  
-
 }
 
