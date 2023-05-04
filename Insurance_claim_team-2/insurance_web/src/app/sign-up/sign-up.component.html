@@ -6,7 +6,7 @@
     <!-- <button mat-raised-button (click)="isEditable = !isEditable">
       {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
     </button> -->
-    
+    <!-- //code for sign-up -->
     <mat-stepper linear #stepper>
       <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
         
@@ -145,6 +145,8 @@
               {{illness}}
             </mat-list-option>
           </mat-selection-list> -->
+
+          <!-- //second page-->
           <mat-label>Do you have any existing illness or medical record ?</mat-label>
           <div *ngFor="let illness of illnesses">
             <mat-checkbox  (change)="onChange(illness.illness_name, $event.checked)">{{illness.illness_name }}</mat-checkbox>
@@ -177,7 +179,7 @@
         </tr></table>
         </form>
       </mat-step>
-      
+      <!-- //third page -->
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <p>Create Password</p>

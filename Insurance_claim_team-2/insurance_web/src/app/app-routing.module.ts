@@ -18,6 +18,7 @@ import { UpdateproviderComponent } from './updateprovider/updateprovider.compone
 import { AdminsearchComponent } from './adminsearch/adminsearch.component';
 import { CreatesearchComponent } from './createsearch/createsearch.component';
 import { UpdatesearchComponent } from './updatesearch/updatesearch.component';
+import { DepartmentComponent } from './department/department.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
     {path:'main',component:MainComponent},
     {path:'alert',component:AlertBoxComponent},
     {path:'mainform',component:MainformComponent},
+    {path:'department',component:DepartmentComponent},
     {path:'adminpage',
     component:AdminpageComponent,
     children:[

@@ -1,0 +1,202 @@
+
+
+  <div class="whitebg">
+
+    <div class="center">
+      <h1><b>Medical Departments</b></h1>
+     </div>
+
+    <div class="card-row">
+      <div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="0px">
+      <mat-card  class="mat-card-hover" >
+      <img class="image" mat-card-image src="\assets\images\ortho.jpg"  >
+      <mat-card-header>
+        <a ><mat-card-title (click)="onCardClick('Orthopedics')" >Orthopedics</mat-card-title></a>
+      <!-- <div (click)="onCardClick('Orthopedics')"></div> -->
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <a routerLink="/department" class="btn btn-primary" >Go to details</a> -->
+      </mat-card-content>
+      </mat-card>
+
+      <mat-card class="mat-card-hover">
+        <img class="image" mat-card-image src="\assets\images\neuro.jpg" >
+        <mat-card-header>
+        <mat-card-title (click)="onCardClick('Neurology')">Neurology</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- <a routerLink="/department" >Go to details</a> -->
+        </mat-card-content>
+        </mat-card>
+
+        <mat-card class="mat-card-hover">
+          <img class="image" mat-card-image src="\assets\images\dermatology.jpg" >
+          <mat-card-header >
+          <mat-card-title (click)="onCardClick('Dermatology')">Dermatology</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+        
+          </mat-card-content>
+          </mat-card>
+
+          <mat-card  class="mat-card-hover">
+            <img class="image" mat-card-image src="\assets\images\cardio.jpg"  >
+            <mat-card-header>
+            <mat-card-title (click)="onCardClick('Cardiology')">Cardiology</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+         
+            </mat-card-content>
+            </mat-card> 
+        </div>
+        </div>
+
+                <!-- ------------------------------------------------------- -->
+
+        <div class="card-row">
+          <div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="10px">
+         <mat-card class="mat-card-hover" (click)="onCardClick('ENT')">
+            <img class="image" mat-card-image src="\assets\images\ENT.jpg" >
+            <mat-card-header>
+            <mat-card-title>ENT</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+            
+            </mat-card-content>
+            </mat-card>
+    
+            <mat-card class="mat-card-hover">
+              <img class="image" mat-card-image src="\assets\images\PEDIATRICS.jpg" >
+              <mat-card-header >
+              <mat-card-title (click)="onCardClick('Pediatrics')">Pediatrics</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+              
+              </mat-card-content>
+              </mat-card>
+
+              <mat-card class="mat-card-hover">
+                <img class="image" mat-card-image src="\assets\images\psy.jpg" >
+                <mat-card-header >
+                <mat-card-title (click)="onCardClick('Psychaitry')">Psychaitry</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                
+                </mat-card-content>
+                </mat-card>
+
+                <mat-card class="mat-card-hover">
+                  <img class="image" mat-card-image src="\assets\images\uro.jpg" >
+                  <mat-card-header >
+                  <mat-card-title (click)="onCardClick('Urology')">Urology</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                  
+                  </mat-card-content>
+                  </mat-card>
+    
+              
+            </div>
+            </div>
+
+            <!-- ----------------------------------------------- -->
+
+           <div class="center">
+
+            <h1 >Common Health Concerns</h1>
+           </div>
+                
+           <div class="card-row">
+            <div fxLayout="row" fxLayoutGap="30px" >
+            <mat-card  >
+            <img class="image" mat-card-image src="\assets\images\cold.jpg"  >
+            <mat-card-header>
+            <mat-card-title>cold</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+           
+            </mat-card-content>
+            </mat-card>
+      
+            <mat-card>
+              <img class="image" mat-card-image src="\assets\images\skin.jpg" >
+              <mat-card-header>
+              <mat-card-title>skin problems</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+              
+              </mat-card-content>
+              </mat-card>
+      
+              <mat-card >
+                <img class="image" mat-card-image src="\assets\images\depr.jpg" >
+                <mat-card-header >
+                <mat-card-title>Depression</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                
+                </mat-card-content>
+                </mat-card>
+      
+                <mat-card >
+                  <img class="image" mat-card-image src="\assets\images\dia.jpg"  >
+                  <mat-card-header>
+                  <mat-card-title>Diabetics</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                  
+                  </mat-card-content>
+                  </mat-card> 
+              </div>
+              </div> 
+
+              <!-- In your component template file -->
+              <!-- <div class="card-container" *ngFor="let item of doctors" >
+                <mat-card>
+                  <mat-card-header>
+                    <mat-card-title>{{item. doctor_name }}</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p>{{ item.doctor_speciality }}</p>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <h1>working</h1> -->
+
+              <!-- <div class="container">
+                <div class="row">
+                  <div class="col-md-4" *ngFor="let doctor of doctors">
+                    <div class="card">
+                      <div class="card-body">
+                       
+                        <h5 class="card-title">{{ doctor.doctor_name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ doctor.doctor_speciality }}</h6>
+                        <p class="card-text">{{ doctor.doctor_description }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+            
+    
+
+       
+       
+
+
+          
+        
+          
+          
+    
+    
+    
+    
+    
+
+  
+  
+   
+   
+   

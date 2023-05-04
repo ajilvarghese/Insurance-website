@@ -45,6 +45,8 @@ import { CreatesearchComponent } from './createsearch/createsearch.component';
 import { UpdatesearchComponent } from './updatesearch/updatesearch.component';
 import { FooterComponent } from './footer/footer.component';
 import { Footer1Component } from './footer1/footer1.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import { DepartmentComponent } from './department/department.component';
 
 
 
@@ -76,6 +78,7 @@ import { Footer1Component } from './footer1/footer1.component';
     UpdatesearchComponent,
     FooterComponent,
     Footer1Component,
+    DepartmentComponent,
     
     
   ],
@@ -102,7 +105,8 @@ import { Footer1Component } from './footer1/footer1.component';
     HttpClientModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    FlexLayoutModule,
     
     
     
