@@ -61,7 +61,7 @@ public class search_controller {
     private JdbcTemplate jdbcTemplate;
     @GetMapping("/search1")
     public List<Map<String, Object>> search() {
-        String query = "SELECT * FROM search JOIN doctor ON search.doctor_id = doctor.doctor_id JOIN provider ON search.provider_id = provider.provider_id";
+        String query = "SELECT search_id,provider.provider_id,doctor.doctor_id,provider.hospital_clinic ,provider.state,provider.city,provider.contact_number, doctor.doctor_name, doctor.doctor_speciality, doctor.doctor_description FROM search JOIN doctor ON search.doctor_id = doctor.doctor_id JOIN provider ON search.provider_id = provider.provider_id";
         List<Map<String, Object>> results = jdbcTemplate.queryForList(query);
         return results;
     }
