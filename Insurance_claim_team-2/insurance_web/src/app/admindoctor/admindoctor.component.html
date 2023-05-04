@@ -25,7 +25,7 @@
     </mat-form-field>
     <br>
     <!-- <a mat-raised-button color="accent" routerLink="createdoctor" >CREATE<mat-icon>person</mat-icon></a> &nbsp; -->
-    <a mat-raised-button color="accent" routerLink="/adminpage/createdoctor" >CREATE<mat-icon>add</mat-icon></a> &nbsp;
+    <a mat-raised-button color="primary" routerLink="/adminpage/createdoctor" >CREATE<mat-icon>add</mat-icon></a> &nbsp;
 
         
       </mat-card-content>
@@ -54,8 +54,8 @@
             {{doctor.doctor_id}}</p>
         </div>
         <form class="form-container">
-          <button mat-raised-button color="accent" (click) = "updatedoctor(doctor.doctor_id)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
-          <button mat-raised-button color="accent" (click) = "deletedoctor(doctor.doctor_id)">DELETE<mat-icon>delete</mat-icon>
+          <button mat-raised-button color="primary" (click) = "updatedoctor(doctor.doctor_id)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
+          <button mat-raised-button color="primary" (click) = "deletedoctor(doctor.doctor_id)">DELETE<mat-icon>delete</mat-icon>
           </button>
         </form>
       </mat-card-content>

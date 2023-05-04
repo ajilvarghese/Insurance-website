@@ -23,7 +23,7 @@
       <mat-icon matSuffix>location_on</mat-icon>
     </mat-form-field>
     <br>
-    <a mat-raised-button color="accent" routerLink="/adminpage/createprovider" >CREATE<mat-icon>add</mat-icon></a> &nbsp;
+    <a mat-raised-button color="primary" routerLink="/adminpage/createprovider" >CREATE<mat-icon>add</mat-icon></a> &nbsp;
   
         
       </mat-card-content>
@@ -39,7 +39,7 @@
   <br>
 
   <router-outlet></router-outlet>
-  <br>
+  
   
  <!-- //........display search ........ -->
   <div class="tabclass1">
@@ -50,15 +50,13 @@
       </mat-card-header>
       <mat-card-content>
         <div class="content-container">
-          <p>{{ provider.state }}</p>
-          <p>{{ provider.city }}</p>
-          <p>{{ provider.contact_number }}</p>
-          <p> <mat-icon>badge</mat-icon> 
-            {{provider.provider_id}}</p>
+          <p> <mat-icon class="my-icon">location_on</mat-icon>{{ provider.city }},{{ provider.state }}</p>
+          <p><mat-icon class="my-icon">phone</mat-icon>{{ provider.contact_number }}</p>
+          <p> <mat-icon class="my-icon">badge</mat-icon> {{provider.provider_id}}</p>
         </div>
         <form class="form-container">
-          <button mat-raised-button color="accent" (click) = "updateprovider(provider.provider_id)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
-          <button mat-raised-button color="accent" (click) = "deleteprovider(provider.provider_id)">DELETE<mat-icon>delete</mat-icon>
+          <button mat-raised-button color="primary" (click) = "updateprovider(provider.provider_id)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
+          <button mat-raised-button color="primary" (click) = "deleteprovider(provider.provider_id)">DELETE<mat-icon>delete</mat-icon>
           </button>
         </form>
       </mat-card-content>

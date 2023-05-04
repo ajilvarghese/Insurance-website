@@ -9,6 +9,9 @@
     margin-bottom: 30px;
     
     }
+    .my-icon {
+      margin-right: 8px; /* adjust the margin as needed */
+    }
     
     
   
@@ -17,7 +20,7 @@
   }
   /* centered-card.component.css */
   .centered-card-container {
-    background-color: #d1e4bc;
+    background-color: #427b0d45;
     display: flex;
     justify-content: center;
     align-items: center;

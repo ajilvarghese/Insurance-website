@@ -23,7 +23,7 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
     <br>
-    <a mat-raised-button color="accent" routerLink="/adminpage/createsearch" >CREATE<mat-icon>add</mat-icon></a> &nbsp;
+    <a mat-raised-button color="primary" routerLink="/adminpage/createsearch" >CREATE<mat-icon>add</mat-icon></a> &nbsp;
   
         
       </mat-card-content>
@@ -54,8 +54,8 @@
           <p>Provider name:{{ search.hospital_clinic }}</p>
         </div>
         <form class="form-container">
-          <button mat-raised-button color="accent" (click) = "updatesearch(search.search_id)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
-          <button mat-raised-button color="accent" (click) = "deletesearch(search.search_id)">DELETE<mat-icon>delete</mat-icon>
+          <button mat-raised-button color="primary" (click) = "updatesearch(search.search_id)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
+          <button mat-raised-button color="primary" (click) = "deletesearch(search.search_id)">DELETE<mat-icon>delete</mat-icon>
           </button>
         </form>
       </mat-card-content>
