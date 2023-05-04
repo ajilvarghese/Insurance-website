@@ -15,6 +15,8 @@ export class SearchserviceService {
    getsearch():Observable<Search[]>{
     return this.http.get<Search[]>(`${this.baseUr2}/signup/search`);
   }
+
+  //create search
   createsearch(search:Search):Observable<Object>{
     return this.http.post(`${this.baseUr2}/signup/search`,search);
   }
