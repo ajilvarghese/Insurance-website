@@ -9,17 +9,6 @@
   
   
   
-  /* .card {
-  width: 10%;
-  height: 10%;
-  background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  
-  } */
-  
-  
-  
   .card-left {
   flex: 1;
   max-width: 400px;
@@ -29,7 +18,7 @@
    /* width: 35%;
   height: 50%; */
   background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px rgba(35, 22, 63, 0.568);
   border-radius: 10px;
   
   }
@@ -56,16 +45,13 @@
   margin: 1rem;
   margin-right: auto;
   margin-left: auto;
-   /* width: 30%;
-  height: 50%; */
+  
+  
+
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(35, 22, 63, 0.568);
   
   background-color: #fff;
-  box-shadow: none;
-  /* background-color: #e3d6d6;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;  */
-  /* right: 3rem;
-  top:1rem; */
   border: 2px solid rgb(180, 180, 193);
   /* background-image: url('src\assets\images\card image.webp');
   background-size: cover;
@@ -97,6 +83,9 @@
   
   
   
+}
+.hover1:hover {
+  box-shadow: 0 0 24px 0 rgba(248, 60, 60, 0.815);
 }
 
   
