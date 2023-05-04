@@ -1,6 +1,6 @@
 footer {
     background-color: #333;
-    padding: 50px 0;
+    padding: 10px 0;
   }
   
   .container {
@@ -33,7 +33,7 @@ footer {
   .input-box input[type="email"] {
     padding: 10px;
     border: none;
-    width: 35%;
+    width: 20%;
     margin-bottom: 10px;
   }
   
