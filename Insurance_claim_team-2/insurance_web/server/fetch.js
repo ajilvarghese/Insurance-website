@@ -14,7 +14,8 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'advalent_insurance_page'
+  database: 'advalent_insurance_page',
+  // port: '3307'
 });
 
 connection.connect();
@@ -40,6 +41,21 @@ app.get('/cities/:stateId', (req, res) => {
       throw error;
     }
     res.send(results);
+  });
+});
+
+app.get('/doctors/:speciality', (req, res) => {
+  const speciality = req.params.speciality; // get the speciality parameter from the request URL
+  const sql = `SELECT * FROM doctor WHERE doctor_speciality = ?`; // use a parameterized query
+  connection.query(sql, [speciality], (error, results, fields) => { // pass the speciality parameter as an array to the query
+    if (error) {
+      console.log(error);
+      res.status(500).send('Error fetching doctors');
+    } else {
+      res.json(results);
+     
+
+    }
   });
 });
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { Doctor } from './doctor';
 
 interface State{
   state_id : number;
@@ -20,6 +21,7 @@ interface Illness{
   providedIn: 'root'
 })
 export class StateCityServiceService {
+  
   private baseUrl = 'http://localhost:3000';
   private baseUr2 = 'http://localhost:8080';
 
@@ -36,5 +38,17 @@ export class StateCityServiceService {
     const url = `${this.baseUrl}/cities/${stateId}`;
     return this.http.get<City[]>(url);
   }
+// ------------------------------------for departments---
+
+private doctorsData: Doctor[] = [];
+setDoctorsData(doctors: Doctor[]): void {
+  this.doctorsData = doctors;
+}
+
+getDoctorsData(): Observable<Doctor[]> {
+  return of(this.doctorsData);
+}
+
+  
   
 }
