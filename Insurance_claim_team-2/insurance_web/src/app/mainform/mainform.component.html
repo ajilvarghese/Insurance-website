@@ -13,6 +13,7 @@
   </mat-toolbar>
   
   </div> -->
+  <div class="whitebg">
   <!DOCTYPE html>
   <html lang="en">
   <body>
@@ -34,28 +35,19 @@
                <a mat-raised-button color="accent" class="active" routerLink="/" ><mat-icon>logout</mat-icon>SIGN-OUT</a> &nbsp;
               <!-- <a href="#">Contact</a> -->
           </nav>
+
+          
           
       </header>
-  
-  </body>
-  <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
-  </style>
-</html>
-<!-- card.component.html -->
+<!-- ------------------------------------- -->
 
-
-<mat-card>
-  
-  <mat-card-content >
-
-    <!-- Search input -->
-    <div class="centered-card-container">
-      <mat-card >
-        <mat-card-header>
+<mat-toolbar class="whitebg2" [ngClass]="{'fixed-sub-navbar': isFixed}">
+ 
+      
+        <!-- <mat-card-header>
           <mat-card-title class="text-center" >Search for Doctors in India</mat-card-title>
         </mat-card-header>
-        <mat-card-content>
+        <mat-card-content> -->
      &nbsp;     
     <mat-form-field>
       <mat-label>Search state/city</mat-label>
@@ -82,12 +74,30 @@
   <!-- centered-card.component.html -->
 
       
-    </mat-card-content>
-  </mat-card>
-</div>
+    <!-- </mat-card-content> -->
+  
+</mat-toolbar>
 
-</mat-card-content>
-</mat-card>
+
+  <!-- ---------------------------------- -->
+  
+  </body>
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+  </style>
+</html>
+
+
+
+<!-- card.component.html -->
+
+<!-- --------------------------------------------------------------- -->
+
+      <!-- code was here -->
+
+
+<!-- ------------------------------------------------------------------- -->
+
 <!-- //.......display of search............. -->
 &nbsp;
 <div class="tabclass1">
@@ -121,6 +131,7 @@
   
 </mat-card>
 
+</div>
 </div>
 <app-footer1></app-footer1>
 

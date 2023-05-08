@@ -164,3 +164,36 @@ nav a:hover {
   }
 
 }
+.whitebg{
+  background-color: rgba(255, 255, 255, 0.95)  ;
+  box-shadow: none;
+  max-width: 100%;
+  
+  background-size: cover;
+  
+  
+}
+
+
+
+.fixed-sub-navbar {
+  position: fixed;
+  top: 0px; /* adjust the top value based on the height of your main navbar */
+  width: 100%;
+  z-index: 1;
+}
+
+.whitebg2{
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: none;
+  
+  max-width: 100%;
+  
+  background-size: cover;
+
+  margin-left: 10px;
+  
+
+  
+}
+

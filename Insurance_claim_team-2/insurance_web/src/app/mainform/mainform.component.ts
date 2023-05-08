@@ -1,5 +1,5 @@
 // import { Component } from '@angular/core';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,HostListener} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { StateCityServiceService } from '../state-city-service.service';
 import { FormControl } from '@angular/forms';
@@ -28,6 +28,7 @@ interface City {
 export class MainformComponent implements OnInit {
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
+  isFixed = false;
   isEditable = true;
   // doctors: Doctor[]=[];
   // filteredDoctors:Doctor[]=[];
@@ -88,6 +89,17 @@ this.filterSearch=this.search
     // Example implementation using a hypothetical doctorService
     
     
+  }
+
+  
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (window.pageYOffset > 50) {
+      this.isFixed = true;
+    } else if (this.isFixed && window.pageYOffset < 50) {
+      this.isFixed = false;
+    }
   }
   
  
