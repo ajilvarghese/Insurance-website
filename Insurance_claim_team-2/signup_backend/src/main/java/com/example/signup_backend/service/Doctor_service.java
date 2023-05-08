@@ -1,7 +1,7 @@
-package com.example.signup_backend.signup_service;
+package com.example.signup_backend.service;
 
-import com.example.signup_backend.signup_model.Doctor;
-import com.example.signup_backend.signup_repository.Doctor_repository;
+import com.example.signup_backend.model.Doctor;
+import com.example.signup_backend.repository.Doctor_repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

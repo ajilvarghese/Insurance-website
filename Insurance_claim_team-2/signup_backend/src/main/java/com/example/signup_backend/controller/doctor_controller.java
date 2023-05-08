@@ -1,13 +1,19 @@
-package com.example.signup_backend.signup_controller;
+package com.example.signup_backend.controller;
 
 import com.example.signup_backend.exceptions.UserNotFoundException;
-import com.example.signup_backend.signup_model.Doctor;
-import com.example.signup_backend.signup_repository.Doctor_repository;
-import com.example.signup_backend.signup_service.Doctor_service;
+import com.example.signup_backend.model.Doctor;
+import com.example.signup_backend.model.ErrorResponse;
+import com.example.signup_backend.repository.Doctor_repository;
+import com.example.signup_backend.service.Doctor_service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +23,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/signup")
 public class doctor_controller {
+    private static final Logger logger = LoggerFactory.getLogger(UserNotFoundException.class);
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
+        logger.error(ex.getMessage(), ex);
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
+    }
 
     @Autowired
     Doctor_repository doctor_repository;
@@ -26,7 +40,12 @@ public class doctor_controller {
     //get all doctors
     @GetMapping("/doctors")
     public List<Doctor> getallDoctors(){
-        return doctor_service.getallDoctors();
+        logger.info("Inside doctor ");
+        try {
+            return doctor_service.getallDoctors();
+        } catch (Exception ex) {
+            throw new UserNotFoundException("Error occurred while fetching doctors"+ex);
+        }
     }
 
     //create doctor

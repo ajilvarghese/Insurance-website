@@ -60,6 +60,7 @@ export class AdminsearchComponent {
 }
 updatesearch(search_id:number){
   this.router.navigate(['/adminpage/updatesearch',search_id])
+  console.log(search_id);
 
 }
 private getProvider1(){
