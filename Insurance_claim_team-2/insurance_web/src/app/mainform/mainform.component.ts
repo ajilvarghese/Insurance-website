@@ -1,11 +1,11 @@
 // import { Component } from '@angular/core';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { StateCityServiceService } from '../state-city-service.service';
+import { StateCityServiceService } from '../Service/state-city-service.service';
 import { FormControl } from '@angular/forms';
-import { UserServiceService } from '../user-service.service';
-import { Search1 } from '../search1';
-import { SearchserviceService } from '../searchservice.service';
+import { UserServiceService } from '../Service/user-service.service';
+import { Search1 } from '../Class/search1';
+import { SearchserviceService } from '../Service/searchservice.service';
 interface City {
   state_id:number;
   city_id: number;

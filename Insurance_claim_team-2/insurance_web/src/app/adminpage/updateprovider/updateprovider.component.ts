@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertBoxComponent } from '../alert-box/alert-box.component';
-import { Provider } from '../provider';
-import { ProviderserviceService } from '../providerservice.service';
+import { AlertBoxComponent } from 'src/app/alert-box/alert-box.component';
+import { Provider } from 'src/app/Class/provider';
+import { ProviderserviceService } from 'src/app/Service/providerservice.service';
+
 
 
 @Component({

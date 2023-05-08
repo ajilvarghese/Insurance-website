@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
-import { UserServiceService } from '../user-service.service';
+import { UserServiceService } from '../Service/user-service.service';
 
 @Component({
   selector: 'app-signin',

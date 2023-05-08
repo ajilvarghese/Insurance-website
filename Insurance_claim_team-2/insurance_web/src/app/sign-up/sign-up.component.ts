@@ -7,8 +7,8 @@ import { MatSelectionListChange } from '@angular/material/list';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { StateCityServiceService } from '../state-city-service.service';
-import { UserServiceService } from '../user-service.service';
+import { StateCityServiceService } from '../Service/state-city-service.service';
+import { UserServiceService } from '../Service/user-service.service';
 
 
 
