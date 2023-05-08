@@ -1,28 +1,32 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AlertBoxComponent } from '../alert-box/alert-box.component';
-import { Search } from '../search';
-import { SearchserviceService } from '../searchservice.service';
-import { StateCityServiceService } from '../state-city-service.service';
+import { AlertBoxComponent } from 'src/app/alert-box/alert-box.component';
+import { Provider } from 'src/app/Class/provider';
+// import { Provider } from 'src/app/provider';
+
+import { ProviderserviceService } from 'src/app/Service/providerservice.service';
+
+
+
 
 @Component({
-  selector: 'app-createsearch',
-  templateUrl: './createsearch.component.html',
-  styleUrls: ['./createsearch.component.css']
+  selector: 'app-createprovider',
+  templateUrl: './createprovider.component.html',
+  styleUrls: ['./createprovider.component.css']
 })
-export class CreatesearchComponent {
-  search :Search = new Search();
+export class CreateproviderComponent {
+  provider :Provider = new Provider();
   message!: string;
-  constructor(private statecityservice:SearchserviceService,private router:Router,public dialog: MatDialog){}
+  constructor(private statecityservice:ProviderserviceService,private router:Router,public dialog: MatDialog){}
   ngOnInit():void{
 
   }
-  saveSearch(){
-    this.statecityservice.createsearch(this.search).subscribe(data=>{
+  saveProvider(){
+    this.statecityservice.createprovider(this.provider).subscribe(data=>{
       console.log(data);
       this.gotoProvider();
-      this.message = "Created SuccessFully ";
+      this.message = "Created Provider SuccessFully ";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
           width: '250px',
@@ -38,7 +42,7 @@ export class CreatesearchComponent {
         });
     },
     error=>console.log(error));
-    this.message = "Creating Failed !!";
+    this.message = "Creating Provider Failed !!";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
           width: '250px',
@@ -57,11 +61,9 @@ export class CreatesearchComponent {
     this.router.navigate(['/adminpage']);
   }
   onSubmit(){
-    console.log(this.search);
-    this.saveSearch();
+    console.log(this.provider);
+    this.saveProvider();
   }
-
-
 
 
 }
