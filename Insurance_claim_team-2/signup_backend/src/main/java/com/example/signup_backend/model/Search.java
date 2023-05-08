@@ -1,4 +1,4 @@
-package com.example.signup_backend.signup_model;
+package com.example.signup_backend.model;
 
 import jakarta.persistence.*;
 

@@ -1,29 +1,33 @@
-package com.example.signup_backend.signup_controller;
+package com.example.signup_backend.controller;
 
 
 import com.example.signup_backend.exceptions.UserNotFoundException;
-import com.example.signup_backend.signup_model.*;
-import com.example.signup_backend.signup_repository.*;
-import com.example.signup_backend.signup_service.Doctor_service;
-import com.example.signup_backend.signup_service.Provider_service;
-import com.example.signup_backend.signup_service.Search_service;
-import com.example.signup_backend.signup_service.Signup_service;
+import com.example.signup_backend.model.*;
+import com.example.signup_backend.repository.*;
+import com.example.signup_backend.service.Signup_service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/signup")
 public class signup_controller {
+    private static final Logger logger = LoggerFactory.getLogger(UserNotFoundException.class);
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
+        logger.error(ex.getMessage(), ex);
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
+    }
 
     @Autowired
     Signup_service signupService;

@@ -1,10 +1,9 @@
-package com.example.signup_backend.signup_service;
+package com.example.signup_backend.service;
 
 import com.example.signup_backend.exceptions.UserNotFoundException;
-import com.example.signup_backend.signup_model.Signup;
-import com.example.signup_backend.signup_repository.Sigup_repositiory;
+import com.example.signup_backend.model.Signup;
+import com.example.signup_backend.repository.Sigup_repositiory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

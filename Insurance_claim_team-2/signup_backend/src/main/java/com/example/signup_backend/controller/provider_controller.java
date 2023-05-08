@@ -1,13 +1,18 @@
-package com.example.signup_backend.signup_controller;
+package com.example.signup_backend.controller;
 
 import com.example.signup_backend.exceptions.UserNotFoundException;
-import com.example.signup_backend.signup_model.Provider;
-import com.example.signup_backend.signup_repository.Provider_repository;
-import com.example.signup_backend.signup_service.Provider_service;
+import com.example.signup_backend.model.ErrorResponse;
+import com.example.signup_backend.model.Provider;
+import com.example.signup_backend.repository.Provider_repository;
+import com.example.signup_backend.service.Provider_service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +22,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/signup")
 public class provider_controller {
+    private static final Logger logger = LoggerFactory.getLogger(UserNotFoundException.class);
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
+        logger.error(ex.getMessage(), ex);
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
+    }
     //................Providers................
     @Autowired
     Provider_service provider_service;

@@ -1,12 +1,9 @@
-package com.example.signup_backend.signup_model;
+package com.example.signup_backend.model;
 
 import jakarta.persistence.*;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 
 import java.sql.Date;
-import java.util.List;
 
 @Entity
 @Table(name="signup")
