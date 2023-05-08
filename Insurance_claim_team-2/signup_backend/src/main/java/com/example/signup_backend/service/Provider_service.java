@@ -1,6 +1,6 @@
-package com.example.signup_backend.signup_service;
-import com.example.signup_backend.signup_model.Provider;
-import com.example.signup_backend.signup_repository.Provider_repository;
+package com.example.signup_backend.service;
+import com.example.signup_backend.model.Provider;
+import com.example.signup_backend.repository.Provider_repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
