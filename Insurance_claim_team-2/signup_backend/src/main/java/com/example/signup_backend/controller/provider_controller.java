@@ -36,7 +36,12 @@ public class provider_controller {
     @Autowired
     Provider_repository provider_repository;
     @GetMapping("/providers")
+
     public List<Provider> getallProviders(){
+        List<Provider> providers=provider_service.getallProviders();
+        if(providers.isEmpty()){
+            throw new UserNotFoundException("Provider database is empty");
+        }
         return provider_service.getallProviders();
     }
     //create provider

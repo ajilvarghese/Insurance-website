@@ -19,15 +19,20 @@ export class UpdatesearchComponent {
   constructor(private statecityservice:SearchserviceService,private route:ActivatedRoute,private router:Router,public dialog: MatDialog){}
   
   onSubmit(){
+
     this.statecityservice.updatesearch(this.search_id,this.search).subscribe(data=>{
+
       console.log(data);
       this.gotoProvider();
       this.message = "Created SuccessFully ";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+
           }
          
         });
@@ -41,9 +46,12 @@ export class UpdatesearchComponent {
     this.message = "Creating Failed !!";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+
           }
          
         });
@@ -54,9 +62,12 @@ export class UpdatesearchComponent {
         });
   }
   gotoProvider(){
+
     this.router.navigate(['/adminpage']);
+
   }
   ngOnInit(): void {
+    
     this.search_id=this.route.snapshot.params['search_id'];
     this.statecityservice.getsearchById(this.search_id).subscribe(data =>{
     this.search=data;
