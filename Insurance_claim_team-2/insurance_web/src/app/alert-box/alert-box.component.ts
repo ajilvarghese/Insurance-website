@@ -10,6 +10,7 @@ export interface DialogData {
   styleUrls: ['./alert-box.component.css']
 })
 export class AlertBoxComponent {
+
   @Input()
   message!: string;
   
@@ -18,8 +19,10 @@ export class AlertBoxComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
     ngOnInit(): void {
+
       // Close the dialog after 5 seconds
       setTimeout(() => {
+        
         this.dialogRef.close();
       }, 1500); // 5000 milliseconds = 5 seconds
     }

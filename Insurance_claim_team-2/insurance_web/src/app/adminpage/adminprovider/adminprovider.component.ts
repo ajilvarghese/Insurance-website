@@ -13,6 +13,7 @@ import { ProviderserviceService } from '../../Service/providerservice.service';
   styleUrls: ['./adminprovider.component.css']
 })
 export class AdminproviderComponent {
+
   provider:Provider[]=[];
   filterProvider:Provider[]=[];
   selectedProvider= new FormControl('');
@@ -22,10 +23,13 @@ export class AdminproviderComponent {
 
   ngOnInit(): void {
     this.statecity.getprovider().subscribe((data: any[]) => {
+
       this.provider = data;
+
     });
     this.getProvider1();
     this.filterProvider=this.provider
+
    }
 
    onStateChange() {
@@ -36,26 +40,38 @@ export class AdminproviderComponent {
      this.filterProvider = this.provider.filter(doctor1 =>((doctor1.hospital_clinic.toLowerCase().includes(city))||doctor1.provider_id.toString().toLowerCase().includes(city)) &&
      (doctor1.state.toLowerCase().includes(specialty)||(doctor1.city.toLowerCase().includes(specialty)))
    );
+
     }
+
 }
 updateprovider(provider_id:number){
+
   this.router.navigate(['/adminpage/updateprovider',provider_id])
 
 }
 private getProvider1(){
+
   this.statecity.getprovider().subscribe(data =>{
+
     this.provider =data;
+
   })
+
 }
 deleteprovider(provider_id:number){
+
   this.statecity.deleteprovider(provider_id).subscribe(data =>{
+
     this.getProvider1();
     this.message = "Deleted Provider SuccessFully  ";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+            
           }
          
         });

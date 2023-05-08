@@ -13,19 +13,25 @@ import { ProviderserviceService } from 'src/app/Service/providerservice.service'
   styleUrls: ['./updateprovider.component.css']
 })
 export class UpdateproviderComponent {
+
   provider_id!:number;
   provider :Provider = new Provider();
   
   message!: string;
   onSubmit(){
+
     this.statecityservice.updateprovider(this.provider_id,this.provider).subscribe(data =>{
+
        this.gotoProvider();
        this.message = "Updated Provider SuccessFully  ";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+
           }
          
         });
@@ -38,9 +44,12 @@ export class UpdateproviderComponent {
       this.message = "Updating Provider Failed !!!  ";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+
           }
          
         });
@@ -51,12 +60,15 @@ export class UpdateproviderComponent {
         });
   }
   gotoProvider(){
+
     this.router.navigate(['/adminpage']);
+
   }
   
   constructor(private statecityservice:ProviderserviceService,private route:ActivatedRoute,private router:Router,public dialog: MatDialog){
   }
   ngOnInit(): void {
+    
     this.provider_id=this.route.snapshot.params['provider_id'];
     this.statecityservice.getproviderById(this.provider_id).subscribe(data =>{
     this.provider=data;

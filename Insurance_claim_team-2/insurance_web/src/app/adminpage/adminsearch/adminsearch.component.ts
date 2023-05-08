@@ -16,14 +16,19 @@ interface Search1{
   doctor_id :number;
   doctor_name : String;
   doctor_speciality: String;
-  doctor_description: String;  
+  doctor_description: String;
+
 }
+
 @Component({
+
   selector: 'app-adminsearch',
   templateUrl: './adminsearch.component.html',
   styleUrls: ['./adminsearch.component.css']
+
 })
 export class AdminsearchComponent {
+
   search:Search1[]=[];
   filtersearch:Search1[]=[];
   selectedProvider= new FormControl('');
@@ -32,11 +37,15 @@ export class AdminsearchComponent {
   constructor(private statecity:SearchserviceService,private router :Router,public dialog: MatDialog){}
 
   ngOnInit(): void {
+
     this.statecity.getsearch().subscribe((data: any[]) => {
+
       this.search = data;
+
     });
     this.getProvider1();
     this.filtersearch=this.search
+
    }
    
    onStateChange() {
@@ -44,6 +53,7 @@ export class AdminsearchComponent {
     const city = this.selectedProvider.value || '';
     const specialty = this.selectedState.value || '';
     if ((city && city.split('')) || (specialty && specialty.split(''))) {
+
       this.filtersearch = this.search.filter(doctor1 => {
         const doctorIdString = doctor1.doctor_id.toString();
         const providerIdString = doctor1.provider_id.toString();
@@ -53,6 +63,7 @@ export class AdminsearchComponent {
           (doctorIdString.includes(city) || (doctorNameLower && doctorNameLower.includes(city))) &&
           (providerIdString.includes(specialty) || (hospitalClinicLower && hospitalClinicLower.includes(specialty)))
         );
+      
       });
     }
     
