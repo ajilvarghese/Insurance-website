@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AlertBoxComponent } from '../alert-box/alert-box.component';
-import { Search } from '../search';
-import { SearchserviceService } from '../searchservice.service';
-import { StateCityServiceService } from '../state-city-service.service';
+import { AlertBoxComponent } from '../../alert-box/alert-box.component';
+import { Search } from '../../Class/search';
+import { SearchserviceService } from '../../Service/searchservice.service';
+import { StateCityServiceService } from '../../Service/state-city-service.service';
 interface Search1{
   search_id :number;
   provider_id : number;

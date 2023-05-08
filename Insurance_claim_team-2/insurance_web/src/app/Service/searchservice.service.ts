@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Search } from './search';
-import { Search1 } from './search1';
+import { Search } from '../Class/search';
+import { Search1 } from '../Class/search1';
 
 @Injectable({
   providedIn: 'root'

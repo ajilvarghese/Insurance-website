@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AlertBoxComponent } from '../alert-box/alert-box.component';
-import { Doctor } from '../doctor';
-import { DoctorserviceService } from '../doctorservice.service';
-import { StateCityServiceService } from '../state-city-service.service';
+import { AlertBoxComponent } from '../../alert-box/alert-box.component';
+import { Doctor } from '../../Class/doctor';
+import { DoctorserviceService } from '../../Service/doctorservice.service';
+import { StateCityServiceService } from '../../Service/state-city-service.service';
 
 @Component({
   selector: 'app-admindoctor',

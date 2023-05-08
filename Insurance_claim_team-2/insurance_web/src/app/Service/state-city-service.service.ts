@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Doctor } from './doctor';
+import { Doctor } from '../Class/doctor';
 
 interface State{
   state_id : number;
