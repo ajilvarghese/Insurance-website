@@ -76,8 +76,10 @@ public class search_controller {
     public List<Map<String, Object>> search() {
         List<Search> searchResults = search_repository.findAll();
         List<Map<String, Object>> results = new ArrayList<>();
+
         for (Search search : searchResults) {
             Map<String, Object> result = new HashMap<>();
+            result.put("search_id",search.getSearch_id());
             Doctor doctor = doctorRepository.findById(search.getDoctor_id()).orElse(null);
             Provider provider = providerRepository.findById(search.getProvider_id()).orElse(null);
             if (doctor != null && provider != null) {

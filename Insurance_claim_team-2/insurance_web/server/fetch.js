@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
   user: 'root',
   password: '',
   database: 'advalent_insurance_page',
-  // port: '3307'
+  port: '3307'
 });
 
 connection.connect();
