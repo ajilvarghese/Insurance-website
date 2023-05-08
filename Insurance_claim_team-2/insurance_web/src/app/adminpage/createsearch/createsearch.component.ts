@@ -7,11 +7,14 @@ import { SearchserviceService } from 'src/app/Service/searchservice.service';
 
 
 @Component({
+
   selector: 'app-createsearch',
   templateUrl: './createsearch.component.html',
   styleUrls: ['./createsearch.component.css']
+
 })
 export class CreatesearchComponent {
+
   search :Search = new Search();
   message!: string;
   constructor(private statecityservice:SearchserviceService,private router:Router,public dialog: MatDialog){}
@@ -19,15 +22,20 @@ export class CreatesearchComponent {
 
   }
   saveSearch(){
+
     this.statecityservice.createsearch(this.search).subscribe(data=>{
+
       console.log(data);
       this.gotoProvider();
       this.message = "Created SuccessFully ";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+            
           }
          
         });
@@ -41,9 +49,12 @@ export class CreatesearchComponent {
     this.message = "Creating Failed !!";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+
           }
          
         });
@@ -54,11 +65,15 @@ export class CreatesearchComponent {
         });
   }
   gotoProvider(){
+
     this.router.navigate(['/adminpage']);
+
   }
   onSubmit(){
+
     console.log(this.search);
     this.saveSearch();
+    
   }
 
 

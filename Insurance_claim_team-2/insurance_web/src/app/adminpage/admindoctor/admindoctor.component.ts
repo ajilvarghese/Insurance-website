@@ -13,6 +13,7 @@ import { StateCityServiceService } from '../../Service/state-city-service.servic
   styleUrls: ['./admindoctor.component.css']
 })
 export class AdmindoctorComponent {
+  
   doctors: Doctor[]=[];
   filterDoctor:Doctor[]=[];
   selectedDoctor= new FormControl('');
@@ -22,10 +23,13 @@ export class AdmindoctorComponent {
   constructor(private statecity:DoctorserviceService,private router :Router,public dialog: MatDialog){}
   ngOnInit(): void {
     this.statecity.getdoctor().subscribe((data: any[]) => {
+
       this.doctors = data;
+
     });
     this.getDoctor1();
     this.filterDoctor=this.doctors
+
    }
 
    onStateChange() {
@@ -36,31 +40,41 @@ export class AdmindoctorComponent {
      this.filterDoctor = this.doctors.filter(doctor1 =>((doctor1.doctor_name.toLowerCase().includes(city))||doctor1.doctor_id.toString().toLowerCase().includes(city)) &&
      (doctor1.doctor_speciality.toLowerCase().includes(specialty))
    );
+
     }
-}
+
+                  }
 updatedoctor(doctor_id:number){
+
   this.router.navigate(['/adminpage/updatedoctor',doctor_id])
 
 }
 private getDoctor1(){
-  this.statecity.getdoctor().subscribe(data =>{
+
+    this.statecity.getdoctor().subscribe(data =>{
     this.doctors =data;
   })
+
 }
 deletedoctor(doctor_id:number){
+
   this.statecity.deletedoctor(doctor_id).subscribe(data =>{
+
     this.getDoctor1();
     this.message = "Deleted Doctor SuccessFully  ";
         // alert(this.message)
-        const dialogRef = this.dialog.open(AlertBoxComponent, {
-          width: '250px',
-          data:{
-            message:this.message
+    const dialogRef = this.dialog.open(AlertBoxComponent, {
+
+      width: '250px',
+      data:{
+
+          message:this.message
+
           }
          
         });
       
-        dialogRef.afterClosed().subscribe(() => {
+    dialogRef.afterClosed().subscribe(() => {
          
           
         });

@@ -12,19 +12,25 @@ import { StateCityServiceService } from '../../Service/state-city-service.servic
   styleUrls: ['./updatedoctor.component.css']
 })
 export class UpdatedoctorComponent implements OnInit {
+
   doctor_id!:number;
   doctor: Doctor = new Doctor();
   specialties = ['ENT','Orthopedics','Neurology','Cardiologist'];
   message!: string;
   onSubmit(){
+
     this.statecityservice.updatedoctor(this.doctor_id,this.doctor).subscribe(data =>{
+
        this.gotoDoctor();
        this.message = "Updated Doctor SuccessFully  ";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+
           }
          
         });
@@ -37,9 +43,12 @@ export class UpdatedoctorComponent implements OnInit {
       this.message = "Updating Doctor Failed !!!  ";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+
           }
          
         });
@@ -50,12 +59,15 @@ export class UpdatedoctorComponent implements OnInit {
         });
   }
   gotoDoctor(){
+
     this.router.navigate(['/adminpage']);
+
   }
   
   constructor(private statecityservice:DoctorserviceService,private route:ActivatedRoute,private router:Router,public dialog: MatDialog){
   }
   ngOnInit(): void {
+    
     this.doctor_id=this.route.snapshot.params['doctor_id'];
     this.statecityservice.getdoctorById(this.doctor_id).subscribe(data =>{
       this.doctor=data;
@@ -64,5 +76,4 @@ export class UpdatedoctorComponent implements OnInit {
       
   }
   
-
 }

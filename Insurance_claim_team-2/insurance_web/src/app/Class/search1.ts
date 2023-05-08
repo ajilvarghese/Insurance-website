@@ -1,4 +1,6 @@
+
 export class Search1 {
+
     search_id! :number;
     provider_id! : number;
     hospital_clinic! : String;
@@ -9,4 +11,5 @@ export class Search1 {
     doctor_name! : String;
     doctor_speciality!: String;
     doctor_description!: String;  
+    
 }

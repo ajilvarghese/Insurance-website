@@ -13,6 +13,7 @@ import { StateCityServiceService } from '../../Service/state-city-service.servic
 })
 
 export class CreatedoctorComponent implements OnInit {
+
   doctor: Doctor = new Doctor();
   specialties = ['ENT','Orthopedics','Neurology','Cardiology','Dermatology','Pediatrics','Psychaitry','Urology'];
   message!: string;
@@ -21,20 +22,25 @@ export class CreatedoctorComponent implements OnInit {
 
   }
   saveDoctor(){
+
     this.statecityservice.createdoctor(this.doctor).subscribe(data=>{
+
       console.log(data);
       this.gotoDoctor();
       this.message = "Created Doctor SuccessFully ";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
           width: '250px',
-          data:{
+          data:
+          {
             message:this.message
+
           }
          
         });
       
-        dialogRef.afterClosed().subscribe(() => {
+        dialogRef.afterClosed().subscribe(() => 
+        {
          
           
         });
@@ -43,9 +49,12 @@ export class CreatedoctorComponent implements OnInit {
     this.message = "Creating Doctor Failed !!";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+
           }
          
         });
@@ -56,10 +65,15 @@ export class CreatedoctorComponent implements OnInit {
         });
   }
   gotoDoctor(){
+
     this.router.navigate(['/adminpage']);
+
   }
   onSubmit(){
+
     console.log(this.doctor);
     this.saveDoctor();
+
   }
+  
 }

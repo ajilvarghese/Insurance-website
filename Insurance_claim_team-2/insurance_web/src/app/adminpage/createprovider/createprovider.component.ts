@@ -16,6 +16,7 @@ import { ProviderserviceService } from 'src/app/Service/providerservice.service'
   styleUrls: ['./createprovider.component.css']
 })
 export class CreateproviderComponent {
+
   provider :Provider = new Provider();
   message!: string;
   constructor(private statecityservice:ProviderserviceService,private router:Router,public dialog: MatDialog){}
@@ -23,15 +24,20 @@ export class CreateproviderComponent {
 
   }
   saveProvider(){
+
     this.statecityservice.createprovider(this.provider).subscribe(data=>{
+
       console.log(data);
       this.gotoProvider();
       this.message = "Created Provider SuccessFully ";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+
           }
          
         });
@@ -45,9 +51,12 @@ export class CreateproviderComponent {
     this.message = "Creating Provider Failed !!";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
+
           width: '250px',
           data:{
+
             message:this.message
+
           }
          
         });
@@ -58,11 +67,15 @@ export class CreateproviderComponent {
         });
   }
   gotoProvider(){
+
     this.router.navigate(['/adminpage']);
+
   }
   onSubmit(){
+
     console.log(this.provider);
     this.saveProvider();
+    
   }
 
 

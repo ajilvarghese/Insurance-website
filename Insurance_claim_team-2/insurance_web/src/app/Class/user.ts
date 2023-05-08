@@ -1,4 +1,5 @@
 export class User {
+
     first_name!:string
     last_name!:string;
     email_id!:string;
@@ -10,4 +11,5 @@ export class User {
     gov_id!:string;
     is_tobacco_user!:string;
     password!:string;
+    
 }

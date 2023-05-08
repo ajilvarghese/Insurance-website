@@ -43,6 +43,10 @@ public class search_controller {
 
     @GetMapping("/search")
     public List<Search> getallsearch() {
+        List<Search> searches=search_service.getallsearch();
+        if(searches.isEmpty()){
+            throw new UserNotFoundException("Search database is empty");
+        }
         return search_service.getallsearch();
     }
 
