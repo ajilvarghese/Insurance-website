@@ -1,27 +1,92 @@
-.spacer{
+/* Default styles */
+
+.spacer {
     flex: 1;
-}
-.titlecolor{
-color: white;
-}
-.mat{
-    
-    /* background-color: #333; */
-    background-color:rgb(34, 10, 130);
+  }
+  
+  .titlecolor {
+    color: white;
+  }
+  
+  .mat {
+    background-color: rgb(34, 10, 130);
     width: 100%;
-}
-.container {
+  }
+  
+  .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
   }
-  .background{
   
-    background: url('src\assets\images\back1.webp');
+  .background {
+    background: url('src/assets/images/back1.webp');
     background-size: cover;
     background-attachment: fixed;
     filter: grayscale(10%);
-    
+  }
+  
+  /* Responsive styles */
+  
+  @media only screen and (max-width: 768px) {
+    /* Modify styles for screens smaller than 768px */
+  
+    .container {
+      flex-direction: column;
+      align-items: stretch;
     }
-    /* .......................... */
+  
+    .spacer {
+      display: none;
+    }
+  
+    .titlecolor {
+      text-align: center;
+      margin-top: 20px;
+    }
+  
+    .mat {
+      height: 60px;
+    }
+  
+    .background {
+      filter: none;
+    }
+  }
+  
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Modify styles for screens between 769px and 1024px */
+  
+    .mat {
+      height: 80px;
+    }
+  
+    .background {
+      filter: grayscale(50%);
+    }
+  }
+  
+  @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    /* Modify styles for screens between 1025px and 1440px */
+  
+    .mat {
+      height: 100px;
+    }
+  
+    .background {
+      filter: grayscale(30%);
+    }
+  }
+  
+  @media only screen and (min-width: 1441px) {
+    /* Modify styles for screens larger than 1440px */
+  
+    .mat {
+      height: 120px;
+    }
+  
+    .background {
+      filter: grayscale(10%);
+    }
+  }
+  

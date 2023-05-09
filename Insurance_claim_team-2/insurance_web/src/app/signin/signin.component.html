@@ -1,7 +1,7 @@
 <app-main-nav> </app-main-nav>
 <!-- // code for image left side -->
 <div class="card-container">
-  <mat-card class="card-left">
+  <!-- <mat-card class="card-left">
     <mat-card-header>
       <div mat-card-avatar class="mat-form"></div>
       <mat-card-title>Advalent health insurance</mat-card-title>
@@ -16,15 +16,15 @@
     <mat-card-actions class="card-actions">
       <button mat-button>LIKE</button>
       <!-- <p>My Rating is {{ myRating }}</p> -->
-      <app-rating [(rating)]="myRating"></app-rating>
+      <!-- <app-rating [(rating)]="myRating"></app-rating>
       <button mat-button>
         SHARE</button>
     </mat-card-actions>
-  </mat-card>
+  </mat-card> --> 
   
   <!-- //code for sign-in -->
   
-  <mat-card class="card-right">
+  <!-- <mat-card class="card-right">
   <form [formGroup]='loginForm'  (ngSubmit)=onSubmit(loginForm)>
     <div class="div-style">
 
@@ -73,6 +73,108 @@
 
   </div>
   </form>
-  </mat-card>
+  </mat-card> 
+  Log-in-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in Page</title>
+    
+</head>
+
+<body>
+
+    <section>
+        <!-- <div class="login-box">
+            <p>Login</p>
+            <form [formGroup]='loginForm' (ngSubmit)="onSubmit(loginForm)">
+                <div class="user-box">
+                    <input required="true" name="" type="number">
+                    <label>Mobile Number</label>
+                
+                
+                <div *ngIf="loginForm.get('phone_no')?.invalid && (loginForm.get('phone_no')?.dirty || loginForm.get('phone_no')?.touched)">
+                  <div *ngIf="loginForm.get('phone_no')?.hasError('required')">
+                    Phone Number is required.
+                  </div>
+                  <div *ngIf="loginForm.get('password')?.hasError('pattern')">
+                    Phone number should be 10 digits only
+                  </div>
+                </div>
+              </div>
+
+                <div class="user-box">
+                    <input required="true" name="" type="password">
+                    <label>Password</label>
+                    <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                      <div *ngIf="loginForm.get('password')?.hasError('required')">
+                        Password is required.
+                      </div>
+                      <div *ngIf="loginForm.get('password')?.hasError('minlength')">
+                        Password should be at least 6 characters long.
+                      </div>
+                    </div>
+                  
+                </div>
+               
+                <div style="text-align:center">
+                  <button class="hover1" mat-raised-button color="primary" type="submit">Login</button>
+                </div>
+                <h3 style="text-align:center">Don't have an account yet ?</h3>
+              <br>
+                <h2 style="text-align-last: end;" routerLink="/signup"><i><h4>Create account ?</h4></i> </h2>
+             
+            </form>
+        </div> -->
+        <div class="login-box">
+          <p>Login</p>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+            <div class="user-box">
+              <input type="tel" name="phone" formControlName="phone" required pattern="^[1-9]\d{9}$">
+              
+              <label>Mobile Number</label>
+            
+              <div *ngIf="loginForm.controls['phone'].errors && (loginForm.controls['phone'].dirty || loginForm.controls['phone'].touched)">
+                <div *ngIf="loginForm.controls['phone'].errors['required']"> Mobile number is required
+                </div>
+                <div *ngIf="loginForm.controls['phone'].errors['pattern']">
+                  Please enter a valid 10-digit phone number
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="user-box">
+              <input type="password" name="password" formControlName="password" required>
+              <label>Password</label>
+              <div *ngIf="loginForm.controls['password'].errors && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+                <div *ngIf="loginForm.controls['password'].errors['required']">
+                  Password is required
+                </div>
+              </div>
+            </div>
+            <br>
+            <div style="text-align:center">
+              <button class="hover1" mat-raised-button color="primary" type="submit">Login</button>
+            </div>
+            <h3 style="text-align:center">Don't have an account yet ?</h3>
+            <br>
+            <h2 style="text-align-last: end;" routerLink="/signup"><i><h4>Create account ?</h4></i> </h2>
+          </form>
+        </div>
+        
+    </section>
+
+
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+</style>
+
+</html>
+
 </div>
 <app-footer1></app-footer1>
