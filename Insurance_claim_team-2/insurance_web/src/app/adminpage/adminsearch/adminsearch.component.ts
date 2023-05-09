@@ -3,9 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertBoxComponent } from '../../alert-box/alert-box.component';
-
 import { SearchserviceService } from '../../Service/searchservice.service';
-
 interface Search1{
   search_id :number;
   provider_id : number;
