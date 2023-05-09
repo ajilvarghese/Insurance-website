@@ -47,7 +47,6 @@ public class doctor_controller {
             throw new UserNotFoundException(" Doctor database is empty");
             }
         return doctor_service.getallDoctors();
-
         }
 
 
