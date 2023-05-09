@@ -40,12 +40,14 @@ public class doctor_controller {
     //get all doctors
     @GetMapping("/doctors")
     public List<Doctor> getallDoctors(){
+
         logger.info("Inside doctor ");
         List<Doctor> doctors= doctor_service.getallDoctors();
         if(doctors.isEmpty()){
             throw new UserNotFoundException(" Doctor database is empty");
             }
         return doctor_service.getallDoctors();
+
         }
 
 
