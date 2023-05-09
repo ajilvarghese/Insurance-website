@@ -30,16 +30,20 @@
 
     <h1 style="text-align:center">Sign in</h1>
     <hr color="grey">
-    <div>
+    <div class="input-group">
+
+      <label for="phone">Mobile Number:</label>
     <mat-form-field class="mat-form">
-      <input matInput type="tel" formControlName="phone_no"  matInput placeholder="phone_number" required>
-      <mat-error *ngIf= "AllControls?.phone_no?.errors?.['pattern']">Invalid phone_number</mat-error>
+      
+      <input matInput type="tel" formControlName="phone_no"  matInput placeholder="Mobile Number" required>
+      <mat-error *ngIf= "AllControls?.phone_no?.errors?.['pattern']">Invalid phone number</mat-error>
       <mat-error *ngIf= "AllControls?.phone_no?.errors?.['required']">phone_number is required</mat-error>
 
     </mat-form-field>
     <br>
     <br>
     </div>
+    <label for="phone">Password:</label>
 
     <mat-form-field  class="mat-form">
       <input matInput placeholder="Password" [type]="hide?'password':'text'" formControlName='password'> 
