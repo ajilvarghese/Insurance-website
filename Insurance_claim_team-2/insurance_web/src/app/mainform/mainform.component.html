@@ -42,40 +42,19 @@
 <!-- ------------------------------------- -->
 
 <mat-toolbar class="whitebg2" [ngClass]="{'fixed-sub-navbar': isFixed}">
- 
-      
-        <!-- <mat-card-header>
-          <mat-card-title class="text-center" >Search for Doctors in India</mat-card-title>
-        </mat-card-header>
-        <mat-card-content> -->
+ <br>
      &nbsp;     
     <mat-form-field>
       <mat-label>Search state/city</mat-label>
       <input matInput  [formControl]="selectedcity" (ngModelChange)="onStateChange()"  >
       <mat-icon matSuffix>location_on</mat-icon>
     </mat-form-field>
-    <!-- <mat-option *ngFor="let item of filteredHospitals" value={{item.state}} >{{ item.state }}</mat-option> -->
-    <!-- starting editing -->
     &nbsp;
   <mat-form-field>
-    <mat-label>Search Speciality</mat-label>
+    <mat-label>Search Speciality/Doctor </mat-label>
     <input matInput [formControl]="selectedSpeciality" (ngModelChange)="onStateChange()" >
     <mat-icon matSuffix>medical_services</mat-icon>
-  </mat-form-field>
-  &nbsp;
-  <mat-form-field>
-    <mat-label>Search Doctors</mat-label>
-    <input matInput [formControl]="selectedDoctor" (ngModelChange)="onStateChange1()" [matAutocomplete]="auto">
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
-  <mat-autocomplete #auto="matAutocomplete">
-    <!-- <mat-option *ngFor="let item of filteredStates" value={{item.state_id}} >{{ item.state_name }}</mat-option> -->
-  </mat-autocomplete>
-  <!-- centered-card.component.html -->
-
-      
-    <!-- </mat-card-content> -->
-  
+  </mat-form-field> 
 </mat-toolbar>
 
 
