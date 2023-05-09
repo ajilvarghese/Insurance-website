@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { Doctor } from '../doctor';
-import { StateCityServiceService } from '../state-city-service.service';
+import { Doctor } from '../Class/doctor';
+import { StateCityServiceService } from '../Service/state-city-service.service';
 
 
 

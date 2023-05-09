@@ -1,0 +1,64 @@
+
+<mat-card>
+  
+  <mat-card-content >
+                                      <!-- Search input -->
+    <div class="centered-card-container">
+        <mat-card >
+          <mat-card-header>
+            <mat-card-title class="text-center" >Search for Doctors in India</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+      &nbsp;
+    <mat-form-field>
+      <mat-label>Search Doctors/ID</mat-label>
+      <input matInput [formControl]="selectedDoctor" (ngModelChange)="onStateChange()">
+      <mat-icon matSuffix>search</mat-icon>
+      
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <mat-label>Search Speciality</mat-label>
+      <input matInput [formControl]="selectedSpeciality" (ngModelChange)="onStateChange()" >
+      <mat-icon matSuffix>medical_services</mat-icon>
+    </mat-form-field>
+    <br>
+    <!-- <a mat-raised-button color="accent" routerLink="createdoctor" >CREATE<mat-icon>person</mat-icon></a> &nbsp; -->
+    <a mat-raised-button color="primary" routerLink="/adminpage/createdoctor" >CREATE<mat-icon>add</mat-icon></a> &nbsp;
+
+        
+      </mat-card-content>
+      
+    </mat-card>
+
+  </div>
+ 
+  </mat-card-content>
+  
+  </mat-card>
+  
+  <br>
+  <router-outlet></router-outlet>
+   <!-- //........display search ........ -->
+  <div class="tabclass1">
+    <mat-card *ngFor="let doctor of filterDoctor | slice:0:5" class="doctor-card">
+      <mat-card-header>
+        <mat-card-title>Dr.{{ doctor.doctor_name }}  </mat-card-title>
+        <mat-card-subtitle>{{ doctor.doctor_speciality }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="content-container">
+          <p>{{ doctor.doctor_description }}</p>
+          <p> <mat-icon>person</mat-icon> 
+            {{doctor.doctor_id}}</p>
+        </div>
+        <form class="form-container">
+          <button mat-raised-button color="primary" (click) = "updatedoctor(doctor.doctor_id)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
+          <button mat-raised-button color="primary" (click) = "deletedoctor(doctor.doctor_id)">DELETE<mat-icon>delete</mat-icon>
+          </button>
+        </form>
+      </mat-card-content>
+      
+    </mat-card>
+    
+  

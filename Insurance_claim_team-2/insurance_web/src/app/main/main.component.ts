@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
-import { Doctor } from '../doctor';
-import { StateCityServiceService } from '../state-city-service.service';
+import { Doctor } from '../Class/doctor';
+import { StateCityServiceService } from '../Service/state-city-service.service';
 
 @Component({
   selector: 'app-main',
