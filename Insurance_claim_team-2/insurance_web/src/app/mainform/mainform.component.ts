@@ -65,34 +65,12 @@ this.filterSearch=this.search
     const specialty = this.selectedSpeciality.value?.toLowerCase() || '';
     if((city && city.split('').length >=3) || (specialty && specialty.split('').length >=2) ){
      this.filterSearch = this.search.filter(doctor =>(doctor.state.toLowerCase().includes(city) || doctor.city.toLowerCase().includes(city)) &&
-     doctor.doctor_speciality.toLowerCase().includes(specialty)
+     (doctor.doctor_speciality.toLowerCase().includes(specialty)||doctor.doctor_name.toLowerCase().includes(specialty))
    );
     }
   }
-  onStateChange1() {
-    this.filterSearch = this.search.filter(doctor =>doctor.doctor_name.toLowerCase().includes(this.selectedDoctor.value?.toLowerCase() || '') 
-  );}
 
-  getCurrentLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.selectedcity.setValue(''); // Reset selected city
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.loadDoctors(); // Load doctors based on current location
-      });
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-  }
-  loadDoctors() {
-    // Example implementation using a hypothetical doctorService
-    
-    
-  }
-
-  
-
+  //.............nav for search..................
   @HostListener('window:scroll', [])
   onWindowScroll() {
     if (window.pageYOffset > 50) {
