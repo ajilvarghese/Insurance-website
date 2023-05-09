@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -32,6 +32,7 @@ export class AdminsearchComponent {
   selectedProvider= new FormControl('');
   selectedState= new FormControl('');
   message!: string;
+  isFixed = false;
   constructor(private statecity:SearchserviceService,private router :Router,public dialog: MatDialog){}
 
   ngOnInit(): void {
@@ -97,6 +98,15 @@ deletesearch(search_id:number){
 
   })
   
+}
+
+@HostListener('window:scroll', [])
+onWindowScroll() {
+  if (window.pageYOffset > 50) {
+    this.isFixed = true;
+  } else if (this.isFixed && window.pageYOffset < 50) {
+    this.isFixed = false;
+  }
 }
 
 }

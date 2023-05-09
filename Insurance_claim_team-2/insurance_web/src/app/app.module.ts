@@ -47,6 +47,7 @@ import { FooterComponent } from './footer/footer.component';
 import { Footer1Component } from './footer1/footer1.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { DepartmentComponent } from './department/department.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -107,6 +108,7 @@ import { DepartmentComponent } from './department/department.component';
     MatDialogModule,
     MatAutocompleteModule,
     FlexLayoutModule,
+    MatMenuModule
     
     
     
