@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertBoxComponent } from '../../alert-box/alert-box.component';
 import { Doctor } from '../../Class/doctor';
 import { DoctorserviceService } from '../../Service/doctorservice.service';
-import { StateCityServiceService } from '../../Service/state-city-service.service';
 
 @Component({
   selector: 'app-updatedoctor',

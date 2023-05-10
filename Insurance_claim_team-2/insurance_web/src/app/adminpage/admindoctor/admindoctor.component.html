@@ -97,10 +97,13 @@
       <mat-card-header>
         <mat-card-title>Dr.{{ doctor.doctor_name }}  </mat-card-title>
         <mat-card-subtitle>{{ doctor.doctor_speciality }}</mat-card-subtitle>
+        
       </mat-card-header>
       <mat-card-content>
         <div class="content-container">
+          <p>{{doctor.phone_no}}</p>
           <p>{{ doctor.doctor_description }}</p>
+          
           <p> <mat-icon>person</mat-icon> 
             {{doctor.doctor_id}}</p>
         </div>
