@@ -78,6 +78,7 @@ public class doctor_controller {
                 throw new InvalidSpecialtyException("ENUM in Speciality error", ex);
             }
             doctor.setDoctor_description(doctorDetails.getDoctor_description());
+            doctor.setPhone_no(doctorDetails.getPhone_no());
             Doctor updateDoctor = doctor_repository.save(doctor);
             return ResponseEntity.ok(updateDoctor);
         }

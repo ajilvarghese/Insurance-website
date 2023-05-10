@@ -33,6 +33,12 @@
                     <textarea matInput [(ngModel)]="doctor.doctor_description" name="doctor_description"></textarea>
                   </mat-form-field>
                 </div>
+                <div class="form-input">
+                  <mat-form-field>
+                    <mat-label>Doctor Mobile no</mat-label>
+                    <input matInput [(ngModel)]="doctor.phone_no" name="phone_no">
+                  </mat-form-field>
+                </div>
           
                 <div class="form-input">
                   <button mat-raised-button color="primary" type="submit">Update</button>
