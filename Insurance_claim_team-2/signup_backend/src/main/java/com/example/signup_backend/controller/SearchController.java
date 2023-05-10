@@ -28,7 +28,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/signup")
-public class search_controller {
+public class SearchController {
     private static final Logger logger = LoggerFactory.getLogger(UserNotFoundException.class);
     @Autowired
     Search_repository search_repository;

@@ -23,7 +23,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/signup")
-public class provider_controller {
+public class ProviderController {
     @Autowired
     Provider_service provider_service;
     @Autowired
