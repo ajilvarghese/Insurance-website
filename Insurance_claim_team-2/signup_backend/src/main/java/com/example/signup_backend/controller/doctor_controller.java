@@ -2,19 +2,14 @@ package com.example.signup_backend.controller;
 
 import com.example.signup_backend.exceptions.*;
 import com.example.signup_backend.model.Doctor;
-import com.example.signup_backend.model.Doctor_speciality;
-import com.example.signup_backend.model.ErrorResponse;
 import com.example.signup_backend.repository.Doctor_repository;
 import com.example.signup_backend.service.Doctor_service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +20,6 @@ import java.util.Map;
 @RequestMapping("/signup")
 
 public class doctor_controller {
-//    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
     @Autowired
     Doctor_repository doctor_repository;
     @Autowired
@@ -50,6 +44,9 @@ public class doctor_controller {
     public Doctor createDoctor(@RequestBody Doctor doctor){
         try{
             return doctor_repository.save(doctor);
+        }
+        catch (DataIntegrityViolationException ex) {
+            throw new DatabaseAccessException("Duplication of Phone Number",ex);
         }
         catch (Exception ex){
             throw new DatabaseAccessException("Error occurred while creating a new doctor", ex);
@@ -82,8 +79,11 @@ public class doctor_controller {
             Doctor updateDoctor = doctor_repository.save(doctor);
             return ResponseEntity.ok(updateDoctor);
         }
+        catch (DataIntegrityViolationException ex){
+            throw  new UpdateFailedException("Failed to update doctor with Doctor id: " + doctor_id + ". Phone number already exists.");
+        }
         catch (Exception ex){
-            throw new UpdateFailedException("Updating failed for the doctors",ex);
+            throw new UpdateFailedException("Updating failed for the doctors");
         }
 
 

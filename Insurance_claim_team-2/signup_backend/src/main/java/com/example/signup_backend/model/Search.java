@@ -15,9 +15,11 @@ public class Search {
     @Column(name = "provider_id")
     private Long provider_id;
 
+
     public Long getSearch_id() {
         return search_id;
     }
+
 
     public void setSearch_id(Long search_id) {
         this.search_id = search_id;

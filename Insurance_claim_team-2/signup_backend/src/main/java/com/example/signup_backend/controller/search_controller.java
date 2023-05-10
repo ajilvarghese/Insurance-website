@@ -1,24 +1,15 @@
 package com.example.signup_backend.controller;
-
-import com.example.signup_backend.exceptions.DatabaseAccessException;
-import com.example.signup_backend.exceptions.EmptyDatabaseException;
-import com.example.signup_backend.exceptions.UserNotFoundException;
+import com.example.signup_backend.exceptions.*;
 import com.example.signup_backend.model.Doctor;
-import com.example.signup_backend.model.ErrorResponse;
 import com.example.signup_backend.model.Provider;
 import com.example.signup_backend.model.Search;
 import com.example.signup_backend.repository.Doctor_repository;
 import com.example.signup_backend.repository.Provider_repository;
 import com.example.signup_backend.repository.Search_repository;
 import com.example.signup_backend.service.Search_service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +20,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/signup")
 public class search_controller {
-    private static final Logger logger = LoggerFactory.getLogger(UserNotFoundException.class);
     @Autowired
     Search_repository search_repository;
     @Autowired
@@ -39,12 +29,7 @@ public class search_controller {
     @Autowired
     Provider_repository providerRepository;
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
-        logger.error(ex.getMessage(), ex);
-        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
-        return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
-    }
+
     //..........Search.........................
 
 
@@ -60,11 +45,12 @@ public class search_controller {
     //create search
     @PostMapping("/search")
     public Search createSearch(@RequestBody Search search) {
-        try{
+        try {
             return search_repository.save(search);
-        }catch (Exception ex){
-            throw new DatabaseAccessException("Error occurred while creating ", ex);
+        } catch (Exception ex) {
+                throw new ForeignKeyNotFoundException("foreign key error");
         }
+
 
     }
 

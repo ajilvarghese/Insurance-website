@@ -10,6 +10,7 @@ import com.example.signup_backend.service.Provider_service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,16 +29,6 @@ public class provider_controller {
     Provider_service provider_service;
     @Autowired
     Provider_repository provider_repository;
-    private static final Logger logger = LoggerFactory.getLogger(UserNotFoundException.class);
-
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
-        logger.error(ex.getMessage(), ex);
-        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
-        return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
-    }
-
-
 
     //................Providers................
 
