@@ -1,5 +1,7 @@
 package com.example.signup_backend.controller;
 
+import com.example.signup_backend.exceptions.DatabaseAccessException;
+import com.example.signup_backend.exceptions.EmptyDatabaseException;
 import com.example.signup_backend.exceptions.UserNotFoundException;
 import com.example.signup_backend.model.Doctor;
 import com.example.signup_backend.model.ErrorResponse;
@@ -50,7 +52,7 @@ public class search_controller {
     public List<Search> getallsearch() {
         List<Search> searches=search_service.getallsearch();
         if(searches.isEmpty()){
-            throw new UserNotFoundException("Search database is empty");
+            throw new EmptyDatabaseException("Search database is empty");
         }
         return search_service.getallsearch();
     }
@@ -58,7 +60,12 @@ public class search_controller {
     //create search
     @PostMapping("/search")
     public Search createSearch(@RequestBody Search search) {
-        return search_repository.save(search);
+        try{
+            return search_repository.save(search);
+        }catch (Exception ex){
+            throw new DatabaseAccessException("Error occurred while creating ", ex);
+        }
+
     }
 
     //get search by id
