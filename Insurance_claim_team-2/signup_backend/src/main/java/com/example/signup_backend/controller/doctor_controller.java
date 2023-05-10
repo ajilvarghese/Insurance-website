@@ -70,11 +70,22 @@ public class doctor_controller {
     public ResponseEntity<Doctor> updateDoctor(@PathVariable Long doctor_id,@RequestBody Doctor doctorDetails){
 
         Doctor doctor = doctor_repository.findById(doctor_id).orElseThrow(() -> new UserNotFoundException("Doctor does not exist !! id :"+ doctor_id));
-        doctor.setDoctor_name(doctorDetails.getDoctor_name());
-        doctor.setDoctor_speciality(doctorDetails.getDoctor_speciality());
-        doctor.setDoctor_description(doctorDetails.getDoctor_description());
-        Doctor updateDoctor = doctor_repository.save(doctor);
-        return ResponseEntity.ok(updateDoctor);
+        try {
+            doctor.setDoctor_name(doctorDetails.getDoctor_name());
+            try {
+                doctor.setDoctor_speciality(doctorDetails.getDoctor_speciality());
+            } catch (Exception ex) {
+                throw new InvalidSpecialtyException("ENUM in Speciality error", ex);
+            }
+            doctor.setDoctor_description(doctorDetails.getDoctor_description());
+            doctor.setPhone_no(doctorDetails.getPhone_no());
+            Doctor updateDoctor = doctor_repository.save(doctor);
+            return ResponseEntity.ok(updateDoctor);
+        }
+        catch (Exception ex){
+            throw new UpdateFailedException("Updating failed for the doctors",ex);
+        }
+
 
     }
 
