@@ -1,5 +1,7 @@
 package com.example.signup_backend.controller;
 
+import com.example.signup_backend.exceptions.DatabaseAccessException;
+import com.example.signup_backend.exceptions.EmptyDatabaseException;
 import com.example.signup_backend.exceptions.UserNotFoundException;
 import com.example.signup_backend.model.ErrorResponse;
 import com.example.signup_backend.model.Provider;
@@ -44,14 +46,19 @@ public class provider_controller {
     public List<Provider> getallProviders(){
         List<Provider> providers=provider_service.getallProviders();
         if(providers.isEmpty()){
-            throw new UserNotFoundException("Provider database is empty");
+            throw new EmptyDatabaseException("Provider database is empty");
         }
         return provider_service.getallProviders();
     }
     //create provider
     @PostMapping("/providers")
     public Provider createProvider(@RequestBody Provider provider){
-        return provider_repository.save(provider);
+        try {
+            return provider_repository.save(provider);
+        }
+        catch (Exception ex){
+            throw new DatabaseAccessException("Error occurred while creating a new provider", ex);
+        }
     }
     //get provider by id
     @GetMapping("/providers/{provider_id}")
