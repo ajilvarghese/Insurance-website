@@ -83,7 +83,7 @@ public class doctor_controller {
             return ResponseEntity.ok(updateDoctor);
         }
         catch (Exception ex){
-            throw new UpdateFailedException("Updating failed for doctors",ex);
+            throw new UpdateFailedException("Updating failed for the doctors",ex);
         }
 
 
