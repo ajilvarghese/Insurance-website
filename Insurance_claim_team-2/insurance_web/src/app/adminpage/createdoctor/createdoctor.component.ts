@@ -45,8 +45,8 @@ export class CreatedoctorComponent implements OnInit {
           
         });
     },
-    error=>console.log(error));
-    this.message = "Creating Doctor Failed !!";
+      error=>console.log(error));
+        this.message = "Creating Doctor Failed !!";
         // alert(this.message)
         const dialogRef = this.dialog.open(AlertBoxComponent, {
 

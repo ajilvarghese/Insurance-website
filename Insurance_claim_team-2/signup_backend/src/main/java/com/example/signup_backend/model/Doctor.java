@@ -16,6 +16,16 @@ public class Doctor {
     private Doctor_speciality doctor_speciality;
     @Column(name = "doctor_description")
     private String doctor_description;
+    @Column(name="phone_no")
+    private Long phone_no;
+
+    public Long getPhone_no() {
+        return phone_no;
+    }
+
+    public void setPhone_no(Long phone_no) {
+        this.phone_no = phone_no;
+    }
 
     public Long getDoctor_id() {
 
