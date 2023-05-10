@@ -15,14 +15,18 @@ public class Illness {
     private String illness_name;
 
     public int getIllness_id() {
+
         return illness_id;
+
     }
 
     public void setIllness_id(int illness_id) {
+
         this.illness_id = illness_id;
     }
 
     public String getIllness_name() {
+
         return illness_name;
     }
 
