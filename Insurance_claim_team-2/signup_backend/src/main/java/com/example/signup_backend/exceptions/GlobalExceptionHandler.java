@@ -44,6 +44,12 @@ public class GlobalExceptionHandler extends RuntimeException {
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
     }
+    @ExceptionHandler(ForeignKeyNotFoundException.class)
+    public ResponseEntity<ErrorResponse> ForeignKeyNotFoundException(Exception ex) {
+        logger.error(ex.getMessage(), ex);
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
+    }
 
 
 }
