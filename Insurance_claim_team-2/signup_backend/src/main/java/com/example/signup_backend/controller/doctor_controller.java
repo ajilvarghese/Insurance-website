@@ -1,7 +1,8 @@
 package com.example.signup_backend.controller;
 
-import com.example.signup_backend.exceptions.UserNotFoundException;
+import com.example.signup_backend.exceptions.*;
 import com.example.signup_backend.model.Doctor;
+import com.example.signup_backend.model.Doctor_speciality;
 import com.example.signup_backend.model.ErrorResponse;
 import com.example.signup_backend.repository.Doctor_repository;
 import com.example.signup_backend.service.Doctor_service;
@@ -22,28 +23,22 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/signup")
+
 public class doctor_controller {
-    private static final Logger logger = LoggerFactory.getLogger(UserNotFoundException.class);
+//    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
     @Autowired
     Doctor_repository doctor_repository;
     @Autowired
     Doctor_service doctor_service;
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
-        logger.error(ex.getMessage(), ex);
-        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
-        return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
-    }
 
     //get all doctors
     @GetMapping("/doctors")
     public List<Doctor> getallDoctors(){
 
-        logger.info("Inside doctor ");
         List<Doctor> doctors= doctor_service.getallDoctors();
         if(doctors.isEmpty()){
 
-            throw new UserNotFoundException(" Doctor database is empty");
+            throw new EmptyDatabaseException(" Doctor database is empty");
 
             }
         return doctor_service.getallDoctors();
@@ -53,8 +48,12 @@ public class doctor_controller {
     //create doctor
     @PostMapping("/doctors")
     public Doctor createDoctor(@RequestBody Doctor doctor){
-
-        return doctor_repository.save(doctor);
+        try{
+            return doctor_repository.save(doctor);
+        }
+        catch (Exception ex){
+            throw new DatabaseAccessException("Error occurred while creating a new doctor", ex);
+        }
 
     }
     //get doctor by id
@@ -71,11 +70,22 @@ public class doctor_controller {
     public ResponseEntity<Doctor> updateDoctor(@PathVariable Long doctor_id,@RequestBody Doctor doctorDetails){
 
         Doctor doctor = doctor_repository.findById(doctor_id).orElseThrow(() -> new UserNotFoundException("Doctor does not exist !! id :"+ doctor_id));
-        doctor.setDoctor_name(doctorDetails.getDoctor_name());
-        doctor.setDoctor_speciality(doctorDetails.getDoctor_speciality());
-        doctor.setDoctor_description(doctorDetails.getDoctor_description());
-        Doctor updateDoctor = doctor_repository.save(doctor);
-        return ResponseEntity.ok(updateDoctor);
+        try {
+            doctor.setDoctor_name(doctorDetails.getDoctor_name());
+            try {
+                doctor.setDoctor_speciality(doctorDetails.getDoctor_speciality());
+            } catch (Exception ex) {
+                throw new InvalidSpecialtyException("ENUM in Speciality error", ex);
+            }
+            doctor.setDoctor_description(doctorDetails.getDoctor_description());
+            doctor.setPhone_no(doctorDetails.getPhone_no());
+            Doctor updateDoctor = doctor_repository.save(doctor);
+            return ResponseEntity.ok(updateDoctor);
+        }
+        catch (Exception ex){
+            throw new UpdateFailedException("Updating failed for the doctors",ex);
+        }
+
 
     }
 
