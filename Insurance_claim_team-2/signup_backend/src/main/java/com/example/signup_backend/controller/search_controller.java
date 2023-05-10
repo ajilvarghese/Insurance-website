@@ -1,5 +1,7 @@
 package com.example.signup_backend.controller;
 
+import com.example.signup_backend.exceptions.DatabaseAccessException;
+import com.example.signup_backend.exceptions.EmptyDatabaseException;
 import com.example.signup_backend.exceptions.UserNotFoundException;
 import com.example.signup_backend.model.Doctor;
 import com.example.signup_backend.model.ErrorResponse;
@@ -28,6 +30,14 @@ import java.util.Map;
 @RequestMapping("/signup")
 public class search_controller {
     private static final Logger logger = LoggerFactory.getLogger(UserNotFoundException.class);
+    @Autowired
+    Search_repository search_repository;
+    @Autowired
+    Search_service search_service;
+    @Autowired
+    Doctor_repository doctorRepository;
+    @Autowired
+    Provider_repository providerRepository;
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
@@ -36,16 +46,13 @@ public class search_controller {
         return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
     }
     //..........Search.........................
-    @Autowired
-    Search_repository search_repository;
-    @Autowired
-    Search_service search_service;
+
 
     @GetMapping("/search")
     public List<Search> getallsearch() {
         List<Search> searches=search_service.getallsearch();
         if(searches.isEmpty()){
-            throw new UserNotFoundException("Search database is empty");
+            throw new EmptyDatabaseException("Search database is empty");
         }
         return search_service.getallsearch();
     }
@@ -53,20 +60,25 @@ public class search_controller {
     //create search
     @PostMapping("/search")
     public Search createSearch(@RequestBody Search search) {
-        return search_repository.save(search);
+        try{
+            return search_repository.save(search);
+        }catch (Exception ex){
+            throw new DatabaseAccessException("Error occurred while creating ", ex);
+        }
+
     }
 
     //get search by id
     @GetMapping("/search/{search_id}")
     public ResponseEntity<Search> getSearchBYId(@PathVariable Long search_id) {
-        Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exit !! id :" + search_id));
+        Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + search_id));
         return ResponseEntity.ok(search);
     }
 
     //update search
     @PutMapping("/search/{search_id}")
     public ResponseEntity<Search> updateSearch(@PathVariable Long search_id, @RequestBody Search searchDetails) {
-        Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exit !! id :" + search_id));
+        Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + search_id));
         search.setSearch_id(searchDetails.getSearch_id());
         search.setDoctor_id(searchDetails.getDoctor_id());
         search.setProvider_id(searchDetails.getProvider_id());
@@ -77,16 +89,13 @@ public class search_controller {
     //delete search rest api
     @DeleteMapping("/search/{search_id}")
     public ResponseEntity<Map<String, Boolean>> deletesearch(@PathVariable Long search_id) {
-        Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exit !! id :" + search_id));
+        Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + search_id));
         search_repository.delete(search);
         Map<String, Boolean> response = new HashMap<>();
         response.put("Deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
-    @Autowired
-    Doctor_repository doctorRepository;
-    @Autowired
-    Provider_repository providerRepository;
+
 
     @GetMapping("/search1")
     public List<Map<String, Object>> search() {
