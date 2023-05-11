@@ -6,18 +6,19 @@
     &nbsp;
     &nbsp;
     <mat-card-content>
-      <form (ngSubmit)="onSubmit()" >
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
        <div class="row">
           <mat-form-field>
             <mat-label>Doctor Name</mat-label>
-            <input matInput [(ngModel)]="doctor.doctor_name" name="doctor_name">
+            <input matInput [(ngModel)]="doctor.doctor_name" name="doctor_name" formControlName="docname">
+            
           </mat-form-field>
           &nbsp;
           &nbsp;
 
           <mat-form-field>
             <mat-label>Doctor Mobile</mat-label>
-            <input matInput [(ngModel)]="doctor.phone_no" name="phone_no">
+            <input matInput [(ngModel)]="doctor.phone_no" name="phone_no" formControlName="phoneno">
           </mat-form-field>
           
         </div>
@@ -25,7 +26,7 @@
         <div class="row">
           <mat-form-field>
             <mat-label>Specialty</mat-label>
-            <mat-select [(ngModel)]="doctor.doctor_speciality" name="specialty">
+            <mat-select [(ngModel)]="doctor.doctor_speciality" name="specialty" formControlName="special">
               <mat-option *ngFor="let specialty of specialties" [value]="specialty">{{ specialty }}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -35,12 +36,12 @@
 
           <mat-form-field>
             <mat-label>Doctor Description</mat-label>
-            <textarea matInput [(ngModel)]="doctor.doctor_description" name="doctor_description"></textarea>
+            <textarea matInput [(ngModel)]="doctor.doctor_description" name="doctor_description" formControlName="desc"></textarea>
           </mat-form-field>
         </div>
 
         
-          <button mat-raised-button color="primary" type="submit" >Create</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="" >Create</button>
         
       </form>
     </mat-card-content>

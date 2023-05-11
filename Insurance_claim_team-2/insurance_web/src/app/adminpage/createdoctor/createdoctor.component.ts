@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import {  Router } from '@angular/router';
 import { AlertBoxComponent } from '../../alert-box/alert-box.component';
@@ -17,9 +18,20 @@ export class CreatedoctorComponent implements OnInit {
   doctor: Doctor = new Doctor();
   specialties = ['ENT','Orthopedics','Neurology','Cardiology','Dermatology','Pediatrics','Psychaitry','Urology'];
   message!: string;
-  constructor(private statecityservice:DoctorserviceService,private router:Router,public dialog: MatDialog){}
-  ngOnInit():void{
+  loginForm!:FormGroup;
+  constructor(private statecityservice:DoctorserviceService,private router:Router,public dialog: MatDialog,private fb:FormBuilder){}
+  ngOnInit(){
+    this.createForm();
 
+  }
+  createForm(){
+    this.loginForm = this.fb.group({
+      docname:['',Validators.required],
+      phoneno:['',[Validators.required,Validators.pattern(/^[1-9]\d{9}$/)]],
+      special:['',Validators.required],
+      desc:['',Validators.required]
+      
+    });
   }
   saveDoctor(){
 
