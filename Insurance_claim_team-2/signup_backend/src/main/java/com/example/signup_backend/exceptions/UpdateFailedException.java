@@ -1,7 +1,7 @@
 package com.example.signup_backend.exceptions;
 
 public class UpdateFailedException extends RuntimeException{
-    public UpdateFailedException(String message, Exception ex){
+    public UpdateFailedException(String message){
         super(message);
     }
 }

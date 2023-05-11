@@ -5,6 +5,7 @@ import com.example.signup_backend.model.Doctor;
 import com.example.signup_backend.repository.Doctor_repository;
 import com.example.signup_backend.service.Doctor_service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,9 @@ public class DoctorController {
         try{
             return doctor_repository.save(doctor);
         }
+        catch (DataIntegrityViolationException ex) {
+            throw new DatabaseAccessException("Duplication of Phone Number",ex);
+        }
         catch (Exception ex){
             throw new DatabaseAccessException("Error occurred while creating a new doctor", ex);
         }
@@ -76,8 +80,11 @@ public class DoctorController {
             Doctor updateDoctor = doctor_repository.save(doctor);
             return ResponseEntity.ok(updateDoctor);
         }
+        catch (DataIntegrityViolationException ex){
+            throw  new UpdateFailedException("Failed to update doctor with Doctor id: " + doctor_id + ". Phone number already exists.");
+        }
         catch (Exception ex){
-            throw new UpdateFailedException("Updating failed for the doctors",ex);
+            throw new UpdateFailedException("Updating failed for the doctors");
         }
 
 
