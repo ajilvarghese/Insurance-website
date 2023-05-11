@@ -20,7 +20,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/signup")
 public class SearchController {
-
     @Autowired
     SearchRepository search_repository;
     @Autowired

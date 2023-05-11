@@ -1,9 +1,10 @@
 package com.example.signup_backend.controller;
 
+import com.example.signup_backend.exceptions.*;
+import com.example.signup_backend.model.Provider;
 import com.example.signup_backend.exceptions.DatabaseAccessException;
 import com.example.signup_backend.exceptions.EmptyDatabaseException;
 import com.example.signup_backend.exceptions.UserNotFoundException;
-import com.example.signup_backend.model.Provider;
 import com.example.signup_backend.repository.ProviderRepository;
 import com.example.signup_backend.service.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +26,9 @@ public class ProviderController {
     ProviderRepository provider_repository;
 
     //................Providers................
-
     @GetMapping("/providers")
 
-    public List<Provider> getallProviders(){
-
+    public List<Provider> getAllProviders(){
         List<Provider> providers=provider_service.getallProviders();
         if(providers.isEmpty()){
             throw new EmptyDatabaseException("Provider database is empty");
@@ -43,9 +42,8 @@ public class ProviderController {
 
         try {
             return provider_repository.save(provider);
-        }
-        catch (Exception ex){
-            throw new DatabaseAccessException("Error occurred while creating a new provider", ex);
+        } catch (Exception ex){
+            throw new DatabaseAccessException("Error occurred while creating a new provider");
         }
 
     }
@@ -62,24 +60,30 @@ public class ProviderController {
     public ResponseEntity<Provider> updateProvider(@PathVariable Long provider_id,@RequestBody Provider providerDetails){
 
         Provider provider = provider_repository.findById(provider_id).orElseThrow(() -> new UserNotFoundException("Provider does not exist !! id :"+ provider_id));
-        provider.setHospital_clinic(providerDetails.getHospital_clinic());
-        provider.setState(providerDetails.getState());
-        provider.setCity(providerDetails.getCity());
-        provider.setContact_number(providerDetails.getContact_number());
-        Provider updateprovider = provider_repository.save(provider);
-        return ResponseEntity.ok(updateprovider);
-
+        try {
+            provider.setHospital_clinic(providerDetails.getHospital_clinic());
+            provider.setState(providerDetails.getState());
+            provider.setCity(providerDetails.getCity());
+            provider.setContact_number(providerDetails.getContact_number());
+            Provider updateprovider = provider_repository.save(provider);
+            return ResponseEntity.ok(updateprovider);
+        }catch (Exception ex){
+            throw new UpdateFailedException("Updating Provider Failed !!!");
+        }
     }
     //delete provider rest api
     @DeleteMapping("/providers/{provider_id}")
     public ResponseEntity<Map<String,Boolean>> deleteProvider(@PathVariable Long provider_id){
 
         Provider provider = provider_repository.findById(provider_id).orElseThrow(() -> new UserNotFoundException("Provider does not exist !! id :"+ provider_id));
-        provider_repository.delete(provider);
-        Map<String,Boolean> response = new HashMap<>();
-        response.put("Deleted",Boolean.TRUE);
-        return ResponseEntity.ok(response);
-
+       try {
+           provider_repository.delete(provider);
+           Map<String, Boolean> response = new HashMap<>();
+           response.put("Deleted", Boolean.TRUE);
+           return ResponseEntity.ok(response);
+       }catch (Exception ex){
+           throw new DeleteFailedException("Failed to delete Provider with id: " + provider_id);
+       }
     }
 
 }

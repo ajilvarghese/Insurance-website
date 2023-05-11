@@ -50,6 +50,12 @@ public class GlobalExceptionHandler extends RuntimeException {
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
     }
+    @ExceptionHandler(DeleteFailedException.class)
+    public ResponseEntity<ErrorResponse> DeleteFailedException(Exception ex) {
+        logger.error(ex.getMessage(), ex);
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
+    }
 
 
 }

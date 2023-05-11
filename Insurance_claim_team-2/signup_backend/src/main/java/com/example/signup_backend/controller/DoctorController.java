@@ -1,5 +1,4 @@
 package com.example.signup_backend.controller;
-
 import com.example.signup_backend.exceptions.*;
 import com.example.signup_backend.model.Doctor;
 import com.example.signup_backend.repository.DoctorRepository;
@@ -20,7 +19,6 @@ import java.util.Map;
 @RequestMapping("/signup")
 
 public class DoctorController {
-//    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
     @Autowired
     DoctorRepository doctor_repository;
     @Autowired
@@ -28,8 +26,7 @@ public class DoctorController {
 
     //get all doctors
     @GetMapping("/doctors")
-    public List<Doctor> getallDoctors(){
-
+    public List<Doctor> getAllDoctors(){
         List<Doctor> doctors= doctor_service.getallDoctors();
         if(doctors.isEmpty()){
             throw new EmptyDatabaseException(" Doctor database is empty");
@@ -43,31 +40,39 @@ public class DoctorController {
     public Doctor createDoctor(@RequestBody Doctor doctor){
 
         try{
+            Long doctorMobile = doctor.getPhone_no();
+            String doctorName = doctor.getDoctor_name();
+            if((doctorName == null || doctorName.isEmpty()) || (doctorMobile == null || String.valueOf(doctorMobile).isEmpty())){
+                throw new IllegalArgumentException("Doctor name cannot be empty or null.");
+            }
             return doctor_repository.save(doctor);
+        }catch (IllegalArgumentException ex){
+            throw new DatabaseAccessException("Doctor name and mobile number can be empty");
         }
         catch (DataIntegrityViolationException ex) {
-            throw new DatabaseAccessException("Duplication of Phone Number",ex);
+            throw new DatabaseAccessException("Duplication of Phone Number");
+        } catch (Exception ex){
+            throw new DatabaseAccessException("Error occurred while creating a new doctor");
         }
-        catch (Exception ex){
-            throw new DatabaseAccessException("Error occurred while creating a new doctor", ex);
-        }
-
     }
+
     //get doctor by id
     @GetMapping("/doctors/{doctor_id}")
     public ResponseEntity<Doctor> getDoctorBYId(@PathVariable Long doctor_id){
-
         Doctor doctor = doctor_repository.findById(doctor_id).orElseThrow(() -> new UserNotFoundException("Doctor does not exist !! id :"+ doctor_id));
         return ResponseEntity.ok(doctor);
-
     }
 
     //update Doctors
     @PutMapping("/doctors/{doctor_id}")
     public ResponseEntity<Doctor> updateDoctor(@PathVariable Long doctor_id,@RequestBody Doctor doctorDetails){
-
-        Doctor doctor = doctor_repository.findById(doctor_id).orElseThrow(() -> new UserNotFoundException("Doctor does not exist !! id :"+ doctor_id));
         try {
+            Doctor doctor = doctor_repository.findById(doctor_id).orElseThrow(() -> new UserNotFoundException("Doctor does not exist !! id :"+ doctor_id));
+            String doctorName = doctorDetails.getDoctor_name();
+            if(doctorName == null || doctorName.isEmpty()){
+                throw new IllegalArgumentException("Doctor name cannot be empty or null.");
+            }
+
             doctor.setDoctor_name(doctorDetails.getDoctor_name());
             try {
                 doctor.setDoctor_speciality(doctorDetails.getDoctor_speciality());
@@ -75,29 +80,35 @@ public class DoctorController {
                 throw new InvalidSpecialtyException("ENUM in Speciality error", ex);
             }
             doctor.setDoctor_description(doctorDetails.getDoctor_description());
+            Long phoneNumber = doctorDetails.getPhone_no();
+            if(phoneNumber == null || String.valueOf(phoneNumber).isEmpty()){
+                throw new IllegalArgumentException("Doctor mobile number cannot be empty or null.");
+            }
             doctor.setPhone_no(doctorDetails.getPhone_no());
             Doctor updateDoctor = doctor_repository.save(doctor);
             return ResponseEntity.ok(updateDoctor);
-        }
-        catch (DataIntegrityViolationException ex){
+        }catch (DataIntegrityViolationException ex){
             throw  new UpdateFailedException("Failed to update doctor with Doctor id: " + doctor_id + ". Phone number already exists.");
+        } catch (IllegalArgumentException ex){
+            throw new UpdateFailedException("Doctor name and mobile no cannot be empty");
         }
         catch (Exception ex){
             throw new UpdateFailedException("Updating failed for the doctors");
         }
-
-
     }
 
-    //delete employee rest api
+    //delete doctor rest api
     @DeleteMapping("/doctors/{doctor_id}")
     public ResponseEntity<Map<String,Boolean>> deleteDoctor(@PathVariable Long doctor_id){
-
         Doctor doctor = doctor_repository.findById(doctor_id).orElseThrow(() -> new UserNotFoundException("Doctor does not exit !! id :"+ doctor_id));
-        doctor_repository.delete(doctor);
-        Map<String,Boolean> response = new HashMap<>();
-        response.put("Deleted",Boolean.TRUE);
-        return ResponseEntity.ok(response);
+        try {
+            doctor_repository.delete(doctor);
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("Deleted", Boolean.TRUE);
+            return ResponseEntity.ok(response);
+        }catch (Exception ex){
+            throw new DatabaseAccessException("Failed to delete doctor with id: " + doctor_id);
+        }
 
     }
 

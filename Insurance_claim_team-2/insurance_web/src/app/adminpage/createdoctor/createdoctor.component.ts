@@ -47,7 +47,7 @@ export class CreatedoctorComponent implements OnInit {
     },
     error => {
       
-      this.message=(error.error.message)|| "Creating  failed"; // log the error message to the console
+      this.message=(error.error.message); // log the error message to the console
       // handle the error in the UI as per your requirement
       
       const dialogRef = this.dialog.open(AlertBoxComponent, {

@@ -40,24 +40,28 @@ export class UpdateproviderComponent {
          
           
         });
-    },error =>console.log(error));
-      this.message = "Updating Provider Failed !!!  ";
-        // alert(this.message)
-        const dialogRef = this.dialog.open(AlertBoxComponent, {
-
-          width: '250px',
-          data:{
-
-            message:this.message
-
-          }
-         
-        });
+    },error => {
       
-        dialogRef.afterClosed().subscribe(() => {
-         
-          
-        });
+      this.message=(error.error.message); // log the error message to the console
+      // handle the error in the UI as per your requirement
+      
+      const dialogRef = this.dialog.open(AlertBoxComponent, {
+
+        width: '300px',
+        data:{
+
+          message:this.message
+
+        }
+       
+      });
+    
+      dialogRef.afterClosed().subscribe(() => {
+       
+        
+      });
+      
+    });
   }
   gotoProvider(){
 
