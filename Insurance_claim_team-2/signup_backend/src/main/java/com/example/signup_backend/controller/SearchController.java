@@ -47,11 +47,18 @@ public class SearchController {
     //create search
     @PostMapping("/search")
     public Search createSearch(@RequestBody Search search) {
-
+        Long doctorId = search.getDoctor_id();
+        if (!doctorRepository.existsById(doctorId)) {
+            throw new UserNotFoundException("Doctor does not exist !! id :"+ doctorId);
+        }
+        Long providerId = search.getProvider_id();
+        if (!providerRepository.existsById(providerId)) {
+            throw new UserNotFoundException("Provider does not exist !! id :"+ providerId);
+        }
         try {
             return search_repository.save(search);
         } catch (Exception ex) {
-                throw new ForeignKeyNotFoundException("foreign key error");
+                throw new ForeignKeyNotFoundException("Duplicate Entry");
         }
 
     }
@@ -70,23 +77,39 @@ public class SearchController {
     public ResponseEntity<Search> updateSearch(@PathVariable Long search_id, @RequestBody Search searchDetails) {
 
         Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + search_id));
-        search.setSearch_id(searchDetails.getSearch_id());
-        search.setDoctor_id(searchDetails.getDoctor_id());
-        search.setProvider_id(searchDetails.getProvider_id());
-        Search updatesearch = search_repository.save(search);
-        return ResponseEntity.ok(updatesearch);
+        Long doctorId = searchDetails.getDoctor_id();
+        if (!doctorRepository.existsById(doctorId)) {
+            throw new UserNotFoundException("Doctor does not exist !! id :"+ doctorId);
+        }
+        Long providerId = searchDetails.getProvider_id();
+        if (!providerRepository.existsById(providerId)) {
+            throw new UserNotFoundException("Provider does not exist !! id :"+ providerId);
+        }
+        try {
+            search.setSearch_id(searchDetails.getSearch_id());
+            search.setDoctor_id(searchDetails.getDoctor_id());
+            search.setProvider_id(searchDetails.getProvider_id());
+            Search updatesearch = search_repository.save(search);
+            return ResponseEntity.ok(updatesearch);
+        }catch (Exception ex){
+            throw new ForeignKeyNotFoundException("Duplicate Entry");
+        }
 
     }
 
     //delete search rest api
     @DeleteMapping("/search/{search_id}")
-    public ResponseEntity<Map<String, Boolean>> deletesearch(@PathVariable Long search_id) {
+    public ResponseEntity<Map<String, Boolean>> deleteSearch(@PathVariable Long search_id) {
 
         Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + search_id));
-        search_repository.delete(search);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("Deleted", Boolean.TRUE);
-        return ResponseEntity.ok(response);
+        try {
+            search_repository.delete(search);
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("Deleted", Boolean.TRUE);
+            return ResponseEntity.ok(response);
+        }catch (Exception ex){
+            throw new DeleteFailedException("Failed to delete " + search_id);
+        }
 
     }
 
