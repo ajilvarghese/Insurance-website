@@ -1,43 +1,35 @@
-<mat-card>
+
   
-    <mat-card-content >
-  
-      <!-- Search input -->
-      <div class="centered-card-container">
-        <div class="form-container">
-            <mat-card class="form-card">
+      <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
+            <mat-card class="card" >
                 <mat-card-header>
-                    <mat-card-title class="text-center"  > Update </mat-card-title>
+                    <mat-card-title class="textcenter"  > Update </mat-card-title>
                   </mat-card-header>
+                  &nbsp;
+                  &nbsp;
                   <mat-card-content>
               <form (ngSubmit)="onSubmit()">
-                <div class="form-input">
+                <div class="col">
                   <mat-form-field>
                     <mat-label> Doctor ID</mat-label>
                     <input matInput [(ngModel)]="search.doctor_id" name="doctor_id">
                   </mat-form-field>
                 </div>
-          
-                <div class="form-input">
+                  &nbsp;
+                  &nbsp;
+                  <div class="col">
                     <mat-form-field>
                         <mat-label>Provider ID</mat-label>
                         <input matInput [(ngModel)]="search.provider_id" name="provider_id">
                       </mat-form-field>
-                </div>
+                    </div>
           
-                <div class="form-input">
-                  <button mat-raised-button color="primary" type="submit">Update</button>
-                </div>
+                
+                  <button mat-raised-button color="primary" type="submit" class="textcenter" >Update</button>
+                
               </form>
               </mat-card-content>
             </mat-card>
           </div>
-          
-
-  </div>
- 
-  </mat-card-content>
-  
-  </mat-card>
-
+        
 
