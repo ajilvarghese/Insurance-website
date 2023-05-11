@@ -22,7 +22,7 @@ import java.util.Map;
 public class DoctorController {
 //    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
     @Autowired
-DoctorRepository doctor_repository;
+    DoctorRepository doctor_repository;
     @Autowired
     DoctorService doctor_service;
 

@@ -13,7 +13,7 @@ public class Doctor {
     private String doctor_name;
     @Column(name = "doctor_speciality")
     @Enumerated(EnumType.STRING)
-    private Doctor_speciality doctor_speciality;
+    private DoctorSpeciality doctor_speciality;
     @Column(name = "doctor_description")
     private String doctor_description;
     @Column(name="phone_no")
@@ -43,11 +43,11 @@ public class Doctor {
         this.doctor_name = doctor_name;
     }
 
-    public Doctor_speciality getDoctor_speciality() {
+    public DoctorSpeciality getDoctor_speciality() {
         return doctor_speciality;
     }
 
-    public void setDoctor_speciality(Doctor_speciality doctor_speciality) {
+    public void setDoctor_speciality(DoctorSpeciality doctor_speciality) {
         this.doctor_speciality = doctor_speciality;
     }
 
