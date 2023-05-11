@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertBoxComponent } from 'src/app/alert-box/alert-box.component';
@@ -19,9 +20,21 @@ export class CreateproviderComponent {
 
   provider :Provider = new Provider();
   message!: string;
-  constructor(private statecityservice:ProviderserviceService,private router:Router,public dialog: MatDialog){}
-  ngOnInit():void{
+  loginForm!:FormGroup;
+  constructor(private statecityservice:ProviderserviceService,private router:Router,public dialog: MatDialog,private fb:FormBuilder){}
+  ngOnInit(){
 
+    this.createForm();
+
+  }
+  createForm(){
+    this.loginForm = this.fb.group({
+      pname:['',Validators.required],
+      pno:['',[Validators.required,Validators.pattern(/^[1-9]\d{9}$/)]],
+      state:['',Validators.required],
+      city:['',Validators.required]
+      
+    });
   }
   saveProvider(){
 
