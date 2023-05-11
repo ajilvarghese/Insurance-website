@@ -1,7 +1,3 @@
-.centered-card-container {
-    background-color: #f4ecec;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-     /* Adjust height as needed */
-  }
+.textcenter{
+    margin-left: 150px;
+   }
