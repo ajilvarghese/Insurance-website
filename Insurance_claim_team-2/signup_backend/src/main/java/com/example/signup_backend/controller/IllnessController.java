@@ -3,7 +3,7 @@ package com.example.signup_backend.controller;
 import com.example.signup_backend.exceptions.UserNotFoundException;
 import com.example.signup_backend.model.ErrorResponse;
 import com.example.signup_backend.model.Illness;
-import com.example.signup_backend.repository.Illness_repository;
+import com.example.signup_backend.repository.IllnessRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +21,14 @@ import java.util.List;
 public class IllnessController {
     private static final Logger logger = LoggerFactory.getLogger(UserNotFoundException.class);
     @Autowired
-    Illness_repository illnessRepository;
+    IllnessRepository illnessRepository;
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
+
         logger.error(ex.getMessage(), ex);
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(errorResponse, errorResponse.getStatus());
+
     }
 
     //.....to fetch illlness.......
@@ -34,5 +36,6 @@ public class IllnessController {
     public List<Illness> getIllnesses() {
 
         return (List<Illness>) illnessRepository.findAll();
+
     }
 }

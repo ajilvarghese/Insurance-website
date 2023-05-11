@@ -2,7 +2,7 @@ package com.example.signup_backend.service;
 
 import com.example.signup_backend.exceptions.UserNotFoundException;
 import com.example.signup_backend.model.Signup;
-import com.example.signup_backend.repository.Sigup_repositiory;
+import com.example.signup_backend.repository.SignupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,8 +15,9 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
-public class Signup_service {
-    @Autowired Sigup_repositiory sigupRepositiory;
+public class SignupService {
+    @Autowired
+    SignupRepository sigupRepositiory;
 
     public Signup saveSignup(Signup signup){
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
