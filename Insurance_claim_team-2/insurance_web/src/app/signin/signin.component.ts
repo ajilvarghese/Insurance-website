@@ -91,7 +91,7 @@ export class SignInComponent implements OnInit {
     this.message = 'Incorrect  Password!';
   }
   else {
-    this.message = 'Login Failed!! Invalid phone_number and password';
+    this.message = 'Login Failed!! Invalid Mobile Number or Password';
   }
   // alert(this.message);
   const dialogRef = this.dialog.open(AlertBoxComponent, {

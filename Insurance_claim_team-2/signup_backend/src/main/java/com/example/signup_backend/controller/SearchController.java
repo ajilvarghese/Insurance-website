@@ -3,10 +3,10 @@ import com.example.signup_backend.exceptions.*;
 import com.example.signup_backend.model.Doctor;
 import com.example.signup_backend.model.Provider;
 import com.example.signup_backend.model.Search;
-import com.example.signup_backend.repository.Doctor_repository;
-import com.example.signup_backend.repository.Provider_repository;
-import com.example.signup_backend.repository.Search_repository;
-import com.example.signup_backend.service.Search_service;
+import com.example.signup_backend.repository.DoctorRepository;
+import com.example.signup_backend.repository.ProviderRepository;
+import com.example.signup_backend.repository.SearchRepository;
+import com.example.signup_backend.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,13 +22,13 @@ import java.util.Map;
 public class SearchController {
 
     @Autowired
-    Search_repository search_repository;
+    SearchRepository search_repository;
     @Autowired
-    Search_service search_service;
+    SearchService search_service;
     @Autowired
-    Doctor_repository doctorRepository;
+    DoctorRepository doctorRepository;
     @Autowired
-    Provider_repository providerRepository;
+    ProviderRepository providerRepository;
 
 
     //..........Search.........................
@@ -36,56 +36,65 @@ public class SearchController {
 
     @GetMapping("/search")
     public List<Search> getallsearch() {
+
         List<Search> searches=search_service.getallsearch();
         if(searches.isEmpty()){
             throw new EmptyDatabaseException("Search database is empty");
         }
         return search_service.getallsearch();
+
     }
 
     //create search
     @PostMapping("/search")
     public Search createSearch(@RequestBody Search search) {
+
         try {
             return search_repository.save(search);
         } catch (Exception ex) {
                 throw new ForeignKeyNotFoundException("foreign key error");
         }
 
-
     }
 
     //get search by id
     @GetMapping("/search/{search_id}")
     public ResponseEntity<Search> getSearchBYId(@PathVariable Long search_id) {
+
         Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + search_id));
         return ResponseEntity.ok(search);
+
     }
 
     //update search
     @PutMapping("/search/{search_id}")
     public ResponseEntity<Search> updateSearch(@PathVariable Long search_id, @RequestBody Search searchDetails) {
+
         Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + search_id));
         search.setSearch_id(searchDetails.getSearch_id());
         search.setDoctor_id(searchDetails.getDoctor_id());
         search.setProvider_id(searchDetails.getProvider_id());
         Search updatesearch = search_repository.save(search);
         return ResponseEntity.ok(updatesearch);
+
     }
 
     //delete search rest api
     @DeleteMapping("/search/{search_id}")
     public ResponseEntity<Map<String, Boolean>> deletesearch(@PathVariable Long search_id) {
+
         Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + search_id));
         search_repository.delete(search);
         Map<String, Boolean> response = new HashMap<>();
         response.put("Deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
+
     }
 
 
     @GetMapping("/search1")
     public List<Map<String, Object>> search() {
+
         List<Search> searchResults = search_repository.findAll();
         List<Map<String, Object>> results = new ArrayList<>();
 
@@ -108,6 +117,7 @@ public class SearchController {
             }
         }
         return results;
-        //........................................
+
     }
+
 }

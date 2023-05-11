@@ -4,7 +4,7 @@ package com.example.signup_backend.controller;
 import com.example.signup_backend.exceptions.UserNotFoundException;
 import com.example.signup_backend.model.*;
 import com.example.signup_backend.repository.*;
-import com.example.signup_backend.service.Signup_service;
+import com.example.signup_backend.service.SignupService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,29 +30,30 @@ public class SignupController {
     }
 
     @Autowired
-    Signup_service signupService;
+    SignupService signupService;
 
-    private Sigup_repositiory sigupRepositiory;
+    private SignupRepository sigupRepositiory;
+
     //......getting the details
     @GetMapping("/all")
     public List<Signup> getAllSignups() {
         return signupService.getAllSignups();
     }
+
     //............Signup ........
     @PostMapping("/create")
-    public ResponseEntity<Signup> saveSignup(@RequestBody Signup signup){
+    public ResponseEntity<Signup> saveSignup(@RequestBody Signup signup) {
 
-        Signup savedMember= signupService.saveSignup(signup);
-//        return ResponseEntity.ok("User Inserted");
+        Signup savedMember = signupService.saveSignup(signup);
         return new ResponseEntity<>(savedMember, HttpStatus.CREATED);
+
     }
 
     //......Sign-in............
     @PostMapping("/authenticateUser")
-    public ResponseEntity<?> authenticateUser(@RequestBody Signup signup){
+    public ResponseEntity<?> authenticateUser(@RequestBody Signup signup) {
+
         return new ResponseEntity<>(signupService.authenticateUser(signup), HttpStatus.CREATED);
     }
-
-
 
 }
