@@ -60,27 +60,40 @@ private getDoctor1(){
 deletedoctor(doctor_id:number){
 
   this.statecity.deletedoctor(doctor_id).subscribe(data =>{
-
     this.getDoctor1();
     this.message = "Deleted Doctor SuccessFully  ";
         // alert(this.message)
     const dialogRef = this.dialog.open(AlertBoxComponent, {
-
       width: '250px',
       data:{
-
           message:this.message
-
-          }
-         
+          }       
+        });   
+    dialogRef.afterClosed().subscribe(() => {     
         });
-      
+  },
+  error => {  
+    this.message=(error.error.message); // log the error message to the console
+    // handle the error in the UI as per your requirement
+    
+    const dialogRef = this.dialog.open(AlertBoxComponent, {
+
+      width: '300px',
+      data:{
+
+        message:this.message
+
+      }
+     
+    });
+  
     dialogRef.afterClosed().subscribe(() => {
-         
-          
-        });
-
-  })
+     
+      
+    });
+    
+  }
+  )
   
 }
 
