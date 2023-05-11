@@ -69,13 +69,16 @@
           
           <p> <mat-icon>person</mat-icon> 
             {{doctor.doctor_id}}</p>
+            <br>
+            <p class="form-container">
+              
+                <button mat-raised-button color="primary" (click) = "updatedoctor(doctor.doctor_id)" ><mat-icon>update</mat-icon>UPDATE</button>&nbsp;
+                
+                <button mat-raised-button color="warn" (click) = "deletedoctor(doctor.doctor_id)"><mat-icon>delete</mat-icon>DELETE</button>
+            
+            </p>
         </div>
-        <form class="form-container">
-          <button mat-raised-button color="primary" (click) = "updatedoctor(doctor.doctor_id)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
-          
-          <button mat-raised-button color="warn" (click) = "deletedoctor(doctor.doctor_id)">DELETE<mat-icon>delete</mat-icon>
-          </button>
-        </form>
+       
       </mat-card-content>
       
     </mat-card>
