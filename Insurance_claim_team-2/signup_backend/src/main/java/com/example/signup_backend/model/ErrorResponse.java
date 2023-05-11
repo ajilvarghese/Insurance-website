@@ -13,21 +13,14 @@ public class ErrorResponse {
         this.message = message;
         this.timestamp = timestamp;
     }
-
     public HttpStatus getStatus() {
-
         return status;
-
     }
 
     public String getMessage() {
-
         return message;
-
     }
-
     public LocalDateTime getTimestamp() {
-
         return timestamp;
     }
 }

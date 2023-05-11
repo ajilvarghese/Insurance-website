@@ -1,9 +1,8 @@
 package com.example.signup_backend.controller;
-
 import com.example.signup_backend.exceptions.*;
 import com.example.signup_backend.model.Doctor;
-import com.example.signup_backend.repository.Doctor_repository;
-import com.example.signup_backend.service.Doctor_service;
+import com.example.signup_backend.repository.DoctorRepository;
+import com.example.signup_backend.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +20,9 @@ import java.util.Map;
 
 public class DoctorController {
     @Autowired
-    Doctor_repository doctor_repository;
+    DoctorRepository doctor_repository;
     @Autowired
-    Doctor_service doctor_service;
+    DoctorService doctor_service;
 
     //get all doctors
     @GetMapping("/doctors")
@@ -33,11 +32,13 @@ public class DoctorController {
             throw new EmptyDatabaseException(" Doctor database is empty");
         }
         return doctor_service.getallDoctors();
+
         }
 
-    //create doctor
+        //create doctor
     @PostMapping("/doctors")
     public Doctor createDoctor(@RequestBody Doctor doctor){
+
         try{
             Long doctorMobile = doctor.getPhone_no();
             String doctorName = doctor.getDoctor_name();
