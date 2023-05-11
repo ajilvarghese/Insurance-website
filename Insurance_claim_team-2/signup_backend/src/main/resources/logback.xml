@@ -13,7 +13,7 @@
 <!--        <File>C:/Users/235760/Documents/Project team 2/Insurance_claim_team-2/insurance.log</File>-->
 
 <!--                <File>C:/Users/235862/Desktop/finaledit1/Insurance-website/Insurance_claim_team-2/insurance.log</File>-->
-        <File>C:/Users/235928/team2_Advalent/Insurance-website/Insurance_claim_team-2/insurance.log</File>
+<!--        <File>C:/Users/235928/team2_Advalent/Insurance-website/Insurance_claim_team-2/insurance.log</File>-->
         <encoder>
             <pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.sss'Z'}] [%C] [%t] [%L] [%-5p]
                 %m%n</pattern>
