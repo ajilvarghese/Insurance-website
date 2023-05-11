@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="search")
+
 public class Search {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

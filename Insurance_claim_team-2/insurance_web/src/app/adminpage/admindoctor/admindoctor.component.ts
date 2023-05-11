@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { AlertBoxComponent } from '../../alert-box/alert-box.component';
 import { Doctor } from '../../Class/doctor';
 import { DoctorserviceService } from '../../Service/doctorservice.service';
-import { StateCityServiceService } from '../../Service/state-city-service.service';
 
 @Component({
   selector: 'app-admindoctor',
@@ -20,6 +19,8 @@ export class AdmindoctorComponent {
   selectedSpeciality= new FormControl('');
   message!: string;
   isFixed = false;
+
+  
 
   constructor(private statecity:DoctorserviceService,private router :Router,public dialog: MatDialog){}
   ngOnInit(): void {

@@ -55,6 +55,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +81,6 @@ import { MatMenuModule } from '@angular/material/menu';
     FooterComponent,
     Footer1Component,
     DepartmentComponent,
-    
     
   ],
   imports: [
