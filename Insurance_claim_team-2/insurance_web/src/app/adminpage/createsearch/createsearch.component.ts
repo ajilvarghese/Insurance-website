@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertBoxComponent } from 'src/app/alert-box/alert-box.component';
@@ -17,9 +18,27 @@ export class CreatesearchComponent {
 
   search :Search = new Search();
   message!: string;
-  constructor(private statecityservice:SearchserviceService,private router:Router,public dialog: MatDialog){}
-  ngOnInit():void{
+  loginForm!:FormGroup;
+  isDisabled:boolean=true;
+  public isFormValid=false;
+  checkFormValidity(): void {
+    this.isFormValid = this.loginForm.valid;
+  }
+  
 
+
+  constructor(private statecityservice:SearchserviceService,private router:Router,public dialog: MatDialog,private fb:FormBuilder){}
+  ngOnInit(){
+    this.createForm();
+
+  }
+
+  createForm(){
+    this.loginForm = this.fb.group({
+      doc_id:['',Validators.required],
+      prov_id:['',Validators.required]
+      
+    });
   }
   saveSearch(){
 

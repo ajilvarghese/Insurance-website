@@ -9,24 +9,26 @@
                   &nbsp;
                   &nbsp;
                   <mat-card-content>
-              <form (ngSubmit)="onSubmit()">
+              <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
                 <div class="col">
                   <mat-form-field>
                     <mat-label> Doctor ID</mat-label>
-                    <input matInput [(ngModel)]="search.doctor_id" name="doctor_id">
+                    <input matInput [(ngModel)]="search.doctor_id" name="doctor_id" formControlName="doc_id">
+                    <mat-error *ngIf="loginForm.get('doc_id')?.hasError('required')"></mat-error>
                   </mat-form-field>
                 </div>
                
                 <div class="col">
                     <mat-form-field>
                         <mat-label>Provider ID</mat-label>
-                        <input matInput [(ngModel)]="search.provider_id" name="provider_id">
+                        <input matInput [(ngModel)]="search.provider_id" name="provider_id" formControlName="prov_id">
+                        <mat-error *ngIf="loginForm.get('prov_id')?.hasError('required')"></mat-error>
                       </mat-form-field>
                     </div>
                 
           
                 
-                  <button mat-raised-button color="primary" type="submit" class="textcenter">Create</button>
+                  <button [disabled]="loginForm.invalid" mat-raised-button color="primary" type="submit" class="textcenter">Create</button>
                 
               </form>
               </mat-card-content>
