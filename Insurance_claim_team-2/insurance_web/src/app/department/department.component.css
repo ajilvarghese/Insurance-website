@@ -1,8 +1,4 @@
-/* .mat-card {
-    margin: 10px;
-    max-width: 400px;
-    width: 100%;
-    } */
+
 
     .card-row {
         display: flex;
@@ -28,23 +24,17 @@
     }
     .center{
         display:flex;
-        /* flex-wrap: wrap; */
+       
         height: 150px;
         justify-content: center;
         align-items: center;
         }
     
-        .whitebg{
-            /* background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: none; */
+        .whitebackground{
+            
             background-color: #FFFFFF;
             background-size: cover; 
-            /* height:auto ;
-            width: auto;
-            /* flex: 1;
-            max-width: auto;
-            margin: 1rem;
-            margin-left: auto; */
+           
         
             
         }
