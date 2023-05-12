@@ -40,16 +40,12 @@ public class DoctorController {
     public Doctor createDoctor(@RequestBody Doctor doctor){
 
         try{
-            Long doctorMobile = doctor.getPhone_no();
             String doctorName = doctor.getDoctor_name();
-            if((doctorName == null || doctorName.isEmpty()) || (doctorMobile == null || String.valueOf(doctorMobile).isEmpty())){
+            if(doctorName == null || doctorName.isEmpty()){
                 throw new IllegalArgumentException("Doctor name cannot be empty or null.");
             }
             return doctor_repository.save(doctor);
-        }catch (IllegalArgumentException ex){
-            throw new DatabaseAccessException("Doctor name and mobile number can be empty");
-        }
-        catch (DataIntegrityViolationException ex) {
+        } catch (DataIntegrityViolationException ex) {
             throw new DatabaseAccessException("Duplication of Phone Number");
         } catch (Exception ex){
             throw new DatabaseAccessException("Error occurred while creating a new doctor");
