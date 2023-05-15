@@ -19,21 +19,23 @@ import { AdminsearchComponent } from './adminpage/adminsearch/adminsearch.compon
 import { CreatesearchComponent } from './adminpage/createsearch/createsearch.component';
 import { UpdatesearchComponent } from './adminpage/updatesearch/updatesearch.component';
 import { DepartmentComponent } from './department/department.component';
+import { AuthServiceGuard } from './auth-service.guard';
 
 
 const routes: Routes = [
   
-    {path:'signup',component:SignUpComponent},
-    {path:'',component:HomeComponent},
+    
+    {path:'',component:HomeComponent },
     {path:'signin',component:SignInComponent},
+    {path:'signup',component:SignUpComponent},
     {path:'mainnav',component:MainNavComponent},
     {path:'mainpage',component:MainPageComponent},
     {path:'main',component:MainComponent},
     {path:'alert',component:AlertBoxComponent},
-    {path:'mainform',component:MainformComponent},
+    {path:'mainform',component:MainformComponent ,canActivate:[AuthServiceGuard]},
     {path:'department',component:DepartmentComponent},
     {path:'adminpage',
-    component:AdminpageComponent,
+    component:AdminpageComponent,canActivate:[AuthServiceGuard],
     children:[
       {path:'adminsearch',component:AdminsearchComponent},
       {path:'admindoctor',component:AdmindoctorComponent},

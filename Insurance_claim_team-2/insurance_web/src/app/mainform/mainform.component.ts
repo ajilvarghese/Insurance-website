@@ -1,11 +1,12 @@
 // import { Component } from '@angular/core';
 import {Component, OnInit,HostListener} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { StateCityServiceService } from '../Service/state-city-service.service';
 import { FormControl } from '@angular/forms';
 import { UserServiceService } from '../Service/user-service.service';
 import { Search1 } from '../Class/search1';
 import { SearchserviceService } from '../Service/searchservice.service';
+import { Router } from '@angular/router';
+import { AuthServiceService } from '../auth-service.service';
 interface City {
   state_id:number;
   city_id: number;
@@ -47,7 +48,11 @@ export class MainformComponent implements OnInit {
   search: Search1[]=[];
   filterSearch:Search1[]=[];
   firstName!:String;
-  constructor(private formBuilder: FormBuilder,private stateCityService:SearchserviceService,private userService:UserServiceService) {}
+  
+  constructor(private formBuilder: FormBuilder,private stateCityService:SearchserviceService,private userService:UserServiceService,private authService: AuthServiceService, private router: Router) {
+   
+  }
+  
  
   
    
@@ -68,6 +73,10 @@ this.filterSearch=this.search
      (doctor.doctor_speciality.toLowerCase().includes(specialty)||doctor.doctor_name.toLowerCase().includes(specialty))
    );
     }
+  }
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/signin']);
   }
 
   //.............nav for search..................
