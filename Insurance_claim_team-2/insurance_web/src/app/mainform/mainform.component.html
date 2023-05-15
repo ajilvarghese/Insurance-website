@@ -45,13 +45,13 @@
  <br>
      &nbsp;     
     <mat-form-field>
-      <mat-label>Search state/city</mat-label>
+      <mat-label>State/City</mat-label>
       <input matInput  [formControl]="selectedcity" (ngModelChange)="onStateChange()"  >
       <mat-icon matSuffix>location_on</mat-icon>
     </mat-form-field>
     &nbsp;
   <mat-form-field>
-    <mat-label>Search Speciality/Doctor </mat-label>
+    <mat-label>Speciality/Doctor </mat-label>
     <input matInput [formControl]="selectedSpeciality" (ngModelChange)="onStateChange()" >
     <mat-icon matSuffix>medical_services</mat-icon>
   </mat-form-field> 
@@ -82,15 +82,15 @@
 <div class="tabclass1">
 <mat-card *ngFor="let doctor of filterSearch | slice:0:5" class="doctor-card">
   <mat-card-header>
-    <mat-card-title>Dr.{{ doctor.doctor_name }}</mat-card-title>
-    <mat-card-subtitle>{{ doctor.doctor_speciality }}</mat-card-subtitle>
+    <mat-card-title>Dr.{{ doctor.doctorName }}</mat-card-title>
+    <mat-card-subtitle>{{ doctor.doctorSpeciality }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div class="content-container">
-      <p>{{ doctor.doctor_description }}</p>
+      <p>{{ doctor.doctorDescription }}</p>
       <p>
         <mat-icon class="my-icon">local_hospital</mat-icon>
-        {{ doctor.hospital_clinic }}
+        {{ doctor.hospitalClinic }}
       </p>
       <p>
         <mat-icon class="my-icon">location_on</mat-icon>
@@ -98,7 +98,7 @@
       </p>
       <p>
         <mat-icon class="my-icon">phone</mat-icon>
-        {{ doctor.contact_number }}
+        {{ doctor.contactNumber }}
       </p>
     </div>
     <form class="form-container">

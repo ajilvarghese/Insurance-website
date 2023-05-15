@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertBoxComponent } from '../../alert-box/alert-box.component';
@@ -12,13 +13,14 @@ import { DoctorserviceService } from '../../Service/doctorservice.service';
 })
 export class UpdatedoctorComponent implements OnInit {
 
-  doctor_id!:number;
+  doctorId!:number;
   doctor: Doctor = new Doctor();
   specialties = ['ENT','Orthopedics','Neurology','Cardiologist'];
   message!: string;
+  
   onSubmit(){
 
-    this.statecityservice.updatedoctor(this.doctor_id,this.doctor).subscribe(data =>{
+    this.statecityservice.updatedoctor(this.doctorId,this.doctor).subscribe(data =>{
 
        this.gotoDoctor();
        this.message = "Updated Doctor SuccessFully  ";
@@ -74,8 +76,9 @@ export class UpdatedoctorComponent implements OnInit {
   }
   ngOnInit(): void {
     
-    this.doctor_id=this.route.snapshot.params['doctor_id'];
-    this.statecityservice.getdoctorById(this.doctor_id).subscribe(data =>{
+    this.doctorId=this.route.snapshot.params['doctorId'];
+    console.log(this.doctorId);
+    this.statecityservice.getdoctorById(this.doctorId).subscribe(data =>{
       this.doctor=data;
       
     },error =>console.log(error));

@@ -40,7 +40,7 @@ public class DoctorController {
     public Doctor createDoctor(@RequestBody Doctor doctor){
 
         try{
-            String doctorName = doctor.getDoctor_name();
+            String doctorName = doctor.getDoctorName();
             if(doctorName == null || doctorName.isEmpty()){
                 throw new IllegalArgumentException("Doctor name cannot be empty or null.");
             }
@@ -53,38 +53,38 @@ public class DoctorController {
     }
 
     //get doctor by id
-    @GetMapping("/doctors/{doctor_id}")
-    public ResponseEntity<Doctor> getDoctorBYId(@PathVariable Long doctor_id){
-        Doctor doctor = doctor_repository.findById(doctor_id).orElseThrow(() -> new UserNotFoundException("Doctor does not exist !! id :"+ doctor_id));
+    @GetMapping("/doctors/{doctorId}")
+    public ResponseEntity<Doctor> getDoctorById(@PathVariable Long doctorId){
+        Doctor doctor = doctor_repository.findById(doctorId).orElseThrow(() -> new UserNotFoundException("Doctor does not exist !! id :"+ doctorId));
         return ResponseEntity.ok(doctor);
     }
 
     //update Doctors
-    @PutMapping("/doctors/{doctor_id}")
-    public ResponseEntity<Doctor> updateDoctor(@PathVariable Long doctor_id,@RequestBody Doctor doctorDetails){
+    @PutMapping("/doctors/{doctorId}")
+    public ResponseEntity<Doctor> updateDoctor(@PathVariable Long doctorId,@RequestBody Doctor doctorDetails){
         try {
-            Doctor doctor = doctor_repository.findById(doctor_id).orElseThrow(() -> new UserNotFoundException("Doctor does not exist !! id :"+ doctor_id));
-            String doctorName = doctorDetails.getDoctor_name();
+            Doctor doctor = doctor_repository.findById(doctorId).orElseThrow(() -> new UserNotFoundException("Doctor does not exist !! id :"+ doctorId));
+            String doctorName = doctorDetails.getDoctorName();
             if(doctorName == null || doctorName.isEmpty()){
                 throw new IllegalArgumentException("Doctor name cannot be empty or null.");
             }
 
-            doctor.setDoctor_name(doctorDetails.getDoctor_name());
+            doctor.setDoctorName(doctorDetails.getDoctorName());
             try {
-                doctor.setDoctor_speciality(doctorDetails.getDoctor_speciality());
+                doctor.setDoctor_speciality(doctorDetails.getDoctorSpeciality());
             } catch (Exception ex) {
                 throw new InvalidSpecialtyException("ENUM in Speciality error", ex);
             }
-            doctor.setDoctor_description(doctorDetails.getDoctor_description());
-            Long phoneNumber = doctorDetails.getPhone_no();
+            doctor.setDoctorDescription(doctorDetails.getDoctorDescription());
+            Long phoneNumber = doctorDetails.getPhoneNo();
             if(phoneNumber == null || String.valueOf(phoneNumber).isEmpty()){
                 throw new IllegalArgumentException("Doctor mobile number cannot be empty or null.");
             }
-            doctor.setPhone_no(doctorDetails.getPhone_no());
+            doctor.setPhone_no(doctorDetails.getPhoneNo());
             Doctor updateDoctor = doctor_repository.save(doctor);
             return ResponseEntity.ok(updateDoctor);
         }catch (DataIntegrityViolationException ex){
-            throw  new UpdateFailedException("Failed to update doctor with Doctor id: " + doctor_id + ". Phone number already exists.");
+            throw  new UpdateFailedException("Failed to update doctor with Doctor id: " + doctorId + ". Phone number already exists.");
         } catch (IllegalArgumentException ex){
             throw new UpdateFailedException("Doctor name and mobile no cannot be empty");
         }
@@ -94,16 +94,16 @@ public class DoctorController {
     }
 
     //delete doctor rest api
-    @DeleteMapping("/doctors/{doctor_id}")
-    public ResponseEntity<Map<String,Boolean>> deleteDoctor(@PathVariable Long doctor_id){
-        Doctor doctor = doctor_repository.findById(doctor_id).orElseThrow(() -> new UserNotFoundException("Doctor does not exit !! id :"+ doctor_id));
+    @DeleteMapping("/doctors/{doctorId}")
+    public ResponseEntity<Map<String,Boolean>> deleteDoctor(@PathVariable Long doctorId){
+        Doctor doctor = doctor_repository.findById(doctorId).orElseThrow(() -> new UserNotFoundException("Doctor does not exit !! id :"+ doctorId));
         try {
             doctor_repository.delete(doctor);
             Map<String, Boolean> response = new HashMap<>();
             response.put("Deleted", Boolean.TRUE);
             return ResponseEntity.ok(response);
         }catch (Exception ex){
-            throw new DatabaseAccessException("Failed to delete doctor with id: " + doctor_id);
+            throw new DatabaseAccessException("Failed to delete doctor with id: " + doctorId);
         }
 
     }

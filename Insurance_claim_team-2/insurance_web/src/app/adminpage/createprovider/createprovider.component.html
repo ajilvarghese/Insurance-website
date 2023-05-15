@@ -12,17 +12,17 @@
               <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
                 <div class="row">
                   <mat-form-field>
-                    <mat-label> hospital_clinic name</mat-label>
-                    <input matInput [(ngModel)]="provider.hospital_clinic" name="Provider Name" formControlName="pname">
-                    <mat-error *ngIf="loginForm.get('pname')?.hasError('required')"></mat-error>
+                    <mat-label> Hospital Name</mat-label>
+                    <input matInput [(ngModel)]="provider.hospitalClinic" name="Provider Name" formControlName="providerName">
+                    <mat-error *ngIf="loginForm.get('providerName')?.hasError('required')"></mat-error>
                   </mat-form-field>
                 
                   &nbsp;
                   &nbsp;
                   <mat-form-field>
                     <mat-label>Contact Number</mat-label>
-                    <input matInput [(ngModel)]="provider.contact_number" name="Contact Number" formControlName="pno">
-                    <mat-error *ngIf="loginForm.get('pno')?.hasError('required')"></mat-error>
+                    <input matInput [(ngModel)]="provider.contactNumber" name="Contact Number" formControlName="contactNumber">
+                    <mat-error *ngIf="loginForm.get('contactNumber')?.hasError('required')"></mat-error>
                   </mat-form-field>
                     
                 </div>

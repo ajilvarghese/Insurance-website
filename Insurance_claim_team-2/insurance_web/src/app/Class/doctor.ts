@@ -2,10 +2,10 @@
 //doctor class
 export class Doctor {
 
-    doctor_id! : number;
-    doctor_name! : String;
-    doctor_speciality!: String;
-    doctor_description!: String;
-    phone_no!: number;
+    doctorId! : number;
+    doctorName! : String;
+    doctorSpeciality!: String;
+    doctorDescription!: String;
+    phoneNo!: number;
 
 }

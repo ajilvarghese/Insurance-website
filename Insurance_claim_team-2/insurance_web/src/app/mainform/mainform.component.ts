@@ -65,7 +65,7 @@ this.filterSearch=this.search
     const specialty = this.selectedSpeciality.value?.toLowerCase() || '';
     if((city && city.split('').length >=3) || (specialty && specialty.split('').length >=2) ){
      this.filterSearch = this.search.filter(doctor =>(doctor.state.toLowerCase().includes(city) || doctor.city.toLowerCase().includes(city)) &&
-     (doctor.doctor_speciality.toLowerCase().includes(specialty)||doctor.doctor_name.toLowerCase().includes(specialty))
+     (doctor.doctorSpeciality.toLowerCase().includes(specialty)||doctor.doctorName.toLowerCase().includes(specialty))
    );
     }
   }

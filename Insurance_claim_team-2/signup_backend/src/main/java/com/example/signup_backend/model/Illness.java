@@ -10,22 +10,22 @@ import jakarta.persistence.Table;
 public class Illness {
     @Id
     @Column(name = "illness_id")
-    private int illness_id;
+    private int illnessId;
     @Column(name = "illness_name")
-    private String illness_name;
-    public int getIllness_id() {
-        return illness_id;
+    private String illnessName;
+    public int getIllnessId() {
+        return illnessId;
     }
 
-    public void setIllness_id(int illness_id) {
-        this.illness_id = illness_id;
+    public void setIllnessId(int illnessId) {
+        this.illnessId = illnessId;
     }
 
-    public String getIllness_name() {
-        return illness_name;
+    public String getIllnessName() {
+        return illnessName;
     }
 
-    public void setIllness_name(String illness_name) {
-        this.illness_name = illness_name;
+    public void setIllnessName(String illnessName) {
+        this.illnessName = illnessName;
     }
 }

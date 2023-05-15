@@ -10,16 +10,16 @@ import java.sql.Date;
 public class Signup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
-    private long member_id;
+    private long memberId;
     @Column(name = "first_name")
-    private String first_name;
+    private String firstName;
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
     @Column(name = "email_id")
-    private String email_id;
+    private String emailId;
     @Id
     @Column(name = "phone_no")
-    private Long phone_no;
+    private Long phoneNo;
 
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)
@@ -29,31 +29,31 @@ public class Signup {
     @Column(name = "dob")
     private Date dob;
     @Column(name = "postal_code")
-    private int postal_code;
+    private int postalCode;
     @Column(name = "address")
     private  String address;
 
     @Column(name = "gov_id")
-    private Long gov_id;
+    private Long govId;
 
     @Column(name = "medical_history")
-    private String medical_history;
+    private String medicalHistory;
     @Column(name = "is_tobacco_user")
-    private String is_tobacco_user;
+    private String isTobaccoUser;
 
     private String password;
     @Column(name = "city_id")
-    private String city_id;
+    private String cityId;
     @Column(name = "state_id")
-    private String state_id;
+    private String stateId;
     @Column(name="role")
     private String role;
 
-    public Long getPhone_no() {
-        return phone_no;
+    public Long getPhoneNo() {
+        return phoneNo;
     }
-    public void setPhone_no(Long phone_no) {
-        this.phone_no = phone_no;
+    public void setPhoneNo(Long phoneNo) {
+        this.phoneNo = phoneNo;
     }
     public Gender getGender() {
         return gender;
@@ -61,29 +61,29 @@ public class Signup {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
-    public long getMember_id() {
-        return member_id;
+    public long getMemberId() {
+        return memberId;
     }
-    public void setMember_id(long member_id) {
-        this.member_id = member_id;
+    public void setMemberId(long memberId) {
+        this.memberId = memberId;
     }
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
-    public String getEmail_id() {
-        return email_id;
+    public String getEmailId() {
+        return emailId;
     }
-    public void setEmail_id(String email_id) {
-        this.email_id = email_id;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
     public Date getDob() {
         return dob;
@@ -93,12 +93,12 @@ public class Signup {
         this.dob = dob;
     }
 
-    public int getPostal_code() {
+    public int getPostalCode() {
 
-        return postal_code;
+        return postalCode;
     }
-    public void setPostal_code(int postal_code) {
-        this.postal_code = postal_code;
+    public void setPostalCode(int postalCode) {
+        this.postalCode = postalCode;
     }
     public String getAddress() {
         return address;
@@ -106,23 +106,23 @@ public class Signup {
     public void setAddress(String address) {
         this.address = address;
     }
-    public Long getGov_id() {
-        return gov_id;
+    public Long getGovId() {
+        return govId;
     }
-    public void setGov_id(Long gov_id) {
-        this.gov_id = gov_id;
+    public void setGovId(Long govId) {
+        this.govId = govId;
     }
-    public String getMedical_history() {
-        return medical_history;
+    public String getMedicalHistory() {
+        return medicalHistory;
     }
-    public void setMedical_history(String medical_history) {
-        this.medical_history = medical_history;
+    public void setMedicalHistory(String medicalHistory) {
+        this.medicalHistory = medicalHistory;
     }
-    public String getIs_tobacco_user() {
-        return is_tobacco_user;
+    public String getIsTobaccoUser() {
+        return isTobaccoUser;
     }
-    public void setIs_tobacco_user(String is_tobacco_user) {
-        this.is_tobacco_user = is_tobacco_user;
+    public void setIsTobaccoUser(String isTobaccoUser) {
+        this.isTobaccoUser = isTobaccoUser;
     }
     public String getPassword() {
         return password;
@@ -130,17 +130,17 @@ public class Signup {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getCity_id() {
-        return city_id;
+    public String getCityId() {
+        return cityId;
     }
-    public void setCity_id(String city_id) {
-        this.city_id = city_id;
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
-    public String getState_id() {
-        return state_id;
+    public String getStateId() {
+        return stateId;
     }
-    public void setState_id(String state_id) {
-        this.state_id = state_id;
+    public void setStateId(String state_id) {
+        this.stateId = state_id;
     }
     public String getRole() {
         return role;

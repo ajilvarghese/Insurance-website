@@ -49,16 +49,16 @@ export class SignUpComponent{
   cities!: City[];
   maxDate: Date;
   minDate: Date;
-  first_name!: string;
-  last_name!:string;
-  email_id!:any;
-  phone_no!:string;
+  firstName!: string;
+  lastName!:string;
+  emailId!:any;
+  phoneNo!:string;
   gender!:string;
   dob!:string;
-  postal_code!:string;
+  postalCode!:string;
   address!:string;
-  gov_id!:string;
-  is_tobacco_user!:string;
+  govId!:string;
+  isTobaccoUser!:string;
   password!:string;
   errorAlert!:boolean;
 
@@ -96,21 +96,21 @@ submitForm() {
   const {confirmPassword, ...FormData}= this.form1.value;
   const form1Data = FormData;
   const valueform1={
-    first_name:this.firstFormGroup.get('first_name')?.value,
-    last_name: this.firstFormGroup.get('last_name')?.value,
-    phone_no: this.firstFormGroup.get('phone_no')?.value,
-    email_id: this.firstFormGroup.get('email_id')?.value,
+    firstName:this.firstFormGroup.get('firstName')?.value,
+    lastName: this.firstFormGroup.get('lastName')?.value,
+    phoneNo: this.firstFormGroup.get('phoneNo')?.value,
+    emailId: this.firstFormGroup.get('emailId')?.value,
     gender: this.firstFormGroup.get('gender')?.value,
     dob: this.datePipe.transform(this.firstFormGroup.get('dob')?.value ?? new Date(), 'yyyy-MM-dd'),
-    city_id :this.firstFormGroup.get('city_id')?.value,
-    state_id :this.firstFormGroup.get('state_id')?.value,
-    postal_code :this.firstFormGroup.get('postal_code')?.value,
+    cityId :this.firstFormGroup.get('cityId')?.value,
+    stateId :this.firstFormGroup.get('stateId')?.value,
+    postalCode :this.firstFormGroup.get('postalCode')?.value,
     
  } 
  const valueform2={
     address:this.secondFormGroup.get('address')?.value,
-    gov_id: this.secondFormGroup.get('gov_id')?.value,
-    is_tobacco_user: this.secondFormGroup.get('is_tobacco_user')?.value
+    govId: this.secondFormGroup.get('govId')?.value,
+    isTobaccoUser: this.secondFormGroup.get('isTobaccoUser')?.value
     
  }
  const medical_history =  this.secondFormGroup.get('selected')?.value.join(',');
@@ -185,24 +185,24 @@ passwordMatchValidator(form1: FormGroup) {
   }
 
   firstFormGroup = this.formbulder.group({
-    first_name: ['', Validators.required],
-    last_name: ['', Validators.required],
-    phone_no: ['', [Validators.required,Validators.pattern('[0-9]{10}')]],
-    email_id: ['', [Validators.required,Validators.email,Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}')]],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    phoneNo: ['', [Validators.required,Validators.pattern('[0-9]{10}')]],
+    emailId: ['', [Validators.required,Validators.email,Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}')]],
     gender: ['', Validators.required],
     dob: ['', [Validators.required,]],
-    city_id : ['', Validators.required],
-    state_id :['', Validators.required],
-    postal_code :['', Validators.required],
+    cityId : ['', Validators.required],
+    stateId :['', Validators.required],
+    postalCode :['', Validators.required],
     
    
    
   });
   secondFormGroup = this.formbulder.group({
     address: ['', Validators.required],
-    gov_id: ['', [Validators.required,Validators.pattern('[0-9]{12}')]],
+    govId: ['', [Validators.required,Validators.pattern('[0-9]{12}')]],
     selected:this.fb.array([]),
-    is_tobacco_user:['', Validators.required],
+    isTobaccoUser:['', Validators.required],
     
   });
   form1 = this.formbulder.group({

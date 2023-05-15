@@ -29,8 +29,8 @@ export class CreateproviderComponent {
   }
   createForm(){
     this.loginForm = this.fb.group({
-      pname:['',Validators.required],
-      pno:['',[Validators.required,Validators.pattern(/^[1-9]\d{9}$/)]],
+      providerName:['',Validators.required],
+      contactNumber:['',[Validators.required,Validators.pattern(/^[1-9]\d{9}$/)]],
       state:['',Validators.required],
       city:['',Validators.required]
       
