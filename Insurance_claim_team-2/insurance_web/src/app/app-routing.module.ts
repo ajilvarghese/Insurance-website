@@ -35,7 +35,7 @@ const routes: Routes = [
     {path: '404', component:PageNotFoundComponent},
     {path: '**', redirectTo: '/404' },
     {path:'alert',component:AlertBoxComponent},
-    {path:'mainform',component:MainformComponent ,canActivate:[AuthServiceGuard]},
+    {path:'mainform',component:MainformComponent },
     {path:'department',component:DepartmentComponent},
     {path:'adminpage',
     component:AdminpageComponent,canActivate:[AuthServiceGuard],
