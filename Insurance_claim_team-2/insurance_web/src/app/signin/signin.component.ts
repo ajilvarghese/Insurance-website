@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AlertBoxComponent } from '../alert-box/alert-box.component';
+import { AuthServiceService } from '../auth-service.service';
 import { UserServiceService } from '../Service/user-service.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class SignInComponent implements OnInit {
   loginForm!: FormGroup;
   message: any;
 
-  constructor(private fb: FormBuilder,private userservice:UserServiceService,private router:Router,private dialog:MatDialog) { }
+  constructor(private fb: FormBuilder,private userservice:UserServiceService,private router:Router,private dialog:MatDialog,private authService: AuthServiceService) { }
 
   ngOnInit() {
     this.createForm();
@@ -40,6 +41,7 @@ export class SignInComponent implements OnInit {
 
     this.userservice.signin(output).subscribe(
       response=>{
+        this.authService.login();
         console.log('Registration successful', response);
         console.log(response.body.first_name);
         if (response && response.body.role === 'admin') {

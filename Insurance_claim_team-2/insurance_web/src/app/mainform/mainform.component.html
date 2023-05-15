@@ -13,6 +13,7 @@
   </mat-toolbar>
   
   </div> -->
+  <div *ngIf="authservice.getIsAuthenticated()">
   <div class="whitebg">
   <!DOCTYPE html>
   <html lang="en">
@@ -32,7 +33,7 @@
               <a  routerLink="/signin">Sign in</a> -->
    
                 <a  routerLink="/main">Departments</a>&nbsp;
-               <a mat-raised-button color="accent" class="active" routerLink="/" ><mat-icon>logout</mat-icon>SIGN-OUT</a> &nbsp;
+               <a mat-raised-button color="accent" class="active" (click)="logout()" ><mat-icon>logout</mat-icon>SIGN-OUT</a> &nbsp;
               <!-- <a href="#">Contact</a> -->
           </nav>
 
@@ -110,6 +111,7 @@
   
 </mat-card>
 
+</div>
 </div>
 </div>
 <app-footer1></app-footer1>
