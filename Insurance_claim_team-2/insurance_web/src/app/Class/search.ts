@@ -1,8 +1,8 @@
 //search class
 export class Search {
 
-    search_id!:number;
-    doctor_id!:number;
-    provider_id!:number;
+    searchId!:number;
+    doctorId!:number;
+    providerId!:number;
     
 }

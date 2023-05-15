@@ -36,8 +36,8 @@ public class SearchController {
     @GetMapping("/search")
     public List<Search> getallsearch() {
 
-        List<Search> searches=search_service.getallsearch();
-        if(searches.isEmpty()){
+        List<Search> searches = search_service.getallsearch();
+        if (searches.isEmpty()) {
             throw new EmptyDatabaseException("Search database is empty");
         }
         return search_service.getallsearch();
@@ -47,68 +47,68 @@ public class SearchController {
     //create search
     @PostMapping("/search")
     public Search createSearch(@RequestBody Search search) {
-        Long doctorId = search.getDoctor_id();
+        Long doctorId = search.getDoctorId();
         if (!doctorRepository.existsById(doctorId)) {
-            throw new UserNotFoundException("Doctor does not exist !! id :"+ doctorId);
+            throw new UserNotFoundException("Doctor does not exist !! id :" + doctorId);
         }
-        Long providerId = search.getProvider_id();
+        Long providerId = search.getProviderId();
         if (!providerRepository.existsById(providerId)) {
-            throw new UserNotFoundException("Provider does not exist !! id :"+ providerId);
+            throw new UserNotFoundException("Provider does not exist !! id :" + providerId);
         }
         try {
             return search_repository.save(search);
         } catch (Exception ex) {
-                throw new ForeignKeyNotFoundException("Duplicate Entry");
+            throw new ForeignKeyNotFoundException("Duplicate Entry");
         }
 
     }
 
     //get search by id
-    @GetMapping("/search/{search_id}")
-    public ResponseEntity<Search> getSearchBYId(@PathVariable Long search_id) {
+    @GetMapping("/search/{searchId}")
+    public ResponseEntity<Search> getSearchBYId(@PathVariable Long searchId) {
 
-        Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + search_id));
+        Search search = search_repository.findById(searchId).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + searchId));
         return ResponseEntity.ok(search);
 
     }
 
     //update search
-    @PutMapping("/search/{search_id}")
-    public ResponseEntity<Search> updateSearch(@PathVariable Long search_id, @RequestBody Search searchDetails) {
+    @PutMapping("/search/{searchId}")
+    public ResponseEntity<Search> updateSearch(@PathVariable Long searchId, @RequestBody Search searchDetails) {
 
-        Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + search_id));
-        Long doctorId = searchDetails.getDoctor_id();
+        Search search = search_repository.findById(searchId).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + searchId));
+        Long doctorId = searchDetails.getDoctorId();
         if (!doctorRepository.existsById(doctorId)) {
-            throw new UserNotFoundException("Doctor does not exist !! id :"+ doctorId);
+            throw new UserNotFoundException("Doctor does not exist !! id :" + doctorId);
         }
-        Long providerId = searchDetails.getProvider_id();
+        Long providerId = searchDetails.getProviderId();
         if (!providerRepository.existsById(providerId)) {
-            throw new UserNotFoundException("Provider does not exist !! id :"+ providerId);
+            throw new UserNotFoundException("Provider does not exist !! id :" + providerId);
         }
         try {
-            search.setSearch_id(searchDetails.getSearch_id());
-            search.setDoctor_id(searchDetails.getDoctor_id());
-            search.setProvider_id(searchDetails.getProvider_id());
+            search.setSearchId(searchDetails.getSearchId());
+            search.setDoctorId(searchDetails.getDoctorId());
+            search.setProviderId(searchDetails.getProviderId());
             Search updatesearch = search_repository.save(search);
             return ResponseEntity.ok(updatesearch);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             throw new ForeignKeyNotFoundException("Duplicate Entry");
         }
 
     }
 
     //delete search rest api
-    @DeleteMapping("/search/{search_id}")
-    public ResponseEntity<Map<String, Boolean>> deleteSearch(@PathVariable Long search_id) {
+    @DeleteMapping("/search/{searchId}")
+    public ResponseEntity<Map<String, Boolean>> deleteSearch(@PathVariable Long searchId) {
 
-        Search search = search_repository.findById(search_id).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + search_id));
+        Search search = search_repository.findById(searchId).orElseThrow(() -> new UserNotFoundException("search variable does not exist !! id :" + searchId));
         try {
             search_repository.delete(search);
             Map<String, Boolean> response = new HashMap<>();
             response.put("Deleted", Boolean.TRUE);
             return ResponseEntity.ok(response);
-        }catch (Exception ex){
-            throw new DeleteFailedException("Failed to delete " + search_id);
+        } catch (Exception ex) {
+            throw new DeleteFailedException("Failed to delete " + searchId);
         }
 
     }
@@ -122,24 +122,25 @@ public class SearchController {
 
         for (Search search : searchResults) {
             Map<String, Object> result = new HashMap<>();
-            result.put("search_id",search.getSearch_id());
-            Doctor doctor = doctorRepository.findById(search.getDoctor_id()).orElse(null);
-            Provider provider = providerRepository.findById(search.getProvider_id()).orElse(null);
+            result.put("searchId", search.getSearchId());
+            Doctor doctor = doctorRepository.findById(search.getDoctorId()).orElse(null);
+            Provider provider = providerRepository.findById(search.getProviderId()).orElse(null);
             if (doctor != null && provider != null) {
-                result.put("doctor_id", doctor.getDoctor_id());
-                result.put("doctor_name", doctor.getDoctor_name());
-                result.put("doctor_speciality", doctor.getDoctor_speciality());
-                result.put("doctor_description", doctor.getDoctor_description());
-                result.put("provider_id", provider.getProvider_id());
-                result.put("hospital_clinic", provider.getHospital_clinic());
+                result.put("doctorId", doctor.getDoctorId());
+                result.put("doctorName", doctor.getDoctorName());
+                result.put("doctorSpeciality", doctor.getDoctorSpeciality());
+                result.put("doctorDescription", doctor.getDoctorDescription());
+                result.put("providerId", provider.getProviderId());
+                result.put("hospitalClinic", provider.getHospitalClinic());
                 result.put("state", provider.getState());
                 result.put("city", provider.getCity());
-                result.put("contact_number", provider.getContact_number());
+                result.put("contactNumber", provider.getContactNumber());
                 results.add(result);
             }
         }
-        return results;
+            return results;
+
+        }
 
     }
 
-}

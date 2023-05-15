@@ -38,7 +38,7 @@ export class AdminproviderComponent {
     const city = this.selectedProvider.value?.toLowerCase() || '';
     const specialty = this.selectedState.value?.toLowerCase() || '';
     if((city && city.split('').length >=1) || (specialty && specialty.split('').length >=2) ){
-     this.filterProvider = this.provider.filter(doctor1 =>((doctor1.hospital_clinic.toLowerCase().includes(city))||doctor1.provider_id.toString().toLowerCase().includes(city)) &&
+     this.filterProvider = this.provider.filter(doctor1 =>((doctor1.hospitalClinic.toLowerCase().includes(city))||doctor1.providerId.toString().toLowerCase().includes(city)) &&
      (doctor1.state.toLowerCase().includes(specialty)||(doctor1.city.toLowerCase().includes(specialty)))
    );
 
@@ -59,9 +59,9 @@ private getProvider1(){
   })
 
 }
-deleteprovider(provider_id:number){
+deleteprovider(providerId:number){
 
-  this.statecity.deleteprovider(provider_id).subscribe(data =>{
+  this.statecity.deleteprovider(providerId).subscribe(data =>{
 
     this.getProvider1();
     this.message = "Deleted Provider SuccessFully  ";

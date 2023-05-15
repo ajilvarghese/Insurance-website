@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
 public class ErrorResponse {
     private HttpStatus status;
     private String message;
-    private LocalDateTime timestamp;
-    public ErrorResponse(HttpStatus status, String message, LocalDateTime timestamp) {
+    private LocalDateTime timeStamp;
+    public ErrorResponse(HttpStatus status, String message, LocalDateTime timeStamp) {
         this.status = status;
         this.message = message;
-        this.timestamp = timestamp;
+        this.timeStamp = timeStamp;
     }
     public HttpStatus getStatus() {
         return status;
@@ -20,7 +20,7 @@ public class ErrorResponse {
     public String getMessage() {
         return message;
     }
-    public LocalDateTime getTimestamp() {
-        return timestamp;
+    public LocalDateTime getTimeStamp() {
+        return timeStamp;
     }
 }

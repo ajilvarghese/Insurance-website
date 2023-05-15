@@ -40,9 +40,9 @@ const routes: Routes = [
       {path:'createdoctor',component:CreatedoctorComponent},
       {path:'createprovider',component:CreateproviderComponent},
       {path:'createsearch',component:CreatesearchComponent},
-      {path:'updatesearch/:search_id',component:UpdatesearchComponent},
-      {path:'updatedoctor/:doctor_id',component:UpdatedoctorComponent},
-      {path:'updateprovider/:provider_id',component:UpdateproviderComponent},
+      {path:'updatesearch/:searchId',component:UpdatesearchComponent},
+      {path:'updatedoctor/:doctorId',component:UpdatedoctorComponent},
+      {path:'updateprovider/:providerId',component:UpdateproviderComponent},
       {path:'adminprovider',component:AdminproviderComponent}
     ]
   }

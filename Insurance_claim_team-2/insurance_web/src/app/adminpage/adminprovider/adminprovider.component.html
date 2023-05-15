@@ -3,7 +3,7 @@
   <mat-toolbar class="whitecolor" [ngClass]="{'fixed-sub-navbar': isFixed}" >
     
     <mat-form-field class="form">
-      <mat-label>Search Providers/ID</mat-label>
+      <mat-label>Providers/ID</mat-label>
       <input matInput [formControl]="selectedProvider" (ngModelChange)="onStateChange()">
       <mat-icon matSuffix>search</mat-icon>
       
@@ -11,7 +11,7 @@
     &nbsp;
     &nbsp;
     <mat-form-field class="form" >
-      <mat-label>Search State /City</mat-label>
+      <mat-label>State /City</mat-label>
       <input matInput [formControl]="selectedState" (ngModelChange)="onStateChange()" >
       <mat-icon matSuffix>location_on</mat-icon>
     </mat-form-field>
@@ -34,16 +34,16 @@
   <div class="card-grid-container">
     <mat-card *ngFor="let provider of filterProvider | slice:0:5" class="doctor-card">
       <mat-card-header>
-        <mat-card-title>{{ provider.hospital_clinic }}  </mat-card-title>
+        <mat-card-title>{{ provider.hospitalClinic }}  </mat-card-title>
         <!-- <mat-card-subtitle>{{ provider.doctor_speciality }}</mat-card-subtitle> -->
       </mat-card-header>
       <mat-card-content>
         <div class="content-container">
           <p> <mat-icon class="my-icon">location_on</mat-icon>{{ provider.city }},{{ provider.state }}</p>
-          <p><mat-icon class="my-icon">phone</mat-icon>{{ provider.contact_number }}</p>
-          <p> <mat-icon class="my-icon">badge</mat-icon> {{provider.provider_id}}</p><br>
-          <p class="form-container"><button mat-raised-button color="primary" (click) = "updateprovider(provider.provider_id)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
-            <button mat-raised-button color="warn" (click) = "deleteprovider(provider.provider_id)">DELETE<mat-icon>delete</mat-icon>
+          <p><mat-icon class="my-icon">phone</mat-icon>{{ provider.contactNumber }}</p>
+          <p> <mat-icon class="my-icon">badge</mat-icon> {{provider.providerId}}</p><br>
+          <p class="form-container"><button mat-raised-button color="primary" (click) = "updateprovider(provider.providerId)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
+            <button mat-raised-button color="warn" (click) = "deleteprovider(provider.providerId)">DELETE<mat-icon>delete</mat-icon>
             </button></p>
         </div>
       

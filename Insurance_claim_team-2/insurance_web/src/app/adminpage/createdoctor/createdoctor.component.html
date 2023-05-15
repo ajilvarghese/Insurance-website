@@ -10,7 +10,7 @@
        <div class="row">
           <mat-form-field>
             <mat-label>Doctor Name</mat-label>
-            <input matInput [(ngModel)]="doctor.doctor_name" name="doctor_name" formControlName="docname">
+            <input matInput [(ngModel)]="doctor.doctorName" name="doctor_name" formControlName="docname">
             <mat-error *ngIf="loginForm.get('docname')?.hasError('required')"></mat-error>
             
           </mat-form-field>
@@ -19,7 +19,7 @@
 
           <mat-form-field>
             <mat-label>Doctor Mobile</mat-label>
-            <input matInput [(ngModel)]="doctor.phone_no" name="phone_no" formControlName="phoneno">
+            <input matInput [(ngModel)]="doctor.phoneNo" name="phone_no" formControlName="phoneno">
             <mat-error *ngIf="loginForm.get('phoneno')?.hasError('required')"></mat-error>
           </mat-form-field>
           
@@ -28,7 +28,7 @@
         <div class="row">
           <mat-form-field>
             <mat-label>Specialty</mat-label>
-            <mat-select [(ngModel)]="doctor.doctor_speciality" name="specialty" formControlName="special">
+            <mat-select [(ngModel)]="doctor.doctorSpeciality" name="specialty" formControlName="special">
               <mat-option *ngFor="let specialty of specialties" [value]="specialty">{{ specialty }}</mat-option>
               <mat-error *ngIf="loginForm.get('special')?.hasError('required')"></mat-error>
             </mat-select>
@@ -39,7 +39,7 @@
 
           <mat-form-field>
             <mat-label>Doctor Description</mat-label>
-            <textarea matInput [(ngModel)]="doctor.doctor_description" name="doctor_description" formControlName="desc"></textarea>
+            <textarea matInput [(ngModel)]="doctor.doctorDescription" name="doctor_description" formControlName="desc"></textarea>
             <mat-error *ngIf="loginForm.get('desc')?.hasError('required')"></mat-error>
           </mat-form-field>
         </div>

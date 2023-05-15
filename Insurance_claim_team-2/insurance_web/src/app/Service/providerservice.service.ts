@@ -18,14 +18,14 @@ export class ProviderserviceService {
   createprovider(provider:Provider):Observable<Object>{
     return this.http.post(`${this.baseUr2}/signup/providers`,provider);
   }
-  getproviderById(provider_id:number):Observable<Provider>{
-    return this.http.get<Provider>(`${this.baseUr2}/signup/providers/${provider_id}`);
+  getproviderById(providerId:number):Observable<Provider>{
+    return this.http.get<Provider>(`${this.baseUr2}/signup/providers/${providerId}`);
   }
-  updateprovider(provider_id:number,provider:Provider):Observable<Object>{
-    return this.http.put(`${this.baseUr2}/signup/providers/${provider_id}`,provider);
+  updateprovider(providerId:number,provider:Provider):Observable<Object>{
+    return this.http.put(`${this.baseUr2}/signup/providers/${providerId}`,provider);
   }
-  deleteprovider(provider_id:number):Observable<Object>{
-    return this.http.delete(`${this.baseUr2}/signup/providers/${provider_id}`);
+  deleteprovider(providerId:number):Observable<Object>{
+    return this.http.delete(`${this.baseUr2}/signup/providers/${providerId}`);
   }
   //.............................
 }

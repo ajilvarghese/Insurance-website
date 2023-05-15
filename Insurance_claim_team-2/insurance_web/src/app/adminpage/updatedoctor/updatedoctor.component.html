@@ -13,7 +13,7 @@
                 <div class="row">
                   <mat-form-field>
                     <mat-label>Doctor Name</mat-label>
-                    <input matInput [(ngModel)]="doctor.doctor_name" name="doctor_name">
+                    <input matInput [(ngModel)]="doctor.doctorName" name="doctorName" >
                   </mat-form-field>
                
                   &nbsp;
@@ -21,7 +21,7 @@
 
                     <mat-form-field>
                         <mat-label>Specialty</mat-label>
-                        <mat-select [(ngModel)]="doctor.doctor_speciality" name="specialty">
+                        <mat-select [(ngModel)]="doctor.doctorSpeciality" name="specialty">
                           <mat-option *ngFor="let specialty of specialties" [value]="specialty">{{ specialty }}</mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -30,14 +30,14 @@
                     <div class="row">
                   <mat-form-field>
                     <mat-label>Doctor Description</mat-label>
-                    <textarea matInput [(ngModel)]="doctor.doctor_description" name="doctor_description"></textarea>
+                    <textarea matInput [(ngModel)]="doctor.doctorDescription" name="doctor_description"></textarea>
                   </mat-form-field>
                   &nbsp;
                   &nbsp;
                
                   <mat-form-field>
                     <mat-label>Doctor Mobile no</mat-label>
-                    <input matInput [(ngModel)]="doctor.phone_no" name="phone_no">
+                    <input matInput [(ngModel)]="doctor.phoneNo" name="phone_no">
                   </mat-form-field>
                
                 </div>

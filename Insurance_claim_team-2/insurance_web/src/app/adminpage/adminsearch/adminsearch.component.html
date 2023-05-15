@@ -40,7 +40,7 @@
   <mat-toolbar class="whitecolor" [ngClass]="{'fixed-sub-navbar': isFixed}" >
     
     <mat-form-field class="form">
-      <mat-label>Search Doctors/ID</mat-label>
+      <mat-label>NPI Number/Name</mat-label>
       <input matInput [formControl]="selectedProvider" (ngModelChange)="onStateChange()">
       <mat-icon matSuffix>search</mat-icon>
       
@@ -48,7 +48,7 @@
     &nbsp;
     &nbsp;
     <mat-form-field class="form" >
-      <mat-label>Search provider_id/Name</mat-label>
+      <mat-label>Provider ID/Name</mat-label>
       <input matInput [formControl]="selectedState" (ngModelChange)="onStateChange()" >
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
@@ -73,15 +73,15 @@
       </mat-card-header>
       <mat-card-content>
         <div class="content-container">
-          <p>Doctor ID :{{ search.doctor_id }}</p>
-          <p>Doctor Name:{{search.doctor_name}}</p>
-          <p>Provider ID:{{ search.provider_id }}</p>
-          <p>Provider name:{{ search.hospital_clinic }}</p>
-          <!-- <p>search_id{{search.search_id}}</p> -->
+          <p>NPI Number :{{ search.doctorId }}</p>
+          <p>Doctor Name:{{search.doctorName}}</p>
+          <p>Provider ID:{{ search.providerId }}</p>
+          <p>Provider name:{{ search.hospitalClinic }}</p>
+          <!-- <p>search_id{{search.searchId}}</p> -->
         </div>
         <form class="form-container">
-          <button mat-raised-button color="primary" (click) = "updatesearch(search.search_id)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
-          <button mat-raised-button color="warn" (click) = "deletesearch(search.search_id)">DELETE<mat-icon>delete</mat-icon>
+          <button mat-raised-button color="primary" (click) = "updatesearch(search.searchId)" >UPDATE<mat-icon>update</mat-icon></button>&nbsp;
+          <button mat-raised-button color="warn" (click) = "deletesearch(search.searchId)">DELETE<mat-icon>delete</mat-icon>
           </button>
         </form>
       </mat-card-content>

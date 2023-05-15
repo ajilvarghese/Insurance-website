@@ -20,14 +20,14 @@ export class SearchserviceService {
   createsearch(search:Search):Observable<Object>{
     return this.http.post(`${this.baseUr2}/signup/search`,search);
   }
-  getsearchById(search_id:number):Observable<Search>{
-    return this.http.get<Search>(`${this.baseUr2}/signup/search/${search_id}`);
+  getsearchById(searchId:number):Observable<Search>{
+    return this.http.get<Search>(`${this.baseUr2}/signup/search/${searchId}`);
   }
-  updatesearch(search_id:number,search:Search):Observable<Object>{
-    return this.http.put(`${this.baseUr2}/signup/search/${search_id}`,search);
+  updatesearch(searchId:number,search:Search):Observable<Object>{
+    return this.http.put(`${this.baseUr2}/signup/search/${searchId}`,search);
   }
-  deletesearch(search_id:number):Observable<Object>{
-    return this.http.delete(`${this.baseUr2}/signup/search/${search_id}`);
+  deletesearch(searchId:number):Observable<Object>{
+    return this.http.delete(`${this.baseUr2}/signup/search/${searchId}`);
   }
   getSearchboth(): Observable<Search1[]>{
     return this.http.get<Search1[]>(`${this.baseUr2}/signup/search1`);
