@@ -1,4 +1,4 @@
-<div class="whitebg">
+<div class="whitebackground">
     <div class="center">
       <h1>Doctors Available</h1>
      </div>
@@ -9,11 +9,11 @@
         <div class="col-md-4" *ngFor="let doctor of doctors">
           <mat-card>
             <mat-card-header>
-              <mat-card-title>DR.{{ doctor.doctor_name }}</mat-card-title>
-              <mat-card-subtitle>Department :{{ doctor.doctor_speciality }}</mat-card-subtitle>
+              <mat-card-title>DR.{{ doctor.doctorName }}</mat-card-title>
+              <mat-card-subtitle>Department :{{ doctor.doctorSpeciality }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-              <p>{{ doctor.doctor_description }}</p>
+              <p>{{ doctor.doctorDescription }}</p>
             </mat-card-content>
           </mat-card>
         </div>

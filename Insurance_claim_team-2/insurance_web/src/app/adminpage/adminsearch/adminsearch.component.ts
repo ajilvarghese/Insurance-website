@@ -5,16 +5,16 @@ import { Router } from '@angular/router';
 import { AlertBoxComponent } from '../../alert-box/alert-box.component';
 import { SearchserviceService } from '../../Service/searchservice.service';
 interface Search1{
-  search_id :number;
-  provider_id : number;
-  hospital_clinic : String;
+  searchId :number;
+  providerId : number;
+  hospitalClinic : String;
   city :String;
   state:String;
-  contact_number:number;
-  doctor_id :number;
-  doctor_name : String;
-  doctor_speciality: String;
-  doctor_description: String;
+  contactNumber:number;
+  doctorId :number;
+  doctorName : String;
+  doctorSpeciality: String;
+  doctorDescription: String;
 
 }
 
@@ -54,10 +54,10 @@ export class AdminsearchComponent {
     if ((city && city.split('')) || (specialty && specialty.split(''))) {
 
       this.filtersearch = this.search.filter(doctor1 => {
-        const doctorIdString = doctor1.doctor_id.toString();
-        const providerIdString = doctor1.provider_id.toString();
-        const doctorNameLower = doctor1.doctor_name?.toLowerCase();
-        const hospitalClinicLower = doctor1.hospital_clinic?.toLowerCase();
+        const doctorIdString = doctor1.doctorId.toString();
+        const providerIdString = doctor1.providerId.toString();
+        const doctorNameLower = doctor1.doctorName?.toLowerCase();
+        const hospitalClinicLower = doctor1.hospitalClinic?.toLowerCase();
         return (
           (doctorIdString.includes(city) || (doctorNameLower && doctorNameLower.includes(city))) &&
           (providerIdString.includes(specialty) || (hospitalClinicLower && hospitalClinicLower.includes(specialty)))
@@ -68,9 +68,9 @@ export class AdminsearchComponent {
     
 
 }
-updatesearch(search_id:number){
-  this.router.navigate(['/adminpage/updatesearch',search_id])
-  console.log(search_id);
+updatesearch(searchId:number){
+  this.router.navigate(['/adminpage/updatesearch',searchId])
+  console.log(searchId);
 
 }
 private getProvider1(){
@@ -78,8 +78,8 @@ private getProvider1(){
     this.search =data;
   })
 }
-deletesearch(search_id:number){
-  this.statecity.deletesearch(search_id).subscribe(data =>{
+deletesearch(searchId:number){
+  this.statecity.deletesearch(searchId).subscribe(data =>{
     this.getProvider1();
     this.message = "Deleted SuccessFully  ";
         // alert(this.message)

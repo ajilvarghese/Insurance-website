@@ -29,18 +29,18 @@ export class DoctorserviceService {
   }
 
   //get the doctor by id
-  getdoctorById(doctor_id:number):Observable<Doctor>{
-    return this.http.get<Doctor>(`${this.baseUr2}/signup/doctors/${doctor_id}`);
+  getdoctorById(doctorId:number):Observable<Doctor>{
+    return this.http.get<Doctor>(`${this.baseUr2}/signup/doctors/${doctorId}`);
   }
 
   //update doctor
-  updatedoctor(doctor_id:number,doctor:Doctor):Observable<Object>{
-    return this.http.put(`${this.baseUr2}/signup/doctors/${doctor_id}`,doctor);
+  updatedoctor(doctorId:number,doctor:Doctor):Observable<Object>{
+    return this.http.put(`${this.baseUr2}/signup/doctors/${doctorId}`,doctor);
   }
 
   //delete doctor
-  deletedoctor(doctor_id:number):Observable<Object>{
-    return this.http.delete(`${this.baseUr2}/signup/doctors/${doctor_id}`);
+  deletedoctor(doctorId:number):Observable<Object>{
+    return this.http.delete(`${this.baseUr2}/signup/doctors/${doctorId}`);
   }
 
   // ................................

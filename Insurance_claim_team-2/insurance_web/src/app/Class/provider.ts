@@ -2,10 +2,10 @@
 
 export class Provider {
 
-    provider_id! : number;
-    hospital_clinic! : String;
+    providerId! : number;
+    hospitalClinic! : String;
     state!: String;
     city!: String;
-    contact_number!:number
+    contactNumber!:number
     
 }

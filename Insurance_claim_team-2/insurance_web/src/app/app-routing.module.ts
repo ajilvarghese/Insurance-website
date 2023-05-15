@@ -20,6 +20,7 @@ import { CreatesearchComponent } from './adminpage/createsearch/createsearch.com
 import { UpdatesearchComponent } from './adminpage/updatesearch/updatesearch.component';
 import { DepartmentComponent } from './department/department.component';
 import { AuthServiceGuard } from './auth-service.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,8 @@ const routes: Routes = [
     {path:'mainnav',component:MainNavComponent},
     {path:'mainpage',component:MainPageComponent},
     {path:'main',component:MainComponent},
+    {path: '404', component:PageNotFoundComponent},
+    {path: '**', redirectTo: '/404' },
     {path:'alert',component:AlertBoxComponent},
     {path:'mainform',component:MainformComponent ,canActivate:[AuthServiceGuard]},
     {path:'department',component:DepartmentComponent},
@@ -42,9 +45,9 @@ const routes: Routes = [
       {path:'createdoctor',component:CreatedoctorComponent},
       {path:'createprovider',component:CreateproviderComponent},
       {path:'createsearch',component:CreatesearchComponent},
-      {path:'updatesearch/:search_id',component:UpdatesearchComponent},
-      {path:'updatedoctor/:doctor_id',component:UpdatedoctorComponent},
-      {path:'updateprovider/:provider_id',component:UpdateproviderComponent},
+      {path:'updatesearch/:searchId',component:UpdatesearchComponent},
+      {path:'updatedoctor/:doctorId',component:UpdatedoctorComponent},
+      {path:'updateprovider/:providerId',component:UpdateproviderComponent},
       {path:'adminprovider',component:AdminproviderComponent}
     ]
   }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertBoxComponent } from 'src/app/alert-box/alert-box.component';
@@ -14,13 +15,27 @@ import { ProviderserviceService } from 'src/app/Service/providerservice.service'
 })
 export class UpdateproviderComponent {
 
-  provider_id!:number;
+  providerId!:number;
   provider :Provider = new Provider();
-  
+  loginForm!:FormGroup;
   message!: string;
+  constructor(private statecityservice:ProviderserviceService,private route:ActivatedRoute,private router:Router,public dialog: MatDialog,private fb:FormBuilder){
+  }
+  
+  ngOnInit(){
+    
+    this.providerId=this.route.snapshot.params['providerId'];
+    this.statecityservice.getproviderById(this.providerId).subscribe(data =>{
+    this.provider=data;
+   
+    
+  },error =>console.log(error));
+  
+      
+  }
   onSubmit(){
 
-    this.statecityservice.updateprovider(this.provider_id,this.provider).subscribe(data =>{
+    this.statecityservice.updateprovider(this.providerId,this.provider).subscribe(data =>{
 
        this.gotoProvider();
        this.message = "Updated Provider SuccessFully  ";
@@ -69,17 +84,7 @@ export class UpdateproviderComponent {
 
   }
   
-  constructor(private statecityservice:ProviderserviceService,private route:ActivatedRoute,private router:Router,public dialog: MatDialog){
-  }
-  ngOnInit(): void {
-    
-    this.provider_id=this.route.snapshot.params['provider_id'];
-    this.statecityservice.getproviderById(this.provider_id).subscribe(data =>{
-    this.provider=data;
-    
-  },error =>console.log(error));
-      
-  }
+  
   
 
 }

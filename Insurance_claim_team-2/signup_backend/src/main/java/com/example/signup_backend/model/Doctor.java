@@ -8,55 +8,55 @@ public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "doctor_id")
-    private Long doctor_id;
+    private Long doctorId;
     @Column(name = "doctor_name")
-    private String doctor_name;
+    private String doctorName;
     @Column(name = "doctor_speciality")
     @Enumerated(EnumType.STRING)
-    private DoctorSpeciality doctor_speciality;
+    private DoctorSpeciality doctorSpeciality;
     @Column(name = "doctor_description")
-    private String doctor_description;
+    private String doctorDescription;
     @Column(name="phone_no")
-    private Long phone_no;
+    private Long phoneNo;
 
-    public Long getPhone_no() {
-        return phone_no;
+    public Long getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setPhone_no(Long phone_no) {
-        this.phone_no = phone_no;
+    public void setPhone_no(Long phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
-    public Long getDoctor_id() {
-        return doctor_id;
+    public Long getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctor_id(Long doctor_id) {
-        this.doctor_id = doctor_id;
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
-    public String getDoctor_name() {
-        return doctor_name;
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setDoctor_name(String doctor_name) {
-        this.doctor_name = doctor_name;
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
-    public DoctorSpeciality getDoctor_speciality() {
-        return doctor_speciality;
+    public DoctorSpeciality getDoctorSpeciality() {
+        return doctorSpeciality;
     }
 
-    public void setDoctor_speciality(DoctorSpeciality doctor_speciality) {
-        this.doctor_speciality = doctor_speciality;
+    public void setDoctor_speciality(DoctorSpeciality doctorSpeciality) {
+        this.doctorSpeciality = doctorSpeciality;
     }
 
-    public String getDoctor_description() {
-        return doctor_description;
+    public String getDoctorDescription() {
+        return doctorDescription;
     }
 
-    public void setDoctor_description(String doctor_description) {
-        this.doctor_description = doctor_description;
+    public void setDoctorDescription(String doctorDescription) {
+        this.doctorDescription = doctorDescription;
     }
 }
 

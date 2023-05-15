@@ -28,14 +28,14 @@ public class SignupService {
     }
     public ResponseEntity<?> authenticateUser(@RequestBody Signup signup) throws UserNotFoundException {
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        Optional<Signup> opUser=sigupRepositiory.findById(signup.getPhone_no());
+        Optional<Signup> opUser=sigupRepositiory.findById(signup.getPhoneNo());
 //        Optional<Signup> opUser = sigupRepositiory.findByGovIdOrPhoneNumber(signup.getEmail_id(), signup.getPhone_no());
         if(opUser.isPresent())
         {
             Signup dbUser = opUser.get();
             if(bcrypt.matches(signup.getPassword(),dbUser.getPassword())) {
                 Map<String, String> response = new HashMap<>();
-                response.put("first_name", dbUser.getFirst_name());
+                response.put("first_name", dbUser.getFirstName());
                 response.put("role", dbUser.getRole());
 //                return ResponseEntity.ok("Signed In Successfully");
                 return ResponseEntity.ok(response);

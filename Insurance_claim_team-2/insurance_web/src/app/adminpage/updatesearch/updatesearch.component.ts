@@ -12,7 +12,7 @@ import { SearchserviceService } from '../../Service/searchservice.service';
   styleUrls: ['./updatesearch.component.css']
 })
 export class UpdatesearchComponent {
-  search_id!:number;
+  searchId!:number;
   search :Search = new Search();
   message!: string;
 
@@ -20,7 +20,7 @@ export class UpdatesearchComponent {
   
   onSubmit(){
 
-    this.statecityservice.updatesearch(this.search_id,this.search).subscribe(data=>{
+    this.statecityservice.updatesearch(this.searchId,this.search).subscribe(data=>{
 
       console.log(data);
       this.gotoProvider();
@@ -71,8 +71,8 @@ export class UpdatesearchComponent {
   }
   ngOnInit(): void {
     
-    this.search_id=this.route.snapshot.params['search_id'];
-    this.statecityservice.getsearchById(this.search_id).subscribe(data =>{
+    this.searchId=this.route.snapshot.params['searchId'];
+    this.statecityservice.getsearchById(this.searchId).subscribe(data =>{
     this.search=data;
     
   },error =>console.log(error));

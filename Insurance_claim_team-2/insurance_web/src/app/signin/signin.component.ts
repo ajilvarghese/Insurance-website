@@ -23,7 +23,7 @@ export class SignInComponent implements OnInit {
 
   createForm() {
     this.loginForm = this.fb.group({
-      phone: ['', [Validators.required, Validators.pattern(/^[1-9]\d{9}$/)]],
+      phoneNo: ['', [Validators.required, Validators.pattern(/^[1-9]\d{9}$/)]],
       password: ['', Validators.required]
     });
   }
@@ -31,7 +31,7 @@ export class SignInComponent implements OnInit {
   onSubmit(values:any) {
 
     const formValues={
-      phone_no:this.loginForm.get('phone')?.value,
+      phoneNo:this.loginForm.get('phoneNo')?.value,
       password: this.loginForm.get('password')?.value,
       
    }

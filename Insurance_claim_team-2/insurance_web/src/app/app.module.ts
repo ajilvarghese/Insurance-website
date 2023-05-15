@@ -48,6 +48,7 @@ import { Footer1Component } from './footer1/footer1.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { DepartmentComponent } from './department/department.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -81,6 +82,7 @@ import { MatMenuModule } from '@angular/material/menu';
     FooterComponent,
     Footer1Component,
     DepartmentComponent,
+    PageNotFoundComponent,
     
   ],
   imports: [

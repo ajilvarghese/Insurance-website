@@ -3,7 +3,7 @@
   <mat-toolbar class="whitecolor" [ngClass]="{'fixed-sub-navbar': isFixed}" >
     
     <mat-form-field class="form">
-      <mat-label>Search Doctors/ID</mat-label>
+      <mat-label>NPI number/Name</mat-label>
       <input matInput [formControl]="selectedDoctor" (ngModelChange)="onStateChange()">
       <mat-icon matSuffix>search</mat-icon>
       
@@ -11,7 +11,7 @@
     &nbsp;
     &nbsp;
     <mat-form-field class="form" >
-      <mat-label>Search Speciality</mat-label>
+      <mat-label>Speciality</mat-label>
       <input matInput [formControl]="selectedSpeciality" (ngModelChange)="onStateChange()" >
       <mat-icon matSuffix>medical_services</mat-icon>
     </mat-form-field>
@@ -58,23 +58,23 @@
   <div class="card-grid-container">
     <mat-card *ngFor="let doctor of filterDoctor | slice:0:10" class="doctor-card">
       <mat-card-header>
-        <mat-card-title>Dr.{{ doctor.doctor_name }}  </mat-card-title>
-        <mat-card-subtitle>{{ doctor.doctor_speciality }}</mat-card-subtitle>
+        <mat-card-title>Dr.{{ doctor.doctorName }}  </mat-card-title>
+        <mat-card-subtitle>{{ doctor.doctorSpeciality }}</mat-card-subtitle>
         
       </mat-card-header>
       <mat-card-content>
         <div class="content-container">
-          <p>{{doctor.phone_no}}</p>
-          <p>{{ doctor.doctor_description }}</p>
+          <p>{{doctor.phoneNo}}</p>
+          <p>{{ doctor.doctorDescription }}</p>
           
           <p> <mat-icon>person</mat-icon> 
-            {{doctor.doctor_id}}</p>
+           NPI ID: {{doctor.doctorId}}</p>
             <br>
             <p class="form-container">
               
-                <button mat-raised-button color="primary" (click) = "updatedoctor(doctor.doctor_id)" ><mat-icon>update</mat-icon>UPDATE</button>&nbsp;
+                <button mat-raised-button color="primary" (click) = "updatedoctor(doctor.doctorId)" ><mat-icon>update</mat-icon>UPDATE</button>&nbsp;
                 
-                <button mat-raised-button color="warn" (click) = "deletedoctor(doctor.doctor_id)"><mat-icon>delete</mat-icon>DELETE</button>
+                <button mat-raised-button color="warn" (click) = "deletedoctor(doctor.doctorId)"><mat-icon>delete</mat-icon>DELETE</button>
             
             </p>
         </div>

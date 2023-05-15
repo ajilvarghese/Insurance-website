@@ -15,18 +15,18 @@
           <table class="example-full-width" cellspacing="0"><tr>
             <td><mat-form-field class="example-full-width">
               <mat-label>First name</mat-label>
-              <input matInput formControlName="first_name" placeholder="First name" required>
+              <input matInput formControlName="firstName" placeholder="First name" required>
             </mat-form-field></td>
             <td><mat-form-field class="example-full-width">
               <mat-label>Last Name</mat-label>
-              <input matInput formControlName="last_name" placeholder="Last name" required>
+              <input matInput formControlName="lastName" placeholder="Last name" required>
             </mat-form-field></td>
           </tr></table>
           <table class="example-full-width" cellspacing="0"><tr>
             <td>
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
-              <input type="email" matInput formControlName="email_id" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              <input type="email" matInput formControlName="emailId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                      placeholder="Ex. pat@example.com" required >
     
               <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -42,7 +42,7 @@
             <td><mat-form-field class="example-full-width">
             <mat-label>Telephone</mat-label>
             <span matPrefix>+91 &nbsp;</span>
-            <input type="tel" formControlName="phone_no"  matInput placeholder="555-555-1234" required>
+            <input type="tel" formControlName="phoneNo"  matInput placeholder="555-555-1234" required>
             <mat-icon matSuffix>phone</mat-icon>
           </mat-form-field></td>
         </tr></table>
@@ -84,7 +84,7 @@
             
 <mat-form-field class = "together"appearance="fill" >
   <mat-label>State</mat-label>
-  <mat-select formControlName="state_id" [(ngModel)]="selectedState" (ngModelChange)="onStateChange()" >
+  <mat-select formControlName="stateId" [(ngModel)]="selectedState" (ngModelChange)="onStateChange()" >
     <mat-option *ngFor="let item of state" value={{item.state_id}} >{{ item.state_name }}</mat-option>
 
   </mat-select>
@@ -95,7 +95,7 @@
           </td><td>
 <mat-form-field class = "together"appearance="fill" >
   <mat-label>City</mat-label>
-  <mat-select formControlName="city_id" >
+  <mat-select formControlName="cityId" >
     <mat-option *ngFor="let item of cities" value={{item.city_id}}>{{item.city_name}}</mat-option>
   </mat-select>
   <mat-error *ngIf="firstFormGroup.get('city')?.hasError('required')">
@@ -108,7 +108,7 @@
     
           <td><mat-form-field class="example-full-width">
             <mat-label>Postal Code</mat-label>
-            <input matInput #postalCode maxlength="6" formControlName="postal_code" placeholder="Ex. 683571" value="683571" required [(ngModel)]="postal_code">
+            <input matInput #postalCode maxlength="6" formControlName="postalCode" placeholder="Ex. 683571" value="683571" required >
             <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
           </mat-form-field></td>
           
@@ -134,7 +134,7 @@
           <table class="example-full-width" cellspacing="0"><tr>
             <td><mat-form-field class="example-full-width">
               <mat-label>Aadhaar number</mat-label>
-              <input type="tel" formControlName="gov_id"  matInput placeholder="xxxx-xxxx-xxxx" required >
+              <input type="tel" formControlName="govId"  matInput placeholder="xxxx-xxxx-xxxx" required >
             </mat-form-field></td>
           </tr></table>
           <table class="example-full-width" cellspacing="0"><tr>
@@ -149,7 +149,7 @@
           <!-- //second page-->
           <mat-label>Do you have any existing illness or medical record ?</mat-label>
           <div *ngFor="let illness of illnesses">
-            <mat-checkbox  (change)="onChange(illness.illness_name, $event.checked)">{{illness.illness_name }}</mat-checkbox>
+            <mat-checkbox  (change)="onChange(illness.illnessName, $event.checked)">{{illness.illnessName }}</mat-checkbox>
           </div>
             </td>
 
@@ -158,7 +158,7 @@
         <table class="example-full-width" cellspacing="0"><tr>
           <td>
             <h3>Tobacco usage ?</h3>
-            <mat-chip-listbox aria-label="Tobacco usage" formControlName="is_tobacco_user" >
+            <mat-chip-listbox aria-label="Tobacco usage" formControlName="isTobaccoUser" >
               <mat-chip-option selected value="No Smoking" >No Smoking</mat-chip-option>
               <mat-chip-option value="1-5 Cigarette" >1-5 Cigarette</mat-chip-option>
               <mat-chip-option color="accent" value="1pkt cigarette" >1pkt cigarette</mat-chip-option>

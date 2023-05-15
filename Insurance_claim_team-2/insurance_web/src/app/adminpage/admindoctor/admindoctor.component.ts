@@ -39,16 +39,16 @@ export class AdmindoctorComponent {
     const city = this.selectedDoctor.value?.toLowerCase() || '';
     const specialty = this.selectedSpeciality.value?.toLowerCase() || '';
     if((city && city.split('').length >=1) || (specialty && specialty.split('').length >=2) ){
-     this.filterDoctor = this.doctors.filter(doctor1 =>((doctor1.doctor_name.toLowerCase().includes(city))||doctor1.doctor_id.toString().toLowerCase().includes(city)) &&
-     (doctor1.doctor_speciality.toLowerCase().includes(specialty))
+     this.filterDoctor = this.doctors.filter(doctor1 =>((doctor1.doctorName.toLowerCase().includes(city))||doctor1.doctorId.toString().toLowerCase().includes(city)) &&
+     (doctor1.doctorSpeciality.toLowerCase().includes(specialty))
    );
 
     }
 
                   }
-updatedoctor(doctor_id:number){
+updatedoctor(doctorId:number){
 
-  this.router.navigate(['/adminpage/updatedoctor',doctor_id])
+  this.router.navigate(['/adminpage/updatedoctor',doctorId])
 
 }
 private getDoctor1(){
@@ -58,9 +58,9 @@ private getDoctor1(){
   })
 
 }
-deletedoctor(doctor_id:number){
+deletedoctor(doctorId:number){
 
-  this.statecity.deletedoctor(doctor_id).subscribe(data =>{
+  this.statecity.deletedoctor(doctorId).subscribe(data =>{
     this.getDoctor1();
     this.message = "Deleted Doctor SuccessFully  ";
         // alert(this.message)

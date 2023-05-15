@@ -1,15 +1,15 @@
 export class User {
 
-    first_name!:string
-    last_name!:string;
-    email_id!:string;
-    phone_no!:string;
+    firstName!:string
+    lastName!:string;
+    emailId!:string;
+    phoneNo!:string;
     gender!:string;
     dob!:string;
-    postal_code!:string;
+    postalCode!:string;
     address!:string;
-    gov_id!:string;
-    is_tobacco_user!:string;
+    govId!:string;
+    isTobaccoUser!:string;
     password!:string;
     
 }

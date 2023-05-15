@@ -134,14 +134,14 @@
           <p>Login</p>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
             <div class="user-box">
-              <input type="tel" name="phone" formControlName="phone" required pattern="^[1-9]\d{9}$">
+              <input type="tel" name="phone" formControlName="phoneNo" required pattern="^[1-9]\d{9}$">
               
               <label>Mobile Number</label>
             
-              <div *ngIf="loginForm.controls['phone'].errors && (loginForm.controls['phone'].dirty || loginForm.controls['phone'].touched)">
-                <div *ngIf="loginForm.controls['phone'].errors['required']"> Mobile number is required
+              <div *ngIf="loginForm.controls['phoneNo'].errors && (loginForm.controls['phoneNo'].dirty || loginForm.controls['phoneNo'].touched)">
+                <div *ngIf="loginForm.controls['phoneNo'].errors['required']"> Mobile number is required
                 </div>
-                <div *ngIf="loginForm.controls['phone'].errors['pattern']">
+                <div *ngIf="loginForm.controls['phoneNo'].errors['pattern']">
                   Please enter a valid 10-digit phone number
                 </div>
               </div>

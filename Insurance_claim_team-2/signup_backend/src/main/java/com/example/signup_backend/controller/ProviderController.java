@@ -48,23 +48,23 @@ public class ProviderController {
 
     }
     //get provider by id
-    @GetMapping("/providers/{provider_id}")
-    public ResponseEntity<Provider> getProviderBYId(@PathVariable Long provider_id){
+    @GetMapping("/providers/{providerId}")
+    public ResponseEntity<Provider> getProviderBYId(@PathVariable Long providerId){
 
-        Provider provider = provider_repository.findById(provider_id).orElseThrow(() -> new UserNotFoundException("Provider does not exist !! id :"+ provider_id));
+        Provider provider = provider_repository.findById(providerId).orElseThrow(() -> new UserNotFoundException("Provider does not exist !! id :"+ providerId));
         return ResponseEntity.ok(provider);
 
     }
     //update Providers
-    @PutMapping("/providers/{provider_id}")
-    public ResponseEntity<Provider> updateProvider(@PathVariable Long provider_id,@RequestBody Provider providerDetails){
+    @PutMapping("/providers/{providerId}")
+    public ResponseEntity<Provider> updateProvider(@PathVariable Long providerId,@RequestBody Provider providerDetails){
 
-        Provider provider = provider_repository.findById(provider_id).orElseThrow(() -> new UserNotFoundException("Provider does not exist !! id :"+ provider_id));
+        Provider provider = provider_repository.findById(providerId).orElseThrow(() -> new UserNotFoundException("Provider does not exist !! id :"+ providerId));
         try {
-            provider.setHospital_clinic(providerDetails.getHospital_clinic());
+            provider.setHospitalClinic(providerDetails.getHospitalClinic());
             provider.setState(providerDetails.getState());
             provider.setCity(providerDetails.getCity());
-            provider.setContact_number(providerDetails.getContact_number());
+            provider.setContactNumber(providerDetails.getContactNumber());
             Provider updateprovider = provider_repository.save(provider);
             return ResponseEntity.ok(updateprovider);
         }catch (Exception ex){
@@ -72,17 +72,17 @@ public class ProviderController {
         }
     }
     //delete provider rest api
-    @DeleteMapping("/providers/{provider_id}")
-    public ResponseEntity<Map<String,Boolean>> deleteProvider(@PathVariable Long provider_id){
+    @DeleteMapping("/providers/{providerId}")
+    public ResponseEntity<Map<String,Boolean>> deleteProvider(@PathVariable Long providerId){
 
-        Provider provider = provider_repository.findById(provider_id).orElseThrow(() -> new UserNotFoundException("Provider does not exist !! id :"+ provider_id));
+        Provider provider = provider_repository.findById(providerId).orElseThrow(() -> new UserNotFoundException("Provider does not exist !! id :"+ providerId));
        try {
            provider_repository.delete(provider);
            Map<String, Boolean> response = new HashMap<>();
            response.put("Deleted", Boolean.TRUE);
            return ResponseEntity.ok(response);
        }catch (Exception ex){
-           throw new DeleteFailedException("Failed to delete Provider with id: " + provider_id);
+           throw new DeleteFailedException("Failed to delete Provider with id: " + providerId);
        }
     }
 
