@@ -32,8 +32,6 @@ const routes: Routes = [
     {path:'mainnav',component:MainNavComponent},
     {path:'mainpage',component:MainPageComponent},
     {path:'main',component:MainComponent},
-    {path: '404', component:PageNotFoundComponent},
-    {path: '**', redirectTo: '/404' },
     {path:'alert',component:AlertBoxComponent},
     {path:'mainform',component:MainformComponent ,canActivate:[AuthServiceGuard]},
     {path:'department',component:DepartmentComponent},
@@ -50,7 +48,10 @@ const routes: Routes = [
       {path:'updateprovider/:providerId',component:UpdateproviderComponent},
       {path:'adminprovider',component:AdminproviderComponent}
     ]
-  }
+   
+  },
+  {path: '404', component:PageNotFoundComponent},
+  {path: '**', redirectTo: '/404' },
     
     
 
