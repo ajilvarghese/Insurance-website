@@ -81,7 +81,7 @@
 <!-- //.......display of search............. -->
 &nbsp;
 <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
-<mat-card *ngFor="let doctor of filterSearch | slice:0:5" class="doctor-card" style="margin: 10px;">
+<mat-card *ngFor="let doctor of filterSearch | slice:0:4" class="doctor-card" style="margin: 10px;">
   <mat-card-header>
     <mat-card-title>Dr.{{ doctor.doctorName }}</mat-card-title>
     <mat-card-subtitle>{{ doctor.doctorSpeciality }}</mat-card-subtitle>
