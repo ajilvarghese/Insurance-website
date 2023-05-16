@@ -33,7 +33,7 @@ const routes: Routes = [
     {path:'mainpage',component:MainPageComponent},
     {path:'main',component:MainComponent},
     {path:'alert',component:AlertBoxComponent},
-    {path:'mainform',component:MainformComponent ,canActivate:[AuthServiceGuard]},
+    {path:'mainform',component:MainformComponent },
     {path:'department',component:DepartmentComponent},
     {path:'adminpage',
     component:AdminpageComponent,canActivate:[AuthServiceGuard],
