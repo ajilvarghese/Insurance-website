@@ -31,8 +31,6 @@ export class MainformComponent implements OnInit {
   secondFormGroup!: FormGroup;
   isFixed = false;
   isEditable = true;
-  // doctors: Doctor[]=[];
-  // filteredDoctors:Doctor[]=[];
   state!: any[];
   city1!:any[];
   selectedState!: any;
