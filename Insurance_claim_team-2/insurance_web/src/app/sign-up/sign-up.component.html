@@ -85,7 +85,7 @@
 <mat-form-field class = "together"appearance="fill" >
   <mat-label>State</mat-label>
   <mat-select formControlName="stateId" [(ngModel)]="selectedState" (ngModelChange)="onStateChange()" >
-    <mat-option *ngFor="let item of state" value={{item.state_id}} >{{ item.state_name }}</mat-option>
+    <mat-option *ngFor="let item of states" value={{item.id}} >{{ item.name }}</mat-option>
 
   </mat-select>
   <mat-error *ngIf="firstFormGroup.get('state')?.hasError('required')">
@@ -96,7 +96,7 @@
 <mat-form-field class = "together"appearance="fill" >
   <mat-label>City</mat-label>
   <mat-select formControlName="cityId" >
-    <mat-option *ngFor="let item of cities" value={{item.city_id}}>{{item.city_name}}</mat-option>
+    <mat-option *ngFor="let item of cities" value={{item.id}}>{{item.name}}</mat-option>
   </mat-select>
   <mat-error *ngIf="firstFormGroup.get('city')?.hasError('required')">
        
