@@ -7,8 +7,10 @@ import { MatSelectionListChange } from '@angular/material/list';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { DropdownService } from '../dropdown.service';
 import { StateCityServiceService } from '../Service/state-city-service.service';
 import { UserServiceService } from '../Service/user-service.service';
+
 
 
 
@@ -20,6 +22,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
+
 interface gender1 {
   value: string;
   viewValue: string;
@@ -46,7 +49,7 @@ export class SignUpComponent{
   form!: FormGroup;
   state!: any[];
   selectedState!: number;
-  cities!: City[];
+  cities!: any[];
   maxDate: Date;
   minDate: Date;
   firstName!: string;
@@ -61,8 +64,9 @@ export class SignUpComponent{
   isTobaccoUser!:string;
   password!:string;
   errorAlert!:boolean;
+  states!: any[];
 
-constructor(private fb: FormBuilder,private formbulder:FormBuilder,private http:HttpClient,private stateCityService:StateCityServiceService,private userService:UserServiceService,private datePipe: DatePipe,private router: Router) {
+constructor(private fb: FormBuilder,private formbulder:FormBuilder,private http:HttpClient,private stateCityService:StateCityServiceService,private userService:UserServiceService,private datePipe: DatePipe,private router: Router,private Statecitydropdown: DropdownService) {
   this.form1 = this.fb.group({
     password: ['', [Validators.required, Validators.minLength(8)]],
     confirmPassword: ['', Validators.required]
@@ -81,6 +85,14 @@ ngOnInit(): void {
   this.stateCityService.getilllness().subscribe((data:any[]) =>{
     this.illnesses=data;
   });
+  this.Statecitydropdown.getAllStates().subscribe(
+   states=>{
+    this.states=states;
+   }
+  );
+  
+
+  
   
   
 
@@ -113,11 +125,11 @@ submitForm() {
     isTobaccoUser: this.secondFormGroup.get('isTobaccoUser')?.value
     
  }
- const medical_history =  this.secondFormGroup.get('selected')?.value.join(',');
+ const medicalHistory =  this.secondFormGroup.get('selected')?.value.join(',');
  
   const formValues ={
     ...valueform1,
-    medical_history,...valueform2,
+    medicalHistory,...valueform2,
     // ...this.secondFormGroup.value,
     ...form1Data
   }
@@ -145,10 +157,20 @@ submitForm() {
 
 
 
+// onStateChange() {
+  
+//   this.stateCityService.getCities(this.selectedState).subscribe((data) => {
+//     this.cities = data;
+//   });
+// }
+
 onStateChange() {
   
-  this.stateCityService.getCities(this.selectedState).subscribe((data) => {
+  this.Statecitydropdown.getCities(this.selectedState).subscribe((data) => {
+    
+
     this.cities = data;
+    
   });
 }
 

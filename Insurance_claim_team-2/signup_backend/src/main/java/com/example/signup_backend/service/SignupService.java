@@ -20,6 +20,7 @@ public class SignupService {
     SignupRepository sigupRepositiory;
 
     public Signup saveSignup(Signup signup){
+        System.out.println(signup);
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
         String encryptedPwd=bcrypt.encode(signup.getPassword());
         signup.setPassword(encryptedPwd);
